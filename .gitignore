@@ -1,4 +1,4 @@
 *.venv
 *.env
-*.pycache
+*.__pycache__
 *.sh
