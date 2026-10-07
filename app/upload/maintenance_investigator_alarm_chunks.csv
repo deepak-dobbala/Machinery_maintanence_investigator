@@ -1,0 +1,229 @@
+chunk_id,document_id,revision,publication_date,section_number,section_title,chunk_type,alarm_number,alarm_text,subsystem,manual_page_start,manual_page_end,pdf_page_start_1based,pdf_page_end_1based,source_role,revision_priority,has_table,has_diagram,has_bullets,extraction_quality,revision_group,is_revision_pair,technical_purpose,text
+vf_2002_reve_alarm_101,96-8100,Rev E,June 2002,2,ALARMS,alarm,101,Comm. Failure with MOCON,control/electronics,51,51,51,51,primary,1,False,False,False,good,vf_alarm_101,True,MOCON communication fault,"101 Comm. Failure with MOCON
+During a self-test of communications between the MOCON PCB
+and main processor, the main processor does not respond, one
+of them is possibly bad. Check cable connections and boards."
+vf_2002_reve_alarm_102,96-8100,Rev E,June 2002,2,ALARMS,alarm,102,Servos Off,axis/servo control,51,51,51,51,primary,1,False,False,False,good,vf_alarm_102,True,Servo system is off,"102 Servos Off
+Indicates that the servo motors are off, the tool changer is
+disabled, the coolant pump is off, and the spindle motor is
+stopped. Caused by EMERGENCY STOP, motor faults, tool
+changer problems, or power fail."
+vf_2002_reve_alarm_103,96-8100,Rev E,June 2002,2,ALARMS,alarm,103,X Servo Error Too Large,axis/servo,51,51,51,51,primary,1,False,False,False,good,vf_alarm_103,True,X-axis following/position error too large,"103 X Servo Error Too Large
+Too much load or speed on X-axis motor. The difference between
+the motor position and the commanded position has exceeded a
+parameter. The servos will be turned off and a RESET must be
+done to restart. This alarm can be caused by problems with the
+driver, motor, or the slide being run into the mechanical stops.
+The motor may also be stalled, disconnected, or the driver failed."
+vf_2002_reve_alarm_107,96-8100,Rev E,June 2002,2,ALARMS,alarm,107,Emergency Off,safety/hydraulic,51,51,51,51,primary,1,False,False,False,good,vf_alarm_107,True,Emergency stop or hydraulic counterbalance pressure condition,"107 Emergency Off
+EMERGENCY STOP button was pressed. After the E-STOP is
+released, the RESET button must be pressed once to correct
+this and clear the E-STOP alarm.
+This alarm will also be generated if there is a low pressure
+condition in the hydraulic counterbalance system. In this case,
+the alarm will not reset until the condition has been corrected."
+vf_2002_reve_alarm_108,96-8100,Rev E,June 2002,2,ALARMS,alarm,108,X Servo Overload,axis/servo,51,51,51,51,primary,1,False,False,False,good,vf_alarm_108,True,X-axis motor overload,"108 X Servo Overload
+Excessive load on X-axis motor. This can occur if the load on the
+motor is large enough to exceed the continuous rating of the
+motor. This could be period of several seconds or even minutes.
+The servos will be turned off when this occurs. This can be
+caused by running into the mechanical stops. It can also be
+caused by anything that causes a very high load on the motors.
+
+51
+
+ALARMS
+
+52
+
+June 2002"
+vf_2002_reve_alarm_113,96-8100,Rev E,June 2002,2,ALARMS,alarm,113,Shuttle In Fault,tool changer,52,52,52,52,primary,1,False,False,False,good,vf_alarm_113,True,Tool shuttle failed to move fully IN,"113 Shuttle In Fault
+Tool changer is not completely to right. During a tool changer
+operation the tool in/out shuttle failed to get to the IN position.
+Parameters 62 and 63 can adjust the delays. This alarm can be
+caused by anything that jams the motion of the slide or by the
+presence of a tool in the pocket facing the spindle. A loss of
+power to the tool changer can also cause this. Check relays K9K12, and fuse F1 on IOPCB."
+vf_2002_reve_alarm_114,96-8100,Rev E,June 2002,2,ALARMS,alarm,114,Shuttle Out Fault,tool changer,52,52,52,52,primary,1,False,False,False,good,vf_alarm_114,True,Tool shuttle failed to move fully OUT,"114 Shuttle Out Fault
+Tool changer not completely to left. During a tool change
+operation the tool in/out shuttle failed to get to the OUT position.
+Parameters 62 and 63 can adjust the time-out times. This alarm
+can be caused by anything that jams the motion of the slide or by
+the presence of a tool in the pocket facing the spindle. A loss of
+power to the tool changer can also cause this. Check relays K9K12, and fuse F1 on IOPCB."
+vf_2002_reve_alarm_115,96-8100,Rev E,June 2002,2,ALARMS,alarm,115,Turret Rotate Fault,tool changer,52,52,52,52,primary,1,False,False,False,good,vf_alarm_115,True,Turret/carousel rotation fault,"115 Turret Rotate Fault
+During a tool changer operation the tool turret failed to start
+moving, failed to stop moving or failed to stop at the right
+position. Parameters 60 and 61 can adjust the delays. This
+alarm can be caused by anything that jams the rotation of the
+turret. A loss of power to the tool changer can also cause this.
+Check relays K9-K12, and fuse F1 on IOPCB."
+vf_2002_reve_alarm_116,96-8100,Rev E,June 2002,2,ALARMS,alarm,116,Spindle Orientation Fault,spindle,52,52,52,52,primary,1,False,False,False,good,vf_alarm_116,True,Spindle failed to orient,"116 Spindle Orientation Fault
+Spindle did not orient correctly. This is either a vector drive
+problem or a mechanical problem on machines without a vector
+drive. During a spindle orientation function, the spindle is
+rotated until the lock pin drops in; but the lock pin never dropped.
+Parameters 66, 70, 73, and 74 can adjust delays and spindle
+orient speeds. This can be caused by a trip of circuit breaker
+CB4, a lack of air pressure, or too much friction with the
+orientation pin."
+vf_2002_reve_alarm_117,96-8100,Rev E,June 2002,2,ALARMS,alarm,117,Spindle High Gear Fault,spindle/gearbox,52,52,52,52,primary,1,False,False,False,good,vf_alarm_117,True,Gearbox failed to reach high gear,"117 Spindle High Gear Fault
+Gearbox did not shift into high gear. During a change to high
+gear, the spindle is rotated slowly while air pressure is used to
+change gears but the high gear sensor was not detected in time.
+Parameters 67, 70 and 75 can adjust the delays. Check the air
+pressure, circuit breaker CB4,the circuit breaker for the air
+pressure solenoids, and the spindle drive."
+vf_2002_reve_alarm_118,96-8100,Rev E,June 2002,2,ALARMS,alarm,118,Spindle Low Gear Fault,spindle/gearbox,52,52,52,52,primary,1,False,False,False,good,vf_alarm_118,True,Gearbox failed to reach low gear,"118 Spindle Low Gear Fault
+Gearbox did not shift into low gear. During a change to low gear,
+the spindle is rotated slowly while air pressure is used to
+change gears but the low gear sensor was not detected in time.
+Parameters 67, 70 and 75 can adjust the delays. Check the air
+pressure, the solenoid's circuit breaker CB4, and the spindle
+drive."
+vf_2002_reve_alarm_120,96-8100,Rev E,June 2002,2,ALARMS,alarm,120,Low Air Pressure,pneumatic,52,52,52,52,primary,1,False,False,False,good,vf_alarm_120,True,Low incoming machine air pressure,"120 Low Air Pressure
+Air pressure dropped below 80 PSI for a period defined by
+Parameter 76. The LOW AIR PR alarm will appear on the screen
+as soon as the pressure gets low, and this alarm appears after
+some time has elapsed. Check your incoming air pressure for at
+least 100 PSI and ensure that the regulator is set at 85 PSI.
+96-8100 rev E
+
+ALARMS
+
+June 2002
+
+96-8100 rev E"
+vf_2002_reve_alarm_121,96-8100,Rev E,June 2002,2,ALARMS,alarm,121,Low Lube or Low Pressure,lubrication,53,53,53,53,primary,1,False,False,False,good,vf_alarm_121,True,Low/incorrect way-lube pressure or level,"121 Low Lube or Low Pressure
+Way lube is low or empty or the lube pressure is too high or low.
+Check tank at rear of mill and below control cabinet. Also check
+connector on the side of the control cabinet. Check that the lube
+lines are not blocked."
+vf_2002_reve_alarm_122,96-8100,Rev E,June 2002,2,ALARMS,alarm,122,Regen Overheat,electrical/spindle,53,53,53,53,primary,1,False,False,False,good,vf_alarm_122,True,Regenerative load/control overheating,"122 Regen Overheat
+The control is overheating. This alarm will turn off the spindle
+drive, coolant pump, and tool changer. One common cause of
+this overheat condition is an input line voltage too high. If this
+condition persists, an automatic shutdown will begin after the
+interval specified by parameter 297. It can also be caused by a
+high start/stop duty cycle of spindle."
+vf_2002_reve_alarm_123,96-8100,Rev E,June 2002,2,ALARMS,alarm,123,Spindle Drive Fault,spindle/electrical,53,53,53,53,primary,1,False,False,False,good,vf_alarm_123,True,"Spindle drive, motor, or regenerative-load fault","123 Spindle Drive Fault
+Failure of spindle drive, motor or regenerative load. This can be
+caused by a shorted motor, overvoltage, overcurrent,
+undervoltage, failure of drive, or shorted or open regen load.
+Undervoltage and overvoltage of DC bus are also reported as
+alarms 160 and 119, respectively."
+vf_2001_revc_alarm_101,96-8100,Rev C,June 2001,2,ALARMS,alarm,101,Comm. Failure with MOCON,control/electronics,56,56,56,56,revision_reference,2,False,False,False,good,vf_alarm_101,True,MOCON communication fault,"101 Comm. Failure with MOCON
+During a self-test of communications between the MOCON and
+main processor, the main processor does not respond, one of
+them is possibly bad. Check cable connections and boards."
+vf_2001_revc_alarm_102,96-8100,Rev C,June 2001,2,ALARMS,alarm,102,Servos Off,axis/servo control,56,56,56,56,revision_reference,2,False,False,False,good,vf_alarm_102,True,Servo system is off,"102 Servos Off
+Indicates that the servo motors are off, the tool changer is
+disabled, the coolant pump is off, and the spindle motor is
+stopped. Caused by EMERGENCY STOP, motor faults, tool
+changer problems, or power fail."
+vf_2001_revc_alarm_103,96-8100,Rev C,June 2001,2,ALARMS,alarm,103,X Servo Error Too Large,axis/servo,56,56,56,56,revision_reference,2,False,False,False,good,vf_alarm_103,True,X-axis following/position error too large,"103 X Servo Error Too Large
+Too much load or speed on X-axis motor. The difference between
+the motor position and the commanded position has exceeded a
+parameter. The motor may also be stalled, disconnected, or the
+driver failed. The servos will be turned off and a RESET must be
+done to restart. This alarm can be caused by problems with the
+driver, motor, or the slide being run into the mechanical stops."
+vf_2001_revc_alarm_107,96-8100,Rev C,June 2001,2,ALARMS,alarm,107,Emergency Off,safety/hydraulic,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_107,True,Emergency stop or hydraulic counterbalance pressure condition,"107 Emergency Off
+EMERGENCY STOP button was pressed. After the E-STOP is
+released, the RESET button must be pressed once to correct
+this to clear the E-STOP alarm.
+This alarm will also be generated if there is a low pressure
+condition in the hydraulic counterbalance system. In this case,
+the alarm will not reset until the condition has been corrected.
+
+96-8100 rev C
+
+ALARMS
+
+June 2001
+
+96-8100 rev C"
+vf_2001_revc_alarm_108,96-8100,Rev C,June 2001,2,ALARMS,alarm,108,X Servo Overload,axis/servo,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_108,True,X-axis motor overload,"108 X Servo Overload
+Excessive load on X-axis motor. This can occur if the load on the
+motor over a period of several seconds or even minutes is large
+enough to exceed the continuous rating of the motor. The servos
+will be turned off when this occurs. This can be caused by
+running into the mechanical stops but not much past them. It can
+also be caused by anything that causes a very high load on the
+motors."
+vf_2001_revc_alarm_113,96-8100,Rev C,June 2001,2,ALARMS,alarm,113,Shuttle In Fault,tool changer,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_113,True,Tool shuttle failed to move fully IN,"113 Shuttle In Fault
+Tool changer is not completely to right. During a tool changer
+operation the tool in/out shuttle failed to get to the IN position.
+Parameters 62 and 63 can adjust the time-out times. This alarm
+can be caused by anything that jams the motion of the slide or by
+the presence of a tool in the pocket facing the spindle. A loss of
+power to the tool changer can also cause this. Check relays K9K12, and fuse F1 on IOPCB."
+vf_2001_revc_alarm_114,96-8100,Rev C,June 2001,2,ALARMS,alarm,114,Shuttle Out Fault,tool changer,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_114,True,Tool shuttle failed to move fully OUT,"114 Shuttle Out Fault
+Tool changer not completely to left. During a tool change
+operation the tool in/out shuttle failed to get to the OUT position.
+Parameters 62 and 63 can adjust the time-out times. This alarm
+can be caused by anything that jams the motion of the slide or by
+the presence of a tool in the pocket facing the spindle. A loss of
+power to the tool changer can also cause this. Check relays K9K12, and fuse F1 on IOPCB."
+vf_2001_revc_alarm_115,96-8100,Rev C,June 2001,2,ALARMS,alarm,115,Turret Rotate Fault,tool changer,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_115,True,Turret/carousel rotation fault,"115 Turret Rotate Fault
+Tool carousel motor not in position. During a tool changer
+operation the tool turret failed to start moving, failed to stop
+moving or failed to stop at the right position. Parameters 60 and
+61 can adjust the time-out times. This alarm can be caused by
+anything that jams the rotation of the turret. A loss of power to the
+tool changer can also cause this. Check relays K9-K12, and fuse
+F1 on IOPCB."
+vf_2001_revc_alarm_116,96-8100,Rev C,June 2001,2,ALARMS,alarm,116,Spindle Orientation Fault,spindle,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_116,True,Spindle failed to orient,"116 Spindle Orientation Fault
+Spindle did not orient correctly. This is either a vector drive
+problem or a mechanical problem on machines without a vector
+drive. During a spindle orientation function, the spindle is
+rotated until the lock pin drops in; but the lock pin never dropped.
+Parameters 66, 70, 73, and 74 can adjust time-out timers. This
+can be caused by a trip of circuit breaker CB4, a lack of air
+pressure, or too much friction with the orientation pin."
+vf_2001_revc_alarm_117,96-8100,Rev C,June 2001,2,ALARMS,alarm,117,Spindle High Gear Fault,spindle/gearbox,57,57,57,57,revision_reference,2,False,False,False,good,vf_alarm_117,True,Gearbox failed to reach high gear,"117 Spindle High Gear Fault
+Gearbox did not shift into high gear. During a change to high
+gear, the spindle is rotated slowly while air pressure is used to
+move the gears but the high gear sensor was not detected in
+time. Parameters 67, 70 and 75 can adjust the time-out times.
+Check the air pressure, circuit breaker CB4,the circuit breaker for
+the air pressure solenoids, and the spindle drive.
+
+57
+
+ALARMS
+
+58
+
+June 2001"
+vf_2001_revc_alarm_118,96-8100,Rev C,June 2001,2,ALARMS,alarm,118,Spindle Low Gear Fault,spindle/gearbox,58,58,58,58,revision_reference,2,False,False,False,good,vf_alarm_118,True,Gearbox failed to reach low gear,"118 Spindle Low Gear Fault
+Gearbox did not shift into low gear. During a change to low gear,
+the spindle is rotated slowly while air pressure is used to move
+the gears but the low gear sensor was not detected in time.
+Parameters 67, 70 and 75 can adjust the time-out times. Check
+the air pressure, the solenoid's circuit breaker CB4, and the
+spindle drive."
+vf_2001_revc_alarm_120,96-8100,Rev C,June 2001,2,ALARMS,alarm,120,Low Air Pressure,pneumatic,58,58,58,58,revision_reference,2,False,False,False,good,vf_alarm_120,True,Low incoming machine air pressure,"120 Low Air Pressure
+Air pressure dropped below 80 PSI for a period defined by
+Parameter 76. The LOW AIR PR alarm will appear on the screen
+as soon as the pressure gets low, and this alarm appears after
+some time has elapsed. Check your incoming air pressure for at
+least 100 PSI and ensure that the regulator is set at 85 PSI."
+vf_2001_revc_alarm_121,96-8100,Rev C,June 2001,2,ALARMS,alarm,121,Low Lube or Low Pressure,lubrication,58,58,58,58,revision_reference,2,False,False,False,good,vf_alarm_121,True,Low/incorrect way-lube pressure or level,"121 Low Lube or Low Pressure
+Way lube is low or empty or there is no lube pressure or too high
+a pressure. Check tank at rear of mill and below control cabinet.
+Also check connector on the side of the control cabinet. Check
+that the lube lines are not blocked."
+vf_2001_revc_alarm_122,96-8100,Rev C,June 2001,2,ALARMS,alarm,122,Regen Overheat,electrical/spindle,58,58,58,58,revision_reference,2,False,False,False,good,vf_alarm_122,True,Regenerative load/control overheating,"122 Regen Overheat
+The regenerative load temperature is above a safe limit. This
+alarm will turn off the spindle drive, coolant pump, and tool
+changer. One common cause of this overheat condition is an
+input line voltage too high. If this condition persists, an automatic
+shutdown will begin after the interval specified by parameter 297.
+It can also be caused by a high start/stop duty cycle of spindle."
+vf_2001_revc_alarm_123,96-8100,Rev C,June 2001,2,ALARMS,alarm,123,Spindle Drive Fault,spindle/electrical,58,58,58,58,revision_reference,2,False,False,False,good,vf_alarm_123,True,"Spindle drive, motor, or regenerative-load fault","123 Spindle Drive Fault
+Failure of spindle drive, motor or regen load. This can be caused
+by a shorted motor, overvoltage, overcurrent, undervoltage, failure
+of drive, or shorted or open regen load. Undervoltage and
+overvoltage of DC bus are also reported as alarms 160 and 119,
+respectively."

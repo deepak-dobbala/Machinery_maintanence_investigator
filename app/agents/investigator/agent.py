@@ -1,18 +1,21 @@
 from google.adk.agents import LlmAgent
+from .tools import lookup_alarm
 
 
 root_agent = LlmAgent(
     name="investigator",
     model="gemini-2.5-flash",
-    description="Maintenance investigation agent.",
     instruction="""
-You are the Maintenance Investigator.
+You are a maintenance investigator.
 
-For now, this is a Level 0/1 test agent.
-Respond clearly and briefly to the technician.
+When the user provides a machine alarm code, use the
+lookup_alarm tool to retrieve information about that alarm.
 
-Do not diagnose machine faults yet.
-Do not invent manual information.
-When asked what you are, say that you are the Maintenance Investigator.
+Do not invent alarm information. If the tool does not find
+the alarm, say that it was not found.
+
+After using the tool, explain the retrieved information
+clearly and identify the recommended first check.
 """,
-)
+    tools=[lookup_alarm],
+) 
