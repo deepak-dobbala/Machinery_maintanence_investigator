@@ -33,7 +33,7 @@ EMBEDDING_DIMENSION = int(
 
 COLLECTION = "manual_chunks"
 
-VECTOR_LIMIT = 8
+VECTOR_LIMIT = 30
 
 
 client = genai.Client(
@@ -383,11 +383,40 @@ def rank_results(
             "subsystem"
         )
 
-        if (
-            target_subsystem is not None
-            and subsystem == target_subsystem
+        # ---------------------------------------------------------
+        # Normalize subsystem aliases for ranking only.
+        #
+        # Stored source metadata is preserved exactly as-is.
+        # ---------------------------------------------------------
+
+        subsystem_aliases = {
+            "electrical/spindle": {
+                "spindle",
+                "spindle_drive",
+            },
+            "spindle": {
+                "spindle",
+                "spindle_drive",
+            },
+            "spindle_drive": {
+                "spindle_drive",
+                "spindle",
+            },
+        }
+
+        if target_subsystem is None:
+            subsystem_value = 1
+
+        elif subsystem == target_subsystem:
+            subsystem_value = 0
+
+        elif (
+            subsystem in subsystem_aliases
+            and target_subsystem
+            in subsystem_aliases[subsystem]
         ):
             subsystem_value = 0
+
         else:
             subsystem_value = 1
 

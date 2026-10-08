@@ -1,0 +1,134 @@
+[
+  {
+    "file": "alarm_101.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "101",
+    "alarm_text": "COMM FAILURE WITH MOCON",
+    "machine_state": "POWER ON / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_103.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "103",
+    "alarm_text": "X SERVO ERROR TOO LARGE",
+    "machine_state": "SERVO ENABLED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_108.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "108",
+    "alarm_text": "X SERVO OVERLOAD",
+    "machine_state": "SERVO ENABLED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_113.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "113",
+    "alarm_text": "SHUTTLE IN FAULT",
+    "machine_state": "TOOL CHANGER STOPPED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_114.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-4",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "114",
+    "alarm_text": "SHUTTLE OUT FAULT",
+    "machine_state": "TOOL CHANGER STOPPED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_117.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "117",
+    "alarm_text": "SPINDLE HIGH GEAR FAULT",
+    "machine_state": "SPINDLE STOPPED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_120.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "120",
+    "alarm_text": "LOW AIR PRESSURE",
+    "machine_state": "MACHINE STOPPED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "alarm_123.png",
+    "image_type": "alarm_screen",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "123",
+    "alarm_text": "SPINDLE DRIVE FAULT",
+    "machine_state": "SPINDLE STOPPED / ALARM ACTIVE",
+    "confidence_expected": 1.0,
+    "missing_fields": ""
+  },
+  {
+    "file": "nameplate_vf2.png",
+    "image_type": "nameplate",
+    "machine_model": "VF-2",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "",
+    "alarm_text": "",
+    "machine_state": "",
+    "confidence_expected": 1.0,
+    "missing_fields": "alarm_code,alarm_text,machine_state"
+  },
+  {
+    "file": "nameplate_vf4.png",
+    "image_type": "nameplate",
+    "machine_model": "VF-4",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "",
+    "alarm_text": "",
+    "machine_state": "",
+    "confidence_expected": 1.0,
+    "missing_fields": "alarm_code,alarm_text,machine_state"
+  },
+  {
+    "file": "nameplate_vf6.png",
+    "image_type": "nameplate",
+    "machine_model": "VF-6",
+    "control_generation": "Brushless MOCON",
+    "alarm_code": "",
+    "alarm_text": "",
+    "machine_state": "",
+    "confidence_expected": 1.0,
+    "missing_fields": "alarm_code,alarm_text,machine_state"
+  },
+  {
+    "file": "nameplate_generic.png",
+    "image_type": "nameplate",
+    "machine_model": "VF-3",
+    "control_generation": "Unknown",
+    "alarm_code": "",
+    "alarm_text": "",
+    "machine_state": "",
+    "confidence_expected": 1.0,
+    "missing_fields": "alarm_code,alarm_text,machine_state"
+  }
+]

@@ -1,0 +1,13 @@
+file,image_type,machine_model,control_generation,alarm_code,alarm_text,machine_state,confidence_expected,missing_fields
+alarm_101.png,alarm_screen,VF-2,Brushless MOCON,101,COMM FAILURE WITH MOCON,POWER ON / ALARM ACTIVE,1.0,
+alarm_103.png,alarm_screen,VF-2,Brushless MOCON,103,X SERVO ERROR TOO LARGE,SERVO ENABLED / ALARM ACTIVE,1.0,
+alarm_108.png,alarm_screen,VF-2,Brushless MOCON,108,X SERVO OVERLOAD,SERVO ENABLED / ALARM ACTIVE,1.0,
+alarm_113.png,alarm_screen,VF-2,Brushless MOCON,113,SHUTTLE IN FAULT,TOOL CHANGER STOPPED / ALARM ACTIVE,1.0,
+alarm_114.png,alarm_screen,VF-4,Brushless MOCON,114,SHUTTLE OUT FAULT,TOOL CHANGER STOPPED / ALARM ACTIVE,1.0,
+alarm_117.png,alarm_screen,VF-2,Brushless MOCON,117,SPINDLE HIGH GEAR FAULT,SPINDLE STOPPED / ALARM ACTIVE,1.0,
+alarm_120.png,alarm_screen,VF-2,Brushless MOCON,120,LOW AIR PRESSURE,MACHINE STOPPED / ALARM ACTIVE,1.0,
+alarm_123.png,alarm_screen,VF-2,Brushless MOCON,123,SPINDLE DRIVE FAULT,SPINDLE STOPPED / ALARM ACTIVE,1.0,
+nameplate_vf2.png,nameplate,VF-2,Brushless MOCON,,,,1.0,"alarm_code,alarm_text,machine_state"
+nameplate_vf4.png,nameplate,VF-4,Brushless MOCON,,,,1.0,"alarm_code,alarm_text,machine_state"
+nameplate_vf6.png,nameplate,VF-6,Brushless MOCON,,,,1.0,"alarm_code,alarm_text,machine_state"
+nameplate_generic.png,nameplate,VF-3,Unknown,,,,1.0,"alarm_code,alarm_text,machine_state"
