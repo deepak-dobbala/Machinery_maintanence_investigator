@@ -1,0 +1,2161 @@
+chunk_id,document_id,manual_number,title,revision,publication_date,source_role,machine_family,section_number,section_title,chunk_type,topic,subsystem,matched_topics,matched_keywords,manual_page_start,manual_page_end,pdf_page_start,pdf_page_end,text_length,extraction_quality,has_table,has_diagram,text
+96-8100-rev-c-2001_spindle_orientation_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive;control_electronics,MOCON;PROCESSOR;SPINDLE DRIVE,3,3,4,4,1414,source_pdf_text,False,False,"FIND THE PROBLEM FIRST
+Many mechanics tear into things before they understand the problem, hoping that it will appear as they go. We
+know this from the fact that more than half of all warranty returned parts are in good working order. If the
+spindle doesnt turn, remember that the spindle is connected to the gear box, which is connected to the
+spindle motor, which is driven by the spindle drive, which is connected to the I/O BOARD, which is driven by
+the MOCON, which is driven by the processor. The moral here is dont replace the spindle drive if the belt is
+broken. Find the problem first; dont just replace the easiest part to get to.
+DONT TINKER WITH THE MACHINE
+There are hundreds of parameters, wires, switches, etc., that you can change in this machine. Dont start
+randomly changing parts and parameters. Remember, there is a good chance that if you change something,
+you will incorrectly install it or break something else in the process. Consider for a moment changing the
+processors board. First, you have to download all parameters, remove a dozen connectors, replace the board,
+reconnect and reload, and if you make one mistake or bend one tiny pin it WONT WORK. You always need to
+consider the risk of accidentally damaging the machine anytime you work on it. It is cheap insurance to
+double-check a suspect part before physically changing it. The less work you do on the machine the better."
+96-8100-rev-c-2001_regen_spindle_drive_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive;air_lubrication;control_electronics,COUNTERBALANCE;ELECTRICAL SERVICE;HYDRAULIC;IOPCB;MOCON;OVERHEAT;POWER SUPPLY;PROCESSOR,4,4,5,5,1619,source_pdf_text,False,False,"MACHINE NOT RUNNING
+Machine cannot be powered on.
+ Check input voltage to machine (see ""Electrical Service"").
+ Check main circuit breaker at top right of electrical cabinet; switch must be at the on position.
+ Check overvoltage fuses (see ""Electrical Service"").
+ Check wiring to POWER OFF button on front control panel.
+ Check wiring to AUTO OFF relay to IOPCB.
+ Check connection between 24V transformer and K1 contactor
+ Check IOPCB (see ""Electrical Service"").
+ Check POWER PCB (see ""Electrical Service"").
+Machine can be powered on, but turns off by itself.
+ Check settings #1 and #2 for Auto Off Timer or Off at M30.
+ Check alarm history for OVERVOLTAGE or OVERHEAT shutdown.
+ Check AC power supply lines for intermittent supply.
+ Check wiring to POWER OFF button on front control panel.
+ Check connection between 24V transformer and K1 contactor.
+ Check IOPCB (see ""Electrical Service"").
+ Check Parameter 57 for Power Off at E-STOP .
+ Check MOTIF or MOCON PCB (see ""Electrical Service"").
+Machine turns on, keyboard beeps, but no CRT display.
+ Check for power connections to CRT from IOPCB. Check for green POWER LED at front of CRT.
+ Close doors and Zero Return machine (possible bad monitor).
+ Check video cable (760) from VIDEO PCB to CRT.
+ Check for lights on the processor.
+Machine turns on, CRT works, but no keyboard keys work.
+ Check keyboard cable (700B) from VIDEO to KBIF PCB.
+ Check keypad (see ""Electrical Service"").
+ Check KBIF PCB (see ""Electrical Service"").
+Constant E-Stop Condition (will not reset)
+ Check Hydraulic counterbalance pressure, low pressure switches and cabling."
+96-8100-rev-c-2001_servo_following_errors_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;spindle_gearbox,BACKLASH;GEARBOX;SERVO MOTOR,5,5,6,6,2689,source_pdf_text,False,False,"VIBRATION
+Vibration is a subjective evaluation with perceptions varying among individuals, making it difficult to determine in
+mild cases if there is an actual problem. Because the VF Series uses a gear head, it will be noisier than a
+direct drive or belt system. In obvious cases, it is a matter of determining the source - which is not easy, since
+all parts rotate together and sound can be transferred readily. Vibrations also need to be distinguished from
+noise such as a bad bearing. We will assume that vibrations would be something that could be felt by putting
+your hand on the spindle covers. One crude method of measurement would be to take an indicator on a
+magnetic base extended 10 inches between the table and spindle housing and observe the reading of the
+indicator. A reading of more than .001 would indicate excessive vibration. The two common sources of noise are
+the spindle and axis drives. Most complaints about vibration, accuracy, and finish can be attributed to incorrect
+machining practices such as poor quality or damaged tooling, incorrect speeds or feeds, or poor fixturing.
+Before concluding that the machine is not working properly, ensure that good machining practices are being
+observed. These symptoms will not occur individually (Ex. A machine with backlash may vibrate heavily,
+yielding a bad finish.). Put all of the symptoms together to arrive at an accurate picture of the problem.
+Machine vibrates while jogging the axis with the hand wheel.
+ The HAAS control uses very high gain accelerations curves. This vibration as you jog is simply the
+servos quickly trying to follow the handle divisions. If this is a problem, try using a smaller division on
+the handle. You will notice the vibration more at individual clicks than when you are turning the handle
+faster. This is normal.
+The machine vibrates excessively in a cut.
+ This is a tough one to call because machining practices come into play. Generally speaking, the least
+rigid element of a cut is the tool because it is the smallest part. Any cutter will vibrate if pushed beyond
+its tensile strength. In order to eliminate the machine as the source of the problem, you need to check
+the spindle and the backlash of the axes as described in the following sections. Once machining
+practices have been eliminated as the source of vibration, observe the machine in both operation and
+cutting air. Move the axes (individually) without the spindle turning and then turn the spindle without
+moving the axes. Isolate whether the vibration comes from the spindle head or from an axis. Isolate
+the source of vibration per ""Spindle"", ""Servo Motors/Leadscrews"", and ""Gearbox and Spindle Motor""
+sections."
+96-8100-rev-c-2001_servo_following_errors_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;air_lubrication,BACKLASH;COUNTERBALANCE;HYDRAULIC;SERVO MOTOR,6,7,7,8,3137,source_pdf_text,False,False,"ACCURACY
+Before you complain of an accuracy problem, please make sure you follow these simple dos and donts:
+ Ensure that the machine has been sufficiently warmed up before cutting parts. This will eliminate
+mispositioning errors caused by thermal growth of the leadscrews (see ""Thermal Growth"" section).
+ Do not use a wiggler test indicator for linear dimensions. They measure in an arc and have sine/cosine
+errors over larger distances.
+ Do not use magnetic bases as accurate test stops. The high accel/decel of the axis can cause them to
+move.
+ Do not attach magnetic base to the sheet metal of the spindle head or table.
+ Do not mount the magnetic base on the spindle dogs.
+ Do not check for accuracy/repeatability using an indicator with a long extension.
+ Ensure that test indicators and stops are absolutely rigid and mounted to machined casting surfaces
+(e.g. spindle head casting, spindle nose, or the table).
+ Do not rapid to position when checking accuracy. The indicator may get bumped and give an inaccurate
+reading. For best results, feed to position at 5-10 inches per minute.
+ Check a suspected error with another indicator or method for verification.
+ Ensure that the indicator is parallel to the axis being checked to avoid tangential reading errors.
+ Center drill holes before using jobber length drills if accuracy is questioned.
+ Once machining practices have been eliminated as the source of the problem, determine specifically what
+the machine is doing wrong.
+Machine will not interpolate a round hole.
+ Check that the machine is level (see ""Installation"" section).
+ Check for backlash (""Servo Motors/Leadscrews"" section).
+Bored holes do not go straight through the workpiece.
+ Check that the machine is level (see ""Installation"" section).
+ Check for squareness in the Z axis.
+Machine bores holes out-of-round.
+ Check that the machine is level (see ""Installation"" section).
+ Check the sweep of the machine (see ""Spindle Sweep Adjustment"" section).
+Bored holes are out of round or out of position.
+ Check for thermal growth of the leadscrew (see ""Thermal Growth"" section).
+ The spindle is not parallel to the Z axis. Check the spindle sweep to the table and the squareness
+of the Z axis with a cylinder square. If available use a spindle master bar and indicate the spindle
+to the Z axis.
+Machine mis-positions holes.
+ Check for thermal growth of the leadscrew (see ""Thermal Growth"" section).
+ Check that the machine is level (see ""Installation"" section).
+ Check for backlash (see ""Servo Motors/Leadscrews"" section).
+ Check the squareness of the X axis to the Y axis.
+Machine leaves large steps when using a shell mill.
+ Check that the machine is level (see ""Installation"" section).
+ Check the sweep of the machine (see ""Spindle Sweep Adjustment"" section).
+ Cutter diameter too large for depth of cut.
+Boring depth inaccurate
+ Check for thermal growth of the leadscrew (see ""Thermal Growth"" section).
+ Check the hydraulic counterbalance system. Check for:
+ abnormal noises from counterbalance system,
+ oil leaks (esp. at fittings and at filter at top of cylinder),
+ bound cylinder."
+96-8100-rev-c-2001_servo_following_errors_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;spindle_gearbox,BACKLASH;GEARBOX;SERVO MOTOR,7,7,8,8,268,source_pdf_text,False,False,"FINISH
+Machining yields a poor finish.
+ Check for gearbox vibration.
+ Check for backlash (""Accuracy/Backlash"" section)
+ Check the condition of the tooling and the spindle.
+ Check spindle
+ Check the condition of the servo motors.
+ Check that the is machine level."
+96-8100-rev-c-2001_spindle_orientation_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;spindle_gearbox;regen_spindle_drive;control_electronics,ELECTRICAL SERVICE;GEARBOX;IOPCB;MOCON;ORIENT;SPINDLE DRIVE;SPINDLE ORIENTATION;TRANSMISSION,10,10,11,11,1143,source_pdf_text,False,False,"NOT TURNING
+Spindle not turning.
+ If there are any alarms, refer to ""Alarms"" section.
+ Check that the spindle turns freely when machine is off.
+ If motor turns but spindle does not, see ""Belt Assembly"" and ""Spindle Motor & Transmission"" sections.
+ Command spindle to turn at 1800 RPM and check spindle drive display. If display blinks bb, check
+spindle orientation switch (""Spindle Orientation"" section). If spindle drive does not light the RUN LED,
+check forward/reverse commands from IOPCB (""Electrical Service"").
+ Check the wiring of analog speed command from MOTIF PCB to spindle drive (cable 720).
+ If spindle is still not turning, replace MOCON PCB (""Electrical Service"").
+ If spindle is still not turning, replace spindle drive (""Electrical Service"").
+ Check for rotation of the gearbox (if applicable) or the motor (VF-0). If the motor or gearbox operates,
+check the drive belt (""Belt Assembly"" section).
+ Disconnect the drive belt. If the spindle will not turn, it is seized and must be replaced (""Spindle
+Assembly"" section).
+NOTE: Before using the replacement spindle, the cause of the previous failure must
+be determined."
+96-8100-rev-c-2001_spindle_gearbox_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox;air_lubrication,GEARBOX;HIGH GEAR;LOW GEAR;LUBE;LUBRICATION,11,11,12,12,1810,source_pdf_text,False,False,"NOISE
+Most noises attributed to the spindle actually lie in the motor/gearbox or drive belt of the machine. Isolate the
+sources of noise as follows:
+Excessive noise coming from the spindle head area.
+On VF-1 through 6 models, first determine if the noise is related to the RPM of the motor or the RPM
+of the spindle. For example: If the noise appears at 2000 RPM in high gear, listen for a similar noise
+at 500 RPM in low gear. If the same noise persists, the problem lies with the gearbox. If the noise
+disappears, the problem could be either the gearbox or the spindle, and further testing is necessary.
+NOTE: The gear ratio is 1:1.25 in high gear, and 3.2:1 in low gear.
+ Remove the head covers and check the machines drive belt tension (""Tension Adjustment"" section).
+If the noise persists, turn the drive belt over on the pulleys. If the noise is significantly different, the
+belt is at fault. Replace the belt (""Belt Assembly"" section).
+If the noise does not change, remove the belt and go on to the next step.
+ Check the pulleys for excessive runout (more than 0.003"" axial or radial).
+ Run the motor (VF-0) or the gearbox (VF-1, VF-2, VF-3) with the drive belt disconnected. If the noise
+persists, the problem lies with the gearbox/motor. If it disappears, go on to the next step.
+ Check for the correct amount of lubrication to the spindle bearings (0.5-1.0 cc every two hours) in an air
+mist-lubricated spindle.
+If the spindle is not getting lubrication, correct the problem per the lube and air diagram at the
+back of this manual and replace the spindle (""Spindle Assembly"" section).
+If the spindle is getting lubrication, replace the spindle (""Spindle Assembly"" section).
+Note: Haas Automation does not honor warranty requests for gearbox or spindles
+without vibration analyzer signatures."
+96-8100-rev-c-2001_regen_spindle_drive_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive,OVERHEAT,12,12,13,13,584,source_pdf_text,False,False,"OVERHEATING
+When investigating complaints of overheating, a temperature probe must be used to accurately check the
+temperature at the top of the spindle taper. The temperature displayed in Diagnostics is not relevant. A machine
+that runs at high RPM continuously will have a much warmer spindle than a machine that runs at a lower RPM.
+New spindles tend to run much warmer than spindles that have already been run-in. In order to run a valid test
+on a new spindle, ensure that it is properly run-in.
+To run-in a spindle, run the following program (it will take approximately 6 hours):"
+96-8100-rev-c-2001_air_lubrication_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,AIR PRESSURE,12,12,13,13,444,source_pdf_text,False,False,"ALTERNATE SPINDLE RUN-IN PROGRAM
+Run program #O02021 with the air pressure to the spindle set to 30 psi. (for all spindles). Program time is
+approximately 2 hours. If possible run the program overnight by changing M30 to M99 so it can repeat. Adjust
+spindle speed override depending on maximum spindle speed of machine: Set override 50% for 5,000 RPM
+machines; Set at 100% for 7,500 and 10,000 RPM machines; Set at 150% for 15,000 RPM machines."
+96-8100-rev-c-2001_regen_spindle_drive_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive;air_lubrication,AIR PRESSURE;LUBRICATION;OVERHEAT,13,13,14,14,794,source_pdf_text,False,False,"N2000
+S10000M3;
+G04 P30.;
+S500M3;
+G04 P150.;
+M99;
+%
+ If at any time during this procedure the spindle temperature rises above 150 degrees (120 degrees
+for 50 Taper), start the procedure over from the beginning and follow the steps below.
+NOTE: Once run-in program is complete reset the air pressure back to 17psi. (20psi.
+for 15K spindles, 25psi. Mini-Mill) prior to checking spindle temperature.
+If the spindle fails this test for any reason, check the following:
+ Check for correct amount of lubrication.
+NOTE: Over lubrication is a common source of overheating. Check the oil flow
+carefully.
+ Check the drive belt tension. Belts that are too tight will cause heating of the top bearing in the
+spindle housing.
+ Ensure that the correct oil is being used (refer to ""Maintenance Schedule"")."
+96-8100-rev-c-2001_spindle_orientation_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,SPINDLE DRIVE,14,14,15,15,325,source_pdf_text,False,False,"STALLING / LOW TORQUE
+Generally, complaints of stalling or low torque relate to incorrect tooling or machining practices. A spindle that
+is tending to seize will yield a poor finish machining, run very hot and very loud. Investigate machining prob-
+lems before concluding the problem exists with the spindle or spindle drive."
+96-8100-rev-c-2001_spindle_orientation_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,OVERHEAT;REGEN;REGENERATIVE;SPINDLE DRIVE,14,14,15,15,920,source_pdf_text,False,False,"SPINDLE DRIVE
+Low line voltage may prevent the spindle from accelerating properly. If the spindle takes a long time to acceler-
+ate, slows down or stays at a speed below the commanded speed with the load meter at full load, the spindle
+drive and motor are overloaded. High load, low voltage, or too fast accel/decel can cause this problem.
+If the spindle is accelerated and decelerated frequently, the regenerative load resistor on top of the control may
+heat up. If this resistor heats beyond 1000C, a thermostat will generate an overheat alarm.
+If the regen load resistors are not connected or open, this could then result in an overvoltage alarm. The
+overvoltage occurs because the regenerative energy being absorbed from the motor while decelerating is turned
+into voltage by the spindle drive. If this problem occurs, the possible fixes are to slow the decel rate or reduce
+the frequency of spindle speed changes."
+96-8100-rev-c-2001_servo_following_errors_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;tool_changer;spindle_orientation;regen_spindle_drive,ATC;DC BUS;REGEN;VECTOR DRIVE,14,14,15,15,1089,source_pdf_text,False,False,"VECTOR DRIVE
+To properly troubleshoot the Vector Drive, use the following questions as a guide:
+ What alarms are generated?
+ When does the alarm occur?
+ Is the Vector Drive top fault light on?
+ Is there a fault light on any of the servo amplifiers?
+ Does the alarm reset?
+ Does the spindle motor turn at all?
+ Does the spindle turn freely by hand?
+ Have the C-axis parameters been confirmed?
+ What is the input voltage to the vector drive unit?
+ What does the DC Bus voltage measure? (320 VDC to 345 VDC)
+ Does the DC Bus voltage displayed on the diagnostic page match the measured DC Bus voltage?
+All of the questions above must be answered. The DC Bus voltage should be between 320 VDC to 345 VDC
+with the machine powered up but not running. If the voltage is not in this range, adjust the taps on the main
+line transformer until this voltage range is achieved. There is a possibility the drive is faulty, but low Bus
+voltage can also be caused by a shorted REGEN load or a shorted amplifier.
+If the DC Bus voltage is below 50 VDC and never goes any higher, perform Steps 1-6."
+96-8100-rev-c-2001_spindle_orientation_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,REGEN;VECTOR DRIVE,15,15,16,16,411,source_pdf_text,False,False,"2. Power down the machine. Disconnect the REGEN load (terminals 1 and 2 on the Vector Drive
+unit) and measure the resistance from each wire-to-chassis ground (open) and between the wire
+leads. The resistance should be 8.6 ohms for machines with 20/15 Vector drives and HT10K mills
+equipped with 40/30 drives. All other machines with 40/30 drives should measure 6 ohms. If not,
+replace the REGEN load or cabling."
+96-8100-rev-c-2001_spindle_orientation_06,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation,VECTOR DRIVE,15,15,16,16,269,source_pdf_text,False,False,"3. Disconnect cable 490 at terminals 2 and 3 of the Vector Drive and from the servo amplifiers. With
+a multimeter in the diode mode, place the red meter lead to the +HV terminal and the black meter
+lead to the -HV terminal of each amplifier. The meter should read open."
+96-8100-rev-c-2001_spindle_orientation_07,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation,VECTOR DRIVE,15,15,16,16,154,source_pdf_text,False,False,"5. Measure the resistance between terminals 1 and 3 of the Vector Drive. The meter should read
+greater than 100K ohms. If not, the Vector Drive is faulty."
+96-8100-rev-c-2001_servo_following_errors_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;spindle_orientation;regen_spindle_drive,DC BUS;REGEN;VECTOR DRIVE,15,15,16,16,564,source_pdf_text,False,False,"6. If the green POWER-ON L.E.D. was lit (from Step 2), leave both 490 cables (2 and 3) discon-
+nected from the drive and power up the machine.
+a. Does the DC Bus voltage come up? If not, the Vector Drive is faulty.
+b. Measure the voltage between terminals 1 and 3. The voltage should be 300
+VDC or more. If not, the Vector Drive is faulty.
+If both a and b check out okay, there is a problem with either the amplifiers or the REGEN load.
+If the fault occurs upon acceleration -or- the spindle accelerates slowly -or- the spindle
+makes noise, do the following:"
+96-8100-rev-c-2001_spindle_orientation_08,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,REGEN;VECTOR DRIVE,15,15,16,16,463,source_pdf_text,False,False,"9. Disconnect the REGEN load resistors (terminals 1 and 2) and measure the resistance from each
+wire lead-to-chassis ground and between the wire leads. The meter should read open lead-to-
+ground, and 6 ohms between the leads for machines with 40/30 Vector drives and 8.6 ohms
+between the leads on machines with 20/15 Vector drives and HT10K mills.
+10. Measure the resistance from terminal 1 to terminal 3. If the resistance is less than 100K, the drive
+is faulty."
+96-8100-rev-c-2001_spindle_gearbox_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,HIGH GEAR,15,15,16,16,182,source_pdf_text,False,False,"700 RPM (300 RPM for lathes in high gear). Press <RESET> while monitoring the DC voltage
+between terminal 1 and terminal 3. The voltage should read 330 VDC and then drop to less than"
+96-8100-rev-c-2001_regen_spindle_drive_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive,REGEN,15,15,16,16,189,source_pdf_text,False,False,"50 VDC momentarily. If not, that drive is faulty. If the voltage at RESET was okay and the alarm
+was resettable, the REGEN load should be replaced even if the resistance appears to be okay."
+96-8100-rev-c-2001_servo_following_errors_06,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;spindle_orientation;spindle_gearbox,BINDING;ENCODER;GEARBOX;ORIENT;VECTOR DRIVE,16,16,17,17,766,source_pdf_text,False,False,"ORIENTATION
+Spindle loses correct orientation.
+Non Vector Drive
+ Check the orientation ring for tightness. Ensure the shaft on which the ring mounts is clean and is
+free of grease and oil.
+ Check the orientation ring for cracks near the bolt holes or near the balancing holes.
+If there are cracks, replace the ring.
+ Check the shot pin on the gearbox for binding, damage, and proper operation. Replace it if it is
+damaged.
+Vector Drive
+ Check alarm history. Look for Spindle Z Fault, or Spindle Reference Missing alarms. If these
+alarms exist, there may be a defective spindle encoder, or a broken ground or shield connection.
+ Check parameters.
+ Check for a mechanical slip at the contact points of all components between the spindle and the
+spindle encoder."
+96-8100-rev-c-2001_tool_changer_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer;air_lubrication,AIR PRESSURE;ATC;CAROUSEL;TOOL CHANGE,16,17,17,18,2822,source_pdf_text,False,False,"TOOLS STICKING IN TAPER
+Tool sticking in the taper causes ATC to be pulled up; accompanied by a popping noise as
+the tool holder pops out of the spindle taper.
+NOTE: This problem may occur after loading a cold tool into a hot spindle (a
+result of thermal expansion of the tool holder inside the spindle taper). It
+may also occur due to heavy milling, milling with long tooling, or cuts with
+heavy vibration. This also is the result of thermal expansion.
+If sticking only occurs during these situations, check your application to
+ensure proper machining techniques are being used; check the feeds and
+speeds for the tools and material being used. If a tool is pulled out of the
+extractors due to a tool stuck in the taper then the unclamp switch is not
+adjusted correctly or the switch could be bad.
+NOTE: In a proper working system the spindle will pop slightly during a tool change.
+This popping does not create flex in the carousel or the need to remove the tool
+with a mallet.
+ Check the condition of the tooling, verifying the taper on the tooling is ground and not turned. Look
+for damage to the taper caused by chips in the taper or rough handling. If the tooling is suspected,
+try to duplicate the symptoms with known-to-be-good tooling.
+ Check the condition of the spindle taper. Look for damage caused by chips or damaged tooling.
+Also, look for damage such as deep gouges in the spindle taper caused by tool crashing.
+ Duplicate the cutting conditions under which the deflection occurs, but do not execute an
+automatic tool change. Try instead to release the tool using the tool release button on the front of
+the spindle head. If sticking is observed, the deflection is not caused by improper ATC
+adjustment, but is a problem in the spindle head on the machine.
+ Ensure the spindle is not running too hot (140° or above).
+ Check air supply. Max air pressure drop of 10psi. during a tool change is allowed.
+ Check drawbar height adjustment.
+ Does the tool tip to the spindle gauge line exceed 3.5?
+ Are the correct pull studs being used?
+Tool Holder / Spindle Fretting
+Is fretting present on the tool holder or spindle?
+Fretting is the result of sideways movement of a tool holder in the spindle. Fretting can leave a wave pattern on
+the mating surfaces and will affect the fit and finish of both the tool holder and the spindle.
+ If light fretting is present, check the application to ensure proper machining techniques are being
+used; check the feeds and speeds for the tools and material being used.
+ Light fretting and rust may be cleaned from the tool holder with a fine scotchbrite hand pad and
+solvent. If scotchbrite is used, clean the tool holder and spindle taper thoroughly after use with an
+alcohol pad. Apply a thin coat of light oil to the taper of the tool holder. Grease the pull stud."
+96-8100-rev-c-2001_servo_following_errors_07,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;regen_spindle_drive,ENCODER;OVERHEAT;SERVO MOTOR,18,18,19,19,917,source_pdf_text,False,False,"NOT OPERATING
+All problems that are caused by servo motor failures should also register an alarm. Check the alarm history to
+determine the problems cause before any action is taken.
+Servo motor is not functioning.
+ Check the power cable from rear electrical cabinet to ensure connection is tight.
+ Encoder is faulty or contaminated (Alarms 139-142, 153-156, 165-168, 182-185). Replace motor
+assembly on brushless machines, replace the encoder on brush machines.
+ Open circuit in motor (Alarms 139-142, 153-156, 182-185). Replace motor assembly (""Axis Motor
+Removal / Installation"").
+ Motor has overheated, resulting in damage to the interior components (Alarms 135-138, 176).
+Replace motor assembly (""Axis Motor Removal/Installation"").
+ Wiring is broken, shorted, or missing shield (Alarms 153-156, 175, 182-185).
+ Dust in the motor from brushes has shorted out the motor (VF-E only) (Alarms 153-156, 175, 182-"
+96-8100-rev-c-2001_servo_following_errors_08,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive,LEAD SCREW;OVERHEAT;SERVO MOTOR,18,18,19,19,902,source_pdf_text,False,False,"185). Replace motor assembly (""Axis Motor Removal/Installation"").
+ Motor has overheated; no damage to the interior components. OVERHEAT alarm has been
+triggered. After thorough check of motor (DO NOT DISASSEMBLE!), take necessary steps to
+eliminate the problem and alarm to resume operation. If motor is still inoperable, replace motor
+assembly (""Axis Motor Removal/Installation"").
+ Check for broken or loose coupling between the servo motor and the lead screw. Replace or repair
+the coupling (""Axis Motor Removal/Installation"")
+ Check for a damaged lead screw, and replace if necessary (""Lead Screw Removal and Installation""
+section).
+NOTE: If a lead screw fails, it is most often due to a failed bearing sleeve. When
+replacing the lead screw in an older machine, always replace the bearing
+sleeve with the current angular contact bearing sleeve (""Bearing Sleeve
+Removal and Installation"" section)."
+96-8100-rev-c-2001_servo_following_errors_09,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive;air_lubrication,FOLLOWING ERROR;LEAD SCREW;LUBRICATION;OVERCURRENT;SERVO MOTOR,19,19,20,20,2573,source_pdf_text,False,False,"NOISE
+Lead screw noise is usually caused by a lack of lubrication and is usually accompanied by heating. Other
+causes are misalignment, bearing sleeve damage, or ball nut damage. Check the alarm history of the machine
+and look for axis overcurrent and following error alarms.
+NOTE: Do not replace lead screws or bearing sleeves without due consideration; they
+are extremely durable and reliable. Verify that customer complaints are not due
+to tooling, programming, or fixturing problems.
+Servo motor noise.
+ Disconnect the servo motor from the lead screw and rotate by hand. If the noise persists, replace
+the motor assembly (""Axis Motor Removal/Installation"" section).
+ Noise is caused by motor brushes (VF-E only). Remove and inspect brushes. Blow out brush dust
+and inspect the armature.
+Lead screw noise.
+ Ensure oil is getting to the lead screw through the lubrication system (See Air and Oil Diagrams).
+Look for a plugged metering valve.
+ Check for damage to the bearing sleeve.
+NOTE: The current angular contact design sleeve has a fixed pre-load; it cannot be
+adjusted.
+ Run the axis back and forth. The motor will get very hot if the bearing sleeve is damaged. If so, turn
+the axis by hand and feel for roughness in the lead screw. Loosen the clamp nuts at both ends of
+the lead screw. If the symptom disappears, replace the bearing sleeve. Be certain to check for
+damage to the lead screw shaft where the bearing sleeve is mounted.
+If the noise persists, the lead screw is damaged and must be replaced. When replacing
+the lead screw in an older machine, always replace the bearing sleeve with the current
+angular contact design bearing sleeve.
+ Misalignment in the lead screw itself will tend to cause the lead screw to tighten up and make
+excessive noise at both ends of the travel. The ballnut may get hot. Misalignment radially at the
+yoke where the lead screw ball nut mounts is indicated by heating up of the ball nut on the lead
+screw, and noise and tightness through out the travel of the lead screw. Misalignment at the yoke
+where the ball nut mounts is indicated by noise and tightness at both ends of the travel of the lead
+screw. The ball nut may get hot.
+NOTE: Customer complaints of Lead Screw noise may not indicate a bad screw.
+Screws from different manufacturers produce varying levels of noise. Often
+machines are built with two or more different brands of screws in the same
+machine. If complaints are generated about one axis screw in comparison to
+another, it is possible that the screws are simply sourced from different
+manufacturers."
+96-8100-rev-c-2001_servo_following_errors_10,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash,BACKLASH;ENCODER;LEAD SCREW;SERVO MOTOR,20,20,21,21,458,source_pdf_text,False,False,"ACCURACY / BACKLASH
+Accuracy complaints are usually related to tooling, programming, or fixturing problems. Eliminate these
+possibilities before working on the machine.
+Poor mill table-positioning accuracy.
+ Check for backlash in the lead screw as outlined below:
+ Check parameters for that axis
+ Check for a loose encoder on the servo motor. Also, ensure the key in the motor or the lead screw
+is in place and the coupling is tight (Brush machines only)."
+96-8100-rev-c-2001_lead_screw_backlash_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,BACKLASH,21,21,22,22,297,source_pdf_text,False,False,"NOT EXCEED .0002.
+An alternate method for checking backlash is to place the dial indicator as shown in Fig. 1-1 and manually
+push on the mill table in both directions. The dial indicator should return to zero after releasing the table.
+NOTE: The servos must be on to check backlash by this method."
+96-8100-rev-c-2001_lead_screw_backlash_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,BACKLASH,22,22,23,23,297,source_pdf_text,False,False,"NOT EXCEED .0002.
+An alternate method for checking backlash is to place the dial indicator as shown in Fig. 1-2 and manually
+push on the mill table in both directions. The dial indicator should return to zero after releasing the table.
+NOTE: The servos must be on to check backlash by this method."
+96-8100-rev-c-2001_lead_screw_backlash_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;tool_changer,ATC;BACKLASH;LEAD SCREW;MOTOR COUPLING;THRUST BEARING,22,23,23,24,1645,source_pdf_text,False,False,"2. Manually push up and down on the spindle head while listening for a clunk. Also, watch for any
+rapid change in the dial indicator. Either of these indicate possible backlash.
+NOTE: Servos must be on to check for backlash in the Z-axis.
+NOTE: Do not mistake deflection for backlash in the system.
+Figure 1-3 Dial indicator in position to check Z-axis.
+If backlash is found in the system, check for the following possible causes:
+ Loose SHCS attaching the ball nut to the nut housing. Tighten the SHCS as described in
+Mechanical Service.
+ Loose SHCS attaching the nut housing to the mill table, spindle head, or saddle, depending on the
+axis. Tighten the SHCS as described in Mechanical Service.
+ Loose clamp nut on the bearing sleeve. Tighten the SHCS on the clamp nut.
+ Loose motor coupling. Tighten as described in Mechanical Service.
+ Broken or loose flex plates on the motor coupling.
+NOTE: The coupling cannot be serviced in the field and must be replaced as a unit
+if it is found to be defective.
+ Loose SHCS attaching the bearing sleeve to the motor housing. Tighten as described in ""Lead
+Screw Removal and Installation"".
+ Defective thrust bearings in the bearing sleeve. Replace the bearing sleeve as outlined in ""Bearing
+Sleeve Removal and Installation"".
+ Loose SHCS attaching the axis motor to the motor housing. If the SHCS are found to be loose,
+inspect the motor for damage and if none is found, tighten as described in ""Axis Motor Removal/
+Installation"". If damage is found, replace the motor.
+ Incorrect backlash compensation number in the parameter in the machine. Check Parameters 13,
+27, and 41.
+ Worn lead screw."
+96-8100-rev-c-2001_servo_following_errors_11,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;regen_spindle_drive;control_electronics,DRIVER PCB;ELECTRICAL SERVICE;OVERCURRENT;SERVO MOTOR;SERVO MOTOR VIBRATION,23,23,24,24,736,source_pdf_text,False,False,"VIBRATION
+Excessive servo motor vibration.
+ Swap the suspected bad servo motor with a known good driver and check to see if there is a driver
+problem. If needed, replace the DRIVER PCB (""Electrical Service"" section).
+ Check all Parameters of the suspected axis against the Parameters as shipped with the machine. If
+there are any differences, correct those and determine how the Parameters were changed.
+ A bad motor can cause vibration if there is an open or short in the motor. A short would normally
+cause a GROUND FAULT or OVERCURRENT alarm; check the ALARMS. An ohmmeter applied to the
+motor leads should show between 1 and 3 ohms between leads, and over 1 megohm from leads to
+chassis. If the motor is open or shorted, replace."
+96-8100-rev-c-2001_servo_following_errors_12,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive,BACKLASH;BINDING;LEAD SCREW;OVERHEAT;SERVO MOTOR;SERVO MOTOR OVERHEATING,24,24,25,25,543,source_pdf_text,False,False,"OVERHEATING
+Servo motor overheating.
+ If a motor OVERHEAT alarm occurs (ALARMS 135-138), check the Parameters for an incorrect
+setting. Axis flags in Parameters 1, 15, or 29 can invert the overheat switch (OVER TEMP NC).
+ If the motor is actually getting hot to the touch, there is excessive load on the motor. Check the users
+application for excessive load or high duty cycle. Check the lead screw for binding (""Accuracy/
+Backlash"" section). If the motor is binding by itself, replace in accordance with ""Axis Motor Removal/
+Installation""."
+96-8100-rev-c-2001_servo_following_errors_13,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;control_electronics,DC BUS;DRIVER CARD;ELECTRICAL SERVICE;ENCODER;FOLLOWING ERROR;MOTOR WIRING;SERVO ERROR TOO LARGE;SERVO MOTOR,24,24,25,25,597,source_pdf_text,False,False,"FOLLOWING ERRORS
+FOLLOWING ERROR (Brush Machines only) or SERVO ERROR TOO LARGE alarms 103-
+106, 187 occur on one or more axes sporadically.
+ Check DC bus voltage on diagnostics page #2 (brush machines only). Verify this voltage on the drive
+cards in the control panel. If it is at the low side of the recommended voltages, change the transformer
+tap to the next lower voltage group as explained in the Installation Manual.
+ Check motor wiring for a short.
+ Check driver card (""Electrical Service"").
+ Check servo motor (""Axis Motor Removal/Installation"").
+ Check encoder (brush machines only)"
+96-8100-rev-c-2001_servo_following_errors_14,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive;air_lubrication,BINDING;COUNTERBALANCE;DRIVE FAULT;LEAD SCREW;OVERCURRENT,24,24,25,25,386,source_pdf_text,False,False,"DRIVE FAULT / OVERCURRENT
+Z-axis motor overcurrent.
+ Alarm not cleared
+ Low counterbalance pressure
+ Check Z axis parameters
+ Check the lead screw for binding
+ Check motor and cable for shorts
+ Check amplifier (drive card on a VF-E)
+VF-6 with Z axis brake only
+ Brake power fuse blown
+ Brake power transformer blown
+ Brake power rectifier blown
+ Cabling pinched
+ Brake failed"
+96-8100-rev-c-2001_lead_screw_backlash_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;air_lubrication,LEAD SCREW;LUBE;LUBRICATION,25,25,26,26,1629,source_pdf_text,False,False,"LEAD SCREWS - VISUAL INSPECTION
+The three main causes of Lead Screw failure are:
+Loss of Lubrication
+Contamination
+Machine Crash
+Wear of the Nut balls and the screw threads is generally a non-issue under proper operating conditions.
+Each type of suspect cause will leave telltale signs on the Lead Screw itself.
+Loss of Lubrication:
+The lubrication system of the machine provides a layer of oil for the Lead Screw components to operate on,
+eliminating metal-to-metal contact. Should a problem with the lubrication system develop, that failure will
+accelerate all wear issues.
+1. Dry metal-to-metal contact following lube breakdown will create intense heat at the contact points.
+The Nut balls will weld to the Nut races due to the heat and pressure of the preload. When move-
+ment of the Lead Screw continues, the welds will be broken, ripping off particles of both the balls
+and the races. This loss of diameter will reduce the preload, reducing machine accuracy.
+Lead Screws with this type of wear, but no screw surface marring, can be repaired by the factory.
+2. A second cause of wear of the Lead Screws is material fatigue. Material fatigue typically occurs at
+the end of the Lead Screw service life. Signs of material fatigue include black, contaminated
+coolant, pitting of the screw surface, loss of preload, and metal flakes on the Lead Screw.
+Lead Screws suffering from material fatigue are not repairable and are considered scrap.
+Contamination:
+Contamination of the lubrication and/or coolant systems of the machine will produce problems with the Lead
+Screws.
+Check the condition of the lube on the Lead Screw threads."
+96-8100-rev-c-2001_air_lubrication_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,LUBE,25,25,26,26,243,source_pdf_text,False,False,"1. If the lube is wet and clean, this indicates a properly functioning lube system.
+2. If the lube is thick and dark, but free of metal chips, the lube itself is old and must be changed out.
+The entire system should be cleaned of the old lube."
+96-8100-rev-c-2001_lead_screw_backlash_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;air_lubrication,LEAD SCREW;LUBE,25,26,26,27,607,source_pdf_text,False,False,"3. If the lube is wet and black, the lube system has been contaminated by metal particles. Inspect
+the Lead Screws for wear.
+Contamination of the lube and/or coolant systems can be caused by a wearing Lead Screw, or by metal chips
+entering the systems through open or loose way covers. Check all way covers and seals for excessive clear-
+ances.
+Machine Crash:
+A hard machine crash can cause a Lead Screw to lock up. The static overload created during a machine crash
+can break apart the Nut balls, denting the thread surfaces. Turning the Nut by hand will result in an obvious
+grinding feeling and/or sound."
+96-8100-rev-c-2001_lead_screw_backlash_06,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,LEAD SCREW,26,26,27,27,130,source_pdf_text,False,False,"CLEANING
+In most cases, a thorough cleaning of the suspect Lead Screw will resolve bad screw issues, including noise
+complaints."
+96-8100-rev-c-2001_air_lubrication_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,LUBE,26,26,27,27,151,source_pdf_text,False,False,"2. Visually inspect the screw threads. Look for metal flakes, dark or thick lube, or contaminated
+coolant: See Visual Inspection - Contamination above."
+96-8100-rev-c-2001_lead_screw_backlash_07,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,LEAD SCREW,26,26,27,27,341,source_pdf_text,False,False,"3. Use alcohol, or other approved cleaning agents, to wash the screw.
+CAUTION! Do not use detergents, degreasers, or solvents to clean Lead Screws or
+their components. Do not use water-based cleaners to avoid rust.
+4. Jog the Nut to the other end of its travel. If metal flakes are now present on the screw threads, you
+may have wear issues."
+96-8100-rev-c-2001_tool_changer_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer;air_lubrication,AIR PRESSURE;ATC;SHUTTLE;TOOL CHANGE;TOOL CHANGER,27,29,28,30,5285,source_pdf_text,False,False,"DEFLECTION
+Deflection is usually caused by ATC misalignment, and sometimes caused by damaged or poor quality tooling,
+a damaged spindle taper, or a damaged drawbar or poor air supply. Before beginning any troubleshooting,
+observe the direction of the ATC deflection.
+During a tool change, ATC appears to be pushed down.
+ Check to see if pull studs on the tool holder are correct and tight.
+ Check the adjustment of the Z offset (""Setting Parameter 64"").
+NOTE: If the offset is incorrect a tool changer crash can occur and a thorough
+inspection of the ATC will be necessary.
+ Check the adjustment of the Z offset. Check parameters 71, 72, and 143 against the values that
+are in the documentation sent with the machine.
+ Ensure the tool holders are held firmly in place by the extractor forks.
+ Ensure the balls on the drawbar move freely in the holes in the drawbar when the tool release
+button is pressed. If they do not move freely, the ATC will be pushed down about 1/4"" before the
+tool holder is seated in the taper, resulting in damage to the roller bolts on the ATC shuttle.
+Replace the drawbar.
+ Check Drawbar height adjustment.
+ If TSC, check for excessive coolant tip wear.
+Tool holder sticking in the spindle taper causes the ATC to be pulled up as the spindle
+head is travelling the distance specified in parameter 71; accompanied by a popping noise
+as the tool holder pops out of the spindle taper.
+NOTE: This problem may occur after loading a cold tool into a hot spindle (a result
+of thermal expansion of the tool holder inside the spindle taper. It may also
+occur in cuts with heavy vibration. This also is the result of thermal expansion.
+If sticking only occurs during these situations, check your application to ensure
+proper machining techniques are being used. If tool is pulled out of extractors
+due to a tool being stuck in the taper then the unclamp switch is not adjusted
+correctly or the switch could be bad.
+ Check the condition of the customers tooling, verifying the taper on the tool holder is ground and
+not turned. Look for damage to the taper caused by chips in the taper or rough handling. If the
+tooling is suspected, try to duplicate the symptoms with different tooling.
+ Check the condition of the spindle taper. Look for damage caused by chips or damaged tooling.
+Also, look for damage such as deep gouges in the spindle taper caused by tool crashing. See
+""Spindle Assembly"" section for spindle cartridge replacement.
+ Duplicate the cutting conditions under which the deflection occurs, but do not execute an auto-
+matic tool change. Try instead to release the tool using the tool release button on the front of the
+spindle head. If sticking is observed, the deflection is not caused by improper ATC adjustment, but
+is a problem in the spindle or tool release piston. See the ""Spindle Assembly"" section in Mechani-
+cal Service for spindle cartridge replacement.
+ Check air supply pressure it should be 85 psi (min). An air pressure drop of no more than 10 psi
+during tool release is acceptable. An air pressure drop greater than 10 psi is caused by a supply
+line restriction or an undersize supply line. Use of quick couplers (1/4"") can cause restriction.
+Directly connecting the air hose to a barb fitting can help.
+During a tool change, ATC appears to be pulled up; no popping noises.
+ Check the adjustment of the Z offset (""Setting Parameter 64"" section).
+NOTE: If the offset is incorrect, a tool changer crash can occurred, and a thorough
+inspection of the ATC will be necessary.
+ Ensure the roller bolts on the shuttle of the ATC are tight against the V-guides on the ATC holding
+arm. If the lower right roller bolt is loose against the V-guide, the upper right bolt is probably bent.
+See the following section (""ATC Crashing"") or ""Roller Bolt Replacement"", for roller bolt replace-
+ment.
+NOTE: Bent roller bolts are a symptom of another problem with the ATC. Repair the
+bent roller bolt and then isolate the ATC problem.
+ Check Parameter 71 against the values that are in the documentation sent with the machine.
+ Ensure the balls on the drawbar move freely in the holes in the drawbar when the tool release
+button is pressed. If they do not move freely, the ATC will be pushed down about … before the tool
+holder is seated in the taper, resulting in damage to the roller bolts on the ATC shuttle. Replace
+drawbar.
+Tool holders twist against extractor fork during a tool change.
+ Check the alignment of the ATC in the X and Y axes (""Automatic Tool Changer Alignment"" section).
+Tool holders spin at all pockets of the ATC when the ATC shuttle retracts.
+ ATC is misaligned in the Y axis. Realign ATC (""Automatic Tool Changer Alignment"" section).
+NOTE: Observe the direction the tool holder rotates, as this will be the direction in
+which the Y axis of the ATC needs to be moved.
+Tool holders spin only at certain pockets of the ATC when the ATC shuttle retracts.
+ Check all the extractor forks to ensure they are centered in the pocket of the ATC. Also, see
+above. See ""Extractor Fork Replacement"" section, if necessary.
+NOTE: If the ATC shows the problem as described here, each extractor fork must be
+checked and centered to eliminate the possibility of the ATC being aligned
+against an incorrectly-centered fork."
+96-8100-rev-c-2001_tool_changer_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer,ATC;CAROUSEL;SHUTTLE;TOOL CHANGE;TURRET,29,30,30,31,2734,source_pdf_text,False,False,"CRASHING
+The most common ATC crashes are outlined as follows:
+Shuttle crashes into spindle when a tool change is commanded (tool holder is in the pocket
+facing the spindle head).
+ Rotate the carousel to an empty pocket. Refer to the Programming and Operation manual for
+correct operation.
+NOTE: This crash is fairly common and is a result of operator error. If the ATC is
+stopped in the middle of tool change cycle, the operator must command the
+ATC to an empty pocket before the machine will operate correctly. Repeated
+crashes of this type can damage the I/O board, the slip clutch, and the shuttle
+motor in the ATC.
+During a tool change spindle crashes into top of the tool holder after a turret rotation.
+When the spindle head moves down over the top of the tool holder during a tool change, the pull stud will bind
+inside the drawbar bore of the spindle, forcing the ATC down, breaking the carousel. Bending the upper right
+roller bolt on the ATC shuttle or completely breaking it off is also possible. Tool holder is not held correctly in
+the extractor fork, possibly held only in one side of the extractor and at an odd angle.
+ Check all of the extractor forks on the ATC.
+During a tool change spindle crashes into top of the tool holder after a turret rotation.
+The balls in the drawbar do not move freely, causing the ATC to be forced down far enough to break the carou-
+sel. Bending the upper right roller bolt on the ATC shuttle or completely breaking it off is also possible.
+ Ensure the balls on the drawbar move freely in the holes in the drawbar when the tool release
+button is pressed. If this failure occurs, check all of the extractor forks on the ATC for damage and
+repair the spindle drawbar.
+ Check drawbar height and set according to the appropriate section, if necessary.
+ATC properly deposits a tool holder in the spindle, but the tools are dropped onto the
+machine table when the shuttle retracts.
+ Inspect the balls and the Belleville springs in the drawbar. See appropriate section and replace
+drawbar.
+The part or fixture on the mill table crashes into long tooling or into the ATC itself when
+machining.
+ Either reposition the tools to remove the interference, or program the carousel to rotate long tooling
+out of the way of the part (USE THIS ONLY AS A LAST RESORT). CAUTION! If the carousel has to
+be programmed to rotate long tools clear of the part, the correct carousel position must be
+programmed back in before a tool change can be executed.
+NOTE: If these crashes occur, thoroughly inspect the ATC for damage. Pay close
+attention to the extractor forks, the sliding covers on the ATC carousel, and the
+roller bolts on the ATC shuttle. See appropriate section for extractor fork
+replacement."
+96-8100-rev-c-2001_tool_changer_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer,ATC;CAROUSEL;SHUTTLE;TOOL CHANGE;TOOL CHANGER,32,32,33,33,634,source_pdf_text,False,False,"BREAKAGE
+Breakage of the ATC is caused by either very hard and repeated crashes or excessive TSC coolant tip wear.
+ATC shuttle is broken off of the holding plate.
+ Carefully inspect the bosses on the shuttle casting (where the roller bolts mount) for damage to the
+threads or cracks. If any of the bosses are cracked, replace the casting. Realign the tool changer
+after repairing the machine.
+ATC extractor forks are damaged after breakage.
+ Check the condition of the mounting holes in the carousel. If the threads are damaged, they must
+be repaired or the carousel replaced. See appropriate section for extractor fork replacement."
+96-8100-rev-c-2001_tool_changer_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer,ATC;CAROUSEL;SHUTTLE;TURRET,32,33,33,34,2855,source_pdf_text,False,False,"NOISY OPERATION
+To isolate noise(s) in the ATC, carefully observe the ATC in operation and look for the following:
+ATC makes noise as the shuttle moves.
+ Check the adjustment of the roller bolts on the ATC (""Roller Bolt Replacement"" section). Loose
+roller bolts can cause the ATC to make a clunking noise when the shuttle is commanded to move.
+Tight roller bolts can cause the shuttle motor to labor excessively, possibly damaging the motor or
+the I/O board. In this case, the shuttle may also move too slowly.
+ Check for damage to the trap door on the ATC cover. See appropriate section for trap door
+replacement.
+ Check for missing plastic riders on the ATC shutter. See ""ATC Trap Door Replacement"" for shutter
+replacement.
+ Ensure the guide pin mounted to the holding plate is not bent and does not scrape the ATC cover
+during movement. See ""ATC Trap Door Replacement"" for guide pin replacement.
+ Listen for damage to the gear train in the shuttle motor. If the motor is found to be the source of
+the noise, replace the motor (""Shuttle Motor Removal"" section). DO NOT try to repair the motor or
+to further isolate the noise in the motor.
+ Check to ensure the Geneva driver on the turret motor is tight and properly adjusted (""Shuttle
+Motor Removal"" section). If the Geneva driver is found to be loose, check for damage to the
+Geneva star. Any roughness in the slots will require that it be replaced (""Geneva Star Replace
+ment"" section).
+ Check the adjustment of the Geneva driver in relation to the Geneva star (""Geneva Star Replace
+ment"" section). If the adjustment is too loose, the carousel will vibrate heavily and make a loud
+clanking noise during carousel rotation. If the adjustment is too tight, the turret motor will labor
+excessively and the carousel may appear to move erratically.
+NOTE: If the turret motor adjustment is tight for extended periods, the turret motor,
+Geneva star, and the I/O board may be damaged. If the adjustment of the
+Geneva star appears tight at some pockets and loose at others, the problem
+lies with the Geneva star. Check the concentricity of the star relative to the
+bearing housing on the carousel assembly. If the concentricity of the star is
+proven to within specification and the problem still persists, the Geneva star
+must be replaced (""Geneva Star Replacement"" section).
+ Ensure the screws holding the turret motor to the mounting plate are tight (""Turret Motor Removal""
+section).
+ Ensure the screws attaching the motor mounting plate to the shuttle casting are tight.
+ Check for excessive noise in the gear train of the turret motor. See appropriate section for turret
+motor replacement.
+NOTE: If the motor is found to be the source of noise, replace the motor assembly
+(motor, mounting plate, and Geneva driver). DO NOT attempt to repair the
+motor or to further isolate the problem in the motor."
+96-8100-rev-c-2001_tool_changer_06,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer;spindle_orientation;regen_spindle_drive,ATC;CAROUSEL;ORIENT;SPINDLE DRIVE;SPINDLE ORIENTATION;TOOL CHANGE,33,33,34,34,572,source_pdf_text,False,False,"SPINDLE ORIENTATION
+A switch is used to sense when the pin drops in to lock the spindle. When the pin drops the switch opens,
+indicating orientation is complete. The normally-closed side of this switch is wired to the spindle drive and
+commands it into the COAST STOP condition. This is done to make sure that the spindle motor is not pow-
+ered when the pin is locking the spindle. If, during a tool change, the dogs on the spindle shaft do not align with
+the keys on the ATC carousel, the spindle orientation may be at fault.
+The orientation of the spindle is as follows:"
+96-8100-rev-c-2001_lead_screw_backlash_08,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;tool_changer;spindle_orientation;control_electronics,ATC;BINDING;ELECTRICAL SERVICE;I/O PCB;ORIENT;SHUTTLE;SPINDLE ORIENTATION;TOOL CHANGE;TOOL CHANGER;TURRET,33,34,34,35,2975,source_pdf_text,False,False,"7. If not locked after time-out time, alarm and stop.
+ATC out of orientation with the spindle. Incorrect spindle orientation will cause the ATC
+to crash as the shuttle moves. Alarm 113 will be generated.
+ Check the orientation of the spindle.
+ATC will not run.
+ In all cases where the tool changer will not run, an alarm is generated to indicate either a shuttle
+in/out problem or a turret rotation problem. These alarms will occur either on an attempt to change
+tools (ATC FWD) or ZERO RETURN the machine (AUTO ALL AXES). Use the appropriate alarm to
+select one of the following problems:
+ATC shuttle will not move; shuttle is getting power (Command a tool change and check for
+power being applied to the shuttle motor).
+ Disconnect the slip clutch arm from the ATC shuttle and ensure the shuttle can move freely. If not,
+appropriate section for shuttle adjustment.
+ Command a tool change with the shuttle disconnected.
+ If the shuttle cycles, check the slip clutch on the ATC. See ""Shuttle Installation"" section for slip
+clutch replacement.
+NOTE: The slip clutch should move the shuttle with a fair amount of force, but not so
+much that the shuttle cannot be made to slip when holding it back by hand. If
+the slip clutch is frozen, replace it. It cannot be rebuilt in the field.
+ If the ATC shuttle does not cycle, the motor has failed and must be replaced. Turn the motor by
+hand and feel for binding in the gear train in the motor.
+NOTE: The motor uses a large amount of gear reduction and should be hard to turn
+by hand.
+ATC shuttle will not move; shuttle is not getting power.
+ Command a tool change check for power being applied to the shuttle motor.
+ Check that the TC IN/TC OUT LED on the I/O PCB is illuminated when a tool change takes place.
+ If the LED lights, check the fuse FU5 on the POWER PCB or FU1 on the I/O PCB. Otherwise,
+check the I/O PCB (""Electrical Service"").
+ If the LED does not light, check cables I/O-P1-510 and I/O-P2-520.
+ Check ATC shuttle relay
+ATC turret will not rotate; turret motor is getting power.
+ Command a tool change check for power being applied to the turret motor.
+ If power is applied but the output shaft on the motor does not turn, check for binding between the
+turret motor assembly and the Geneva star (""Automatic Tool Changer"" section). Check for damage
+to the Geneva star or the Geneva driver. Check for a broken turret motor (""Turret Motor Removal""
+section).
+NOTE: Do not attempt to repair the motor or to further isolate the problem in the motor.
+ATC turret will not rotate; turret motor is not getting power.
+ Command a tool change check for power being applied to the turret motor.
+ Check that the TC CW/ TC CCW LED on the I/O PCB is illuminated when a tool change takes
+place.
+If the LED lights, check the fuse FU5 on the POWER PCB or FU1 on the I/O PCB. Otherwise,
+replace the I/O PCB (Electrical Service).
+If the LED does not light, check cables I/O-P1-510 and I/O-P2-520.
+ Check ATC turret relay."
+96-8100-rev-c-2001_spindle_gearbox_03,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,GEARBOX,35,35,36,36,223,source_pdf_text,False,False,"1.5 GEARBOX AND SPINDLE MOTOR
+The gearbox cannot be serviced in the field and must be replaced as a unit. NEVER remove a motor from a
+VF-Series mill that has a gearbox, as this will damage the gearbox and void the warranty."
+96-8100-rev-c-2001_spindle_gearbox_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,GEARBOX;HIGH GEAR;LOW GEAR;TRANSMISSION,35,35,36,36,1258,source_pdf_text,False,False,"NOISE
+When investigating complaints of gearbox noise, also refer to ""Spindle"" troubleshooting section. Gearboxes
+can be damaged by, gearshift cylinders, or bearings, resulting in noisy operation. While gearbox vibration can
+cause a poor finish on a workpiece, noisy gearbox operation may not.
+Excessive or unusual noise coming from the gearbox and/or spindle motor.
+Operate the machine in both high and low gears. Monitor the gearbox for noise in both gear positions and
+if the pitch of the noise varies with the motor or the output shaft speed.
+ If the noise only occurs in one gear throughout the entire RPM range of that gear position, the
+problem lies with the gearbox, and it must be replaced (""Spindle Motor & Transmission""
+section).
+ If the noise occurs in both gear positions, disconnect the drive belt and repeat the previous step.
+If the noise persists, the gearbox is damaged and must be replaced, (""Spindle Motor &
+Transmission"" section).
+ With the drive belt disconnected, run the machine at 1000 RPM in high gear. Command a change
+of direction and listen for a banging noise in the gearbox as the machine slows to zero RPM and
+speeds back up to 1000 RPM in reverse. If the noise occurs, the motor has failed and the
+gearbox must be replaced."
+96-8100-rev-c-2001_spindle_gearbox_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,GEARBOX;LOW GEAR;TRANSMISSION,36,36,37,37,418,source_pdf_text,False,False,"9. Turn off high and low gear solenoids.
+ Check air supply pressure. If pressure is too low, the gears will not change.
+ Check the air solenoid assembly on the solenoid bracket (rear of gearbox). If the solenoid
+operates properly and the limit switches on the gearbox operate properly, the problem lies with the
+gear change piston. Replace the gearbox (""Spindle Motor & Transmission"" section).
+ Check contactor CB4."
+96-8100-rev-c-2001_spindle_gearbox_06,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,TRANSMISSION,36,36,37,37,325,source_pdf_text,False,False,"LOW PRESSURE ALARM
+Alarm 179 (Low Pressure Transmission Oil) has been triggered.
+ Check for low oil supply in reservoir.
+ Check to see that pump motor is running.
+ Check for an air leak in the suction side of the pump.
+ Check for a bad pressure sensor.
+ Check for a broken or damaged cable.
+ Check for a worn pump head."
+96-8100-rev-c-2001_regen_spindle_drive_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive,OVERHEAT,38,38,39,39,1293,source_pdf_text,False,False,"LOW COOLANT
+Alarm 151, ""Low Thru Spindle Coolant""
+ Check coolant tank level.
+ Check for slow coolant drainage from machine enclosure.
+ Read the filter gauges and check the intake strainer to ensure there is no clogging. Read gauges
+with TSC running with no tool in spindle. Check coolant lines for any clogging or kinking. Clean or
+replace as needed.
+ If received at start-up, check that the breaker hasn’t tripped and that the pump is turning. Check
+the electrical continuity of cables.
+ Check for overheating TSC motor. Single phase motors have a built in thermal cut out. Three phase
+TSC motors have a thermal circuit that interrupts power to the relay coil.
+ For old TSC system, if the drawbar was replaced, check that the hole through the drawbar is 0.156
+dia. not 0.190 dia. Replace if it is 0.190.
+ Check for pressure switch failure (refer to ""Testing the Coolant Pressure Switch"" section), and
+replace if necessary. Check ""LO CLNT"" bit in the diagnostics display (0 = pressure on, 1= pres
+sure off). Leaking pressure switches can also give intermittent alarms.
+ Check the pump pressure with TSC running and no tool in the spindle. Normal pressure is 75-95
+PSI. Replace the pump if pressure is 60 psi or less.
+ Another alarm generated during TSC operation can cause this alarm."
+96-8100-rev-c-2001_lead_screw_backlash_09,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,BINDING,40,40,41,41,1113,source_pdf_text,False,False,"1.7 CHIP CONVEYOR
+Chip conveyor does not turn
+ Check that Parameter 209 bit switch ENA CNVR is enabled.
+ Check that the front enclosure door is completely closed and door switches function properly.
+ Check that hub is connected to auger with bolt.
+ Check that all conveyor fuses are intact. [Single phase motor uses 2 fuses (VF-0,1/2 ; Three
+phase motor uses 3 fuse (VF-3,4,6,8)]
+ Check thermal reset button on conveyor motor body.
+NOTE: Thermal reset indicates further problems: Ensure conveyor is not jammed, all
+necessary fuses are intact, check motor connector and I/O Board conveyor
+relays
+Chip conveyor is moving in the wrong direction
+ Toggle Parameter 209 bit switch REV CNVR to reverse direction of conveyor.
+ Check I/O Board conveyor relays.
+Chip conveyor reverses, then shuts down
+ Check that the conveyor is free of obstruction.
+ Check that Parameters are at Default settings.
+ Check that Discrete Input CNVYR (conveyor overload) cycles from 0 - 1 or 1 - 0 (0 means overload
+condition).
+NOTE: If it does cycle check the motor for burnout or binding. If it does not cycle check
+the I/O board."
+96-8100-rev-c-2001_air_lubrication_04,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,HYDRAULIC,41,41,42,42,134,source_pdf_text,False,False,"160
+psi
+Hydraulic
+Tank
+Pressure
+Gauge
+Pressure
+Switch
+Cable
+Pressure
+ManifoldOutlet
+Pressure
+Switch
+Fill Valve
+Hydraulic Tank Assembly"
+96-8100-rev-c-2001_air_lubrication_05,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,HYDRAULIC,41,43,42,44,3291,source_pdf_text,False,False,"HS-3, 3R 1150 1000
+The table below lists observable machine conditions and their probable cause. Find the appropriate corrective
+action step to fix the observed faults.
+n o i t i d n o C e n i h c aM) s ( m e l b o r P e l b i s s o P e v i t c e r r o C
+n o i t c A
+, s m r a l a e n i h c a M
+. w o l g n i d a e r e r u s s e r p
+s k a e l r e d n i l y C -
+s k a e l g n i t t i F -
+1
+2
+, s m r a l a e n i h c a M
+, k o g n i d a e r e r u s s e r p
+. t e s e r t o n s e o d m r a l a
+e r u l i a f d r a o b O / I -
+s t c a t n o c y t r i d r o e l b a c d a B -
+s i m e t s y s r o / d n a h g i h o o t g n i t t e s h c t i w S -
+. e g u a g e t a r u c c a n i o t e u d d e z i r u s s e r p - r e d n u
+5
+4
+3
+e r u s s e r p , m r a l a o N
+r o t a ( w o l g n i d a e r
+. ) g n i t t e s h c t i w s w o l e b
+s k a e l r e d n i l y C -
+s k a e l g n i t t i F -
+e l b a c d e t r o h S -
+n a s a h m e t s y s r o / d n a g o l o o t g n i t t e s h c t i w S -
+. e g u a g e t a r u c c a n i
+1
+2
+6
+7
+s t f i r d d a e h e l d n i p S
+. p u . e g u a g e t a r u c c a n i o t e u d d e z i r u s s e r p - r e v O -8
+s t f i r d d a e h e l d n i p S
+. m r a l a o n , n w o d
+s k a e l r e d n i l y C -
+s k a e l g n i t t i F -
+- r e d n u m e t s y s r o / d n a w o l o o t g n i t t e s h c t i w S -
+. e g u a g e t a r u c c a n i o t e u d d e z i r u s e r p
+1
+2
+2
+Corrective Action
+Tools Required
+Hand tools.
+Charge/Discharge Kit P/N 35-4050A
+Hydraulic Hand Pump Kit P/N 93-0206
+1. Check for sufficient oil in system: Block spindle head at top of travel. Attach charge/discharge kit
+to schrader valve, slowly turn t-handle clockwise to begin releasing pressure and make one of the
+following observations:
+a) If oil is immediately present stop discharging, there is sufficient oil in the system. There
+are two courses of action at this point; add nitrogen to system to obtain top of travel
+pressure specification. This step may last indefinitely depending on the severity of the
+leak, or what caused it. The second course of action is to proceed to Corrective Action 2 if
+it is felt that the leak is substantial.
+b) If nitrogen gas is immediately present stop discharging and proceed to Corrective Action 2.
+There is not enough oil in the system.
+2. Block spindle head at bottom of travel (if the cylinder is to be replaced block the head in the lowest
+position that will permit access to the rod attachment).
+a) Carefully drain remaining gas and oil.
+b) Replace faulty component(s). (SAE straight thread o-ring fittings are to be lubricated with a
+film of hydraulic oil prior to install) Note that machines built after August, 1999 use straight
+thread fittings with o-rings, and sealed connectors on the switch wires. Earlier machines
+have pipe thread connections. Replacing older style components with newer style requires
+that all components of the counter balance system be changed as well as the cable back
+to the control.
+c) Pump new Mobil DTE-25 oil (see chart for qty.) into system using Hydraulic Hand Pump
+Kit. (see Hydraulic Hand Pump Instructions below).
+Machine Quarts of Mobile DTE-25 # of Pump Strokes
+VF-E-11, VR-11, HS-1 2 per tank 93
+VB-1, HS-3 3 per tank 0140
+d) Pressurize with nitrogen using charge/discharge kit to spec. at top of travel."
+96-8100-rev-c-2001_air_lubrication_06,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,HYDRAULIC,44,44,45,45,636,source_pdf_text,False,False,"LEAK FAILURES
+Leaks can occur at any fitting connection, at the hydraulic cylinders rod seal (where the rod enters
+the cylinder), at the cylinders piston seal, or through hose failures. Inspections for leaks are visual
+although rod seal leaks may be inconclusive because of way oil spatter. Piston seal leaks, if ad-
+vanced, exit the top end of the cylinder and oil can be seen at the vent area. Early piston leaks
+accumulate over time on top of the piston to about ¾ high before they are pushed out the cylinder
+at top of travel. Leaks are normally very slow and machines can operate until the pressure switch
+sends an E-stop alarm."
+96-8100-rev-c-2001_lead_screw_backlash_10,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;air_lubrication,BINDING;COUNTERBALANCE;HYDRAULIC,44,44,45,45,1474,source_pdf_text,False,False,"MECHANICAL DIAGNOSIS
+Important! Hydraulic counterbalance oil contains red dye for easier recognition.
+Noise in the system
+ Slight moan or creaking at slow speeds is normal for rubber seals.
+ While Z-axis is in motion a whistle sound at tank location is normal fluid flow.
+ Verify cylinder is seated correctly in counterbore. If not then reseat the cylinder.
+ Bumping or grinding noise indicates a mechanical cylinder failure. Replace cylinder assembly.
+ Look for galling and wear on cylinder shaft. If so replace the cylinder assembly.
+System is not holding pressure and/or has an E-STOP (Alarm 107) that cannot be reset.
+Check for accurate pressure readings. If low then the following items need to be checked:
+ Check for leaks at all cylinder fittings. If leaking then replace cylinder assembly.
+ Collapse the lower Z-axis waycover and look for any red oil pooled at the bottom of the base. If so,
+then fittings or seals could be damaged. Replace cylinder assembly.
+ Remove cylinder vent fitting. If there is red oil inside the vent cavity then the cylinder assembly
+needs replacement.
+ Check for leaks at all hydraulic tank fittings. If leaking then tank assembly needs replacement.
+Over Current alarms
+ Pressure is set too high.
+ Pressure is set too low.
+ Too much oil has been added. (Insufficient gas volume causes large pressure rise)
+ Hydraulic cylinder is binding or is misaligned. Replace cylinder assembly.
+ Length of replacement cylinder incorrect."
+96-8100-rev-c-2001_air_lubrication_07,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,AIR PRESSURE,45,48,46,49,1887,source_pdf_text,False,False,"1.10 AUTOMATIC PALLET CHANGER
+Checking pallet repeatability on to the receiver.
+ Maximum tolerance is .+/-0005.
+ Pallets are not considered repeatable from one to the other. Pallets should use separate offsets.
+ If pallet is out of tolerance check the alignment pins on the receiver base and bushings on the
+bottom side of the clamp rails for damage.
+ Check the height of the alignment pins on the receiver base, the top of the pin should be .450 to
+.490 above the receiver base.
+ If the alignment pins are out of the receiver body, check the depth of the hole. Depth should be
+.510 to .550.
+Sticking Pallet.
+ Check for chips around the alignment pins or pallet clamp rail bushings.
+ Check the torque on the bolts that fasten the clamp rails to the pallet. If the bolts are loose
+realign the pallet according to the instructions in the APC section of Mechanical Service.
+APC not responding to controller commands.
+ If the APC does not run but the mill does, check the APC control cable.
+ Make sure the E-Stop jumper is removed and that the APC control cable is plugged into the
+5th axis port tightly.
+Recovery from an E-Stop initiated during a pallet change
+Figure 1
+Pallet known locations. Pallet 1 is on the receiver and engaging
+the Pallet Clamped switch. Pallet 2 is on the APC and engaging
+the Pallet Home Switch under the control panel.
+Figure 2
+Alignment Pin and Bushing alignment must be verified
+when manually positioning a pallet on the receiver.
+Pin Clear
+Switch
+Pallet Drive
+Leg
+Pin Clear
+Switch
+Pallet Home
+Switches
+Trip Block
+Chain/Sprocket
+Rotation Tool
+Figure 3
+With pallet 2 clamped on the receiver, the trip
+block must be engaging the switch as shown.
+Figure 4
+Press and hold the solenoid actuation buttons to
+keep air pressure flowing to unclamp the receiver
+and hold the door open. If the buttons are released
+the door will close and the receiver will clamp."
+96-8100-rev-c-2001_servo_following_errors_15,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;tool_changer;spindle_gearbox;regen_spindle_drive;control_electronics,ATC;AUX AXIS;BINDING;CAROUSEL;COMMUNICATION;DRIVE FAULT;ENCODER;FOLLOWING ERROR;GEARBOX;MOCON;OVERHEAT;POWER SUPPLY;PROCESSOR;REGEN;SERVO ERROR TOO LARGE;TOOL CHANGE;TOOL CHANGER,49,51,50,52,6327,source_pdf_text,False,False,"ELECTRICAL ALARMS
+Axis Drive Fault Alarm
+ Blown amplifier - indicated by a light at bottom of amplifier when power is on. Replace amplifier.
+ Amplifier or MOCON is noise sensitive. If this is the case, the alarm can be cleared and the axis
+will run normally for a while.
+To check an amplifier, switch the motor leads and control cables between the amplifier and the one
+next to it. If the same problem occurs with the other axis, the amplifier must be replaced. If the
+problem stays on the same axis, either the MOCON or control cable. The problem could also be
+the axis motor itself, with leads either shorted to each other or to ground, which is very rare.
+ Amplifier faulting out for valid reason, such as overtemp, overvoltage, or +/-12 volt undervoltage
+condition. This usually results from running a servo intensive program, or unadjusted 12 volt power
+supply. Replace amplifier.
+Overvoltage could occur if regen load is not coming on, but this does not usually happen. The
+problem could also be the axis motor itself, with leads either shorted to each other or to ground,
+which is very rare.
+Axis Overload
+ The fuse function built into the MOCON has been overloaded, due to a lot of motor accel/decels, or
+hitting a hard stop with the axis. This safety function protects the amplifier and motor, so find the
+cause and correct it. If the current program is the cause, change the program. If the axis hits a
+hard stop, the travel limits may be set wrong.
+Phasing Error
+ The MOCON did not receive the proper phasing information from the motors. DO NOT RESET the
+machine if this alarm occurs. Power the machine down and back up. If the problem persists, it is
+probably a broken wire or faulty MOCON connectors. This problem could also be related to the
+Low Voltage Power Supply. Check to see if the LVPS is functioning properly.
+Servo Error Too Large
+ This alarms occurs when the difference between the commanded axis position and the actual
+position becomes larger than the maximum that is set in the parameter.
+This condition occurs when the amplifier is blown, is not receiving the commands, or the 320 volt
+power source is dead. If the MOCON is not sending the correct commands to the amplifier, it is
+probably due to a broken wire, or a PHASING ERROR that was generated.
+Axis Z Fault or Z Channel Missing
+ During a self-test, the number of encoder counts was found to be incorrect. This is usually caused
+by a noisy environment, and not a bad encoder. Check all shields and grounds on the encoder
+cables and the motor leads that come into the amplifiers. An alarm for one axis can be caused by
+a bad grounding on the motor leads of another axis.
+Axis Cable Fault
+ During a self-test, the encoder cable signals were found to be invalid. This alarm is usually caused
+by a bad cable, or a bad connection on the motor encoder connectors. Check the cable for any
+breaks, and the encoder connectors at the motor controller board. Machine noise can also cause
+this alarm, although it is less common.
+Alarm 101, ""MOCON Comm. Failure""
+ During a self-test of communications between the MOCON and main processor, the main
+processor does not respond, and is suspected to be dead. This alarm is generated and the servos
+are stopped. Check all ribbon cable connections, and all grounding. Machine noise can also
+cause this alarm, although it is less common.
+Alarm 157, ""MOCON Watchdog Fault""
+ The self-test of the MOCON has failed. Replace the MOCON.
+Alarm 222, C Phasing Error
+ If this alarm occurs on a VB-1, it is probably because parameter 176 bit 3 (SP AXIS DISABLED) is
+set to 0. It should be set to 1.
+Rotary CRC Error Alarm 261
+ This alarm is normally the result of an incomplete software installation. To correct this error,
+Change Setting 30 to any selection but OFF (note the original selection). Then go to parameter 43
+and change one of the bits from 1 to 0 or vice versa and press WRITE (The bit must be changed
+from its original value to its alternate value). Simply changing the Setting and Parameter bit from
+one value to another and then back again corrects the fault, and will clear any further occurrences
+of the alarm. Change the bit and Setting 30 back to their original values. Press Reset to clear the
+alarms or cycle power to the machine.
+Alarm 354 - Aux Axis Disconnected
+When this alarm is generated, do not press RESET. Turn Setting 7 OFF. Enter DEBUG mode, then view the
+Alarms/Messages page. On the Messages page, a code will appear similar to WO1. The list of codes and
+their descriptions appears below:
+WO1 Power was just turned on or failed. Check the ribbon cables from the Aux Axis PCB to the proces-
+sor for correct routing. Check for communication problems between the processor and the Aux
+Axis PCB.
+WO2 Servo following error too large. Check the encoder for contamination or dirt. Check for an intermit-
+tent connection at both ends of the motor cable.
+WO3 Emergency Stop. The E-STOP button was pressed, or an E-STOP condition occurred.
+WO4 High load. Check for binding in the tool changer gearbox and motor. Rotate the carousel by hand
+and feel for any binding. Make sure the tool holders are the correct weight.
+WO5 Remote RS-232 commanded off. Check the ribbon cable and the voltage to the Aux Axis PCB.
+Check for 115VAC (minimum) to the Aux Axis PCB from the main transformer. Check the fuse
+holder and the fuse that is protecting this circuit.
+WO6 Air or limit switch or motor overheat. Check that the motor is not hot. Check for any binding in the
+motor. Check for overweight tooling.
+WO7 Z channel fault. Either the encoder or the cable is bad. Change the encoder first, as it is easier to
+change than the cable. If the problem persists, change the cable.
+WO8 Over-current limit, stalled or PCB fault. Check for binding in the tool changer gearbox. Make sure
+the belt is not too tight. Ohm out the motor cable, checking pins G to F (should be open), G to H
+(should be open), and F to H (should read between 2.5 and 5 ohms). Check all the connections on
+the Aux Axis PCB and motor cable.
+WO9 Encode ES. Z channel is missing. Bad encoder or cable. See WO7.
+WOA High voltage. Check the incoming voltage to the Aux Axis PCB. Incoming voltage must be 115
+VAC. See WO5.
+WOB Cable fault. Check the cable from the motor to the Aux Axis PCB. Check for loose connections at
+each end."
+96-8100-rev-c-2001_control_electronics_01,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,control_electronics,control_electronics,control_electronics,PROCESSOR,52,52,53,53,630,source_pdf_text,False,False,"PROCESSOR STACK DIAGNOSTIC
+(DISCONNECT CABLES FROM A NORMAL OPERATING SYSTEM)
+Remove low voltage cable from the Video & Keyboard PCB
+ Processors LED’s are normal
+ Runs fine and the CRT is Normal
+ No keypad beep
+Remove low voltage cable from the MOTIF PCB
+ Processors LED’s are normal then RUN goes out
+ No screen
+Remove the Data & or Address buss from the Video & Keyboard PCB
+ Processors LED’s Normal - then Run goes out
+Remove the Data & or Address buss from the MOTIF PCB
+ Processors LED’s Normal - then Run goes out
+Remove the Data & or Address buss from the Micro Processor PCB
+ Processors LED’s - CRT and Run are out"
+96-8100-rev-c-2001_control_electronics_02,96-8100-rev-c-2001,96-8100,VF Series Service Manual,Rev C,June 2001,revision_reference,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,control_electronics,control_electronics,control_electronics,COMMUNICATION,54,54,55,55,713,source_pdf_text,False,False,"4. Your network is running IPX/SPX protocol.
+If all of the above is correct and communications between the Haas CNC and the network are not established,
+there may be compatibility issues between an older Novell network and an NT 4.0 server. If the NWLink IPX/
+SPX Compatible Transport on the NT server is set to auto detect the protocols frame, the NT server may be
+detecting the Novell server first and setting the NWLink IPX/SPX Compatible Transport frame protocol to 802.3
+The NWLink IPX/SPX Compatible Transport required for the mills to connect to an NT server is 802.2. Since
+these two frame protocols are different the mill would never connect to the desired NT server. To remedy this
+check the following:"
+96-8100-rev-e-2002_spindle_orientation_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive;control_electronics,MOCON;PROCESSOR;SPINDLE DRIVE,3,3,4,4,1414,source_pdf_text,False,False,"FIND THE PROBLEM FIRST
+Many mechanics tear into things before they understand the problem, hoping that it will appear as they go. We
+know this from the fact that more than half of all warranty returned parts are in good working order. If the
+spindle doesnt turn, remember that the spindle is connected to the gear box, which is connected to the
+spindle motor, which is driven by the spindle drive, which is connected to the I/O BOARD, which is driven by
+the MOCON, which is driven by the processor. The moral here is dont replace the spindle drive if the belt is
+broken. Find the problem first; dont just replace the easiest part to get to.
+DONT TINKER WITH THE MACHINE
+There are hundreds of parameters, wires, switches, etc., that you can change in this machine. Dont start
+randomly changing parts and parameters. Remember, there is a good chance that if you change something,
+you will incorrectly install it or break something else in the process. Consider for a moment changing the
+processors board. First, you have to download all parameters, remove a dozen connectors, replace the board,
+reconnect and reload, and if you make one mistake or bend one tiny pin it WONT WORK. You always need to
+consider the risk of accidentally damaging the machine anytime you work on it. It is cheap insurance to
+double-check a suspect part before physically changing it. The less work you do on the machine the better."
+96-8100-rev-e-2002_regen_spindle_drive_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive;air_lubrication;control_electronics,COUNTERBALANCE;ELECTRICAL SERVICE;HYDRAULIC;IOPCB;MOCON;OVERHEAT;POWER SUPPLY;PROCESSOR,4,4,5,5,1619,source_pdf_text,False,False,"MACHINE NOT RUNNING
+Machine cannot be powered on.
+ Check input voltage to machine (see ""Electrical Service"").
+ Check main circuit breaker at top right of electrical cabinet; switch must be at the on position.
+ Check overvoltage fuses (see ""Electrical Service"").
+ Check wiring to POWER OFF button on front control panel.
+ Check wiring to AUTO OFF relay to IOPCB.
+ Check connection between 24V transformer and K1 contactor
+ Check IOPCB (see ""Electrical Service"").
+ Check POWER PCB (see ""Electrical Service"").
+Machine can be powered on, but turns off by itself.
+ Check settings #1 and #2 for Auto Off Timer or Off at M30.
+ Check alarm history for OVERVOLTAGE or OVERHEAT shutdown.
+ Check AC power supply lines for intermittent supply.
+ Check wiring to POWER OFF button on front control panel.
+ Check connection between 24V transformer and K1 contactor.
+ Check IOPCB (see ""Electrical Service"").
+ Check Parameter 57 for Power Off at E-STOP .
+ Check MOTIF or MOCON PCB (see ""Electrical Service"").
+Machine turns on, keyboard beeps, but no CRT display.
+ Check for power connections to CRT from IOPCB. Check for green POWER LED at front of CRT.
+ Close doors and Zero Return machine (possible bad monitor).
+ Check video cable (760) from VIDEO PCB to CRT.
+ Check for lights on the processor.
+Machine turns on, CRT works, but no keyboard keys work.
+ Check keyboard cable (700B) from VIDEO to KBIF PCB.
+ Check keypad (see ""Electrical Service"").
+ Check KBIF PCB (see ""Electrical Service"").
+Constant E-Stop Condition (will not reset)
+ Check Hydraulic counterbalance pressure, low pressure switches and cabling."
+96-8100-rev-e-2002_servo_following_errors_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;spindle_gearbox,BACKLASH;GEARBOX;SERVO MOTOR,5,5,6,6,2689,source_pdf_text,False,False,"VIBRATION
+Vibration is a subjective evaluation with perceptions varying among individuals, making it difficult to determine in
+mild cases if there is an actual problem. Because the VF Series uses a gear head, it will be noisier than a
+direct drive or belt system. In obvious cases, it is a matter of determining the source - which is not easy, since
+all parts rotate together and sound can be transferred readily. Vibrations also need to be distinguished from
+noise such as a bad bearing. We will assume that vibrations would be something that could be felt by putting
+your hand on the spindle covers. One crude method of measurement would be to take an indicator on a
+magnetic base extended 10 inches between the table and spindle housing and observe the reading of the
+indicator. A reading of more than .001 would indicate excessive vibration. The two common sources of noise are
+the spindle and axis drives. Most complaints about vibration, accuracy, and finish can be attributed to incorrect
+machining practices such as poor quality or damaged tooling, incorrect speeds or feeds, or poor fixturing.
+Before concluding that the machine is not working properly, ensure that good machining practices are being
+observed. These symptoms will not occur individually (Ex. A machine with backlash may vibrate heavily,
+yielding a bad finish.). Put all of the symptoms together to arrive at an accurate picture of the problem.
+Machine vibrates while jogging the axis with the hand wheel.
+ The HAAS control uses very high gain accelerations curves. This vibration as you jog is simply the
+servos quickly trying to follow the handle divisions. If this is a problem, try using a smaller division on
+the handle. You will notice the vibration more at individual clicks than when you are turning the handle
+faster. This is normal.
+The machine vibrates excessively in a cut.
+ This is a tough one to call because machining practices come into play. Generally speaking, the least
+rigid element of a cut is the tool because it is the smallest part. Any cutter will vibrate if pushed beyond
+its tensile strength. In order to eliminate the machine as the source of the problem, you need to check
+the spindle and the backlash of the axes as described in the following sections. Once machining
+practices have been eliminated as the source of vibration, observe the machine in both operation and
+cutting air. Move the axes (individually) without the spindle turning and then turn the spindle without
+moving the axes. Isolate whether the vibration comes from the spindle head or from an axis. Isolate
+the source of vibration per ""Spindle"", ""Servo Motors/Leadscrews"", and ""Gearbox and Spindle Motor""
+sections."
+96-8100-rev-e-2002_servo_following_errors_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;air_lubrication,BACKLASH;COUNTERBALANCE;HYDRAULIC;SERVO MOTOR,6,7,7,8,3137,source_pdf_text,False,False,"ACCURACY
+Before you complain of an accuracy problem, please make sure you follow these simple dos and donts:
+ Ensure that the machine has been sufficiently warmed up before cutting parts. This will eliminate
+mispositioning errors caused by thermal growth of the leadscrews (see ""Thermal Growth"" section).
+ Do not use a wiggler test indicator for linear dimensions. They measure in an arc and have sine/cosine
+errors over larger distances.
+ Do not use magnetic bases as accurate test stops. The high accel/decel of the axis can cause them to
+move.
+ Do not attach magnetic base to the sheet metal of the spindle head or table.
+ Do not mount the magnetic base on the spindle dogs.
+ Do not check for accuracy/repeatability using an indicator with a long extension.
+ Ensure that test indicators and stops are absolutely rigid and mounted to machined casting surfaces
+(e.g. spindle head casting, spindle nose, or the table).
+ Do not rapid to position when checking accuracy. The indicator may get bumped and give an inaccurate
+reading. For best results, feed to position at 5-10 inches per minute.
+ Check a suspected error with another indicator or method for verification.
+ Ensure that the indicator is parallel to the axis being checked to avoid tangential reading errors.
+ Center drill holes before using jobber length drills if accuracy is questioned.
+ Once machining practices have been eliminated as the source of the problem, determine specifically what
+the machine is doing wrong.
+Machine will not interpolate a round hole.
+ Check that the machine is level (see ""Installation"" section).
+ Check for backlash (""Servo Motors/Leadscrews"" section).
+Bored holes do not go straight through the workpiece.
+ Check that the machine is level (see ""Installation"" section).
+ Check for squareness in the Z axis.
+Machine bores holes out-of-round.
+ Check that the machine is level (see ""Installation"" section).
+ Check the sweep of the machine (see ""Spindle Sweep Adjustment"" section).
+Bored holes are out of round or out of position.
+ Check for thermal growth of the leadscrew (see ""Thermal Growth"" section).
+ The spindle is not parallel to the Z axis. Check the spindle sweep to the table and the squareness
+of the Z axis with a cylinder square. If available use a spindle master bar and indicate the spindle
+to the Z axis.
+Machine mis-positions holes.
+ Check for thermal growth of the leadscrew (see ""Thermal Growth"" section).
+ Check that the machine is level (see ""Installation"" section).
+ Check for backlash (see ""Servo Motors/Leadscrews"" section).
+ Check the squareness of the X axis to the Y axis.
+Machine leaves large steps when using a shell mill.
+ Check that the machine is level (see ""Installation"" section).
+ Check the sweep of the machine (see ""Spindle Sweep Adjustment"" section).
+ Cutter diameter too large for depth of cut.
+Boring depth inaccurate
+ Check for thermal growth of the leadscrew (see ""Thermal Growth"" section).
+ Check the hydraulic counterbalance system. Check for:
+ abnormal noises from counterbalance system,
+ oil leaks (esp. at fittings and at filter at top of cylinder),
+ bound cylinder."
+96-8100-rev-e-2002_servo_following_errors_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;spindle_gearbox,BACKLASH;GEARBOX;SERVO MOTOR,7,7,8,8,268,source_pdf_text,False,False,"FINISH
+Machining yields a poor finish.
+ Check for gearbox vibration.
+ Check for backlash (""Accuracy/Backlash"" section)
+ Check the condition of the tooling and the spindle.
+ Check spindle
+ Check the condition of the servo motors.
+ Check that the is machine level."
+96-8100-rev-e-2002_spindle_orientation_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;spindle_gearbox;regen_spindle_drive;control_electronics,ELECTRICAL SERVICE;GEARBOX;IOPCB;MOCON;ORIENT;SPINDLE DRIVE;SPINDLE ORIENTATION;TRANSMISSION,9,9,10,10,1136,source_pdf_text,False,False,"NOT TURNING
+Spindle not turning.
+ If there are any alarms, refer to ""Alarms"" section.
+ Check that the spindle turns freely when machine is off.
+ If motor turns but spindle does not, see ""Belt Assembly"" and ""Spindle Motor & Transmission"" sections.
+ Command spindle to turn at 1800 RPM and check spindle drive display. If display blinks bb, check
+spindle orientation switch (""Spindle Orientation"" section). If spindle drive does not light the RUN LED,
+check forward/reverse commands from IOPCB (""Electrical Service"").
+ Check the wiring of analog speed command from MOTIF PCB to spindle drive (cable 720).
+ If spindle is still not turning, replace MOCON PCB (""Electrical Service"").
+ If spindle is still not turning, replace spindle drive (""Electrical Service"").
+ Check for rotation of the gearbox (if applicable) or the motor. If the motor or gearbox operates,
+check the drive belt (""Belt Assembly"" section).
+ Disconnect the drive belt. If the spindle will not turn, it is seized and must be replaced (""Spindle
+Assembly"" section).
+NOTE: Before using the replacement spindle, the cause of the previous failure must
+be determined."
+96-8100-rev-e-2002_spindle_gearbox_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox;air_lubrication,GEARBOX;HIGH GEAR;LOW GEAR;LUBE;LUBRICATION,9,10,10,11,1784,source_pdf_text,False,False,"NOISE
+Most noises attributed to the spindle actually lie in the motor/gearbox or drive belt of the machine. Isolate the
+sources of noise as follows:
+Excessive noise coming from the spindle head area.
+On VF-1 through 6 models, first determine if the noise is related to the RPM of the motor or the RPM
+of the spindle. For example: If the noise appears at 2000 RPM in high gear, listen for a similar noise
+at 500 RPM in low gear. If the same noise persists, the problem lies with the gearbox. If the noise
+disappears, the problem could be either the gearbox or the spindle, and further testing is necessary.
+NOTE: The gear ratio is 1:1.25 in high gear, and 3.2:1 in low gear.
+ Remove the head covers and check the machines drive belt tension (""Tension Adjustment"" section).
+If the noise persists, turn the drive belt over on the pulleys. If the noise is significantly different, the
+belt is at fault. Replace the belt (""Belt Assembly"" section).
+If the noise does not change, remove the belt and go on to the next step.
+ Check the pulleys for excessive runout (more than 0.003"" axial or radial).
+ Run the motor or the gearbox with the drive belt disconnected. If the noise persists, the problem lies with
+the gearbox/motor. If it disappears, go on to the next step.
+ Check for the correct amount of lubrication to the spindle bearings (0.5-1.0 cc every two hours) in an air
+mist-lubricated spindle.
+If the spindle is not getting lubrication, correct the problem per the lube and air diagram at the
+back of this manual and replace the spindle (""Spindle Assembly"" section).
+If the spindle is getting lubrication, replace the spindle (""Spindle Assembly"" section).
+Note: Haas Automation does not honor warranty requests for gearbox or spindles
+without vibration analyzer signatures."
+96-8100-rev-e-2002_regen_spindle_drive_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive,OVERHEAT,10,10,11,11,584,source_pdf_text,False,False,"OVERHEATING
+When investigating complaints of overheating, a temperature probe must be used to accurately check the
+temperature at the top of the spindle taper. The temperature displayed in Diagnostics is not relevant. A machine
+that runs at high RPM continuously will have a much warmer spindle than a machine that runs at a lower RPM.
+New spindles tend to run much warmer than spindles that have already been run-in. In order to run a valid test
+on a new spindle, ensure that it is properly run-in.
+To run-in a spindle, run the following program (it will take approximately 6 hours):"
+96-8100-rev-e-2002_air_lubrication_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,AIR PRESSURE,11,11,12,12,444,source_pdf_text,False,False,"ALTERNATE SPINDLE RUN-IN PROGRAM
+Run program #O02021 with the air pressure to the spindle set to 30 psi. (for all spindles). Program time is
+approximately 2 hours. If possible run the program overnight by changing M30 to M99 so it can repeat. Adjust
+spindle speed override depending on maximum spindle speed of machine: Set override 50% for 5,000 RPM
+machines; Set at 100% for 7,500 and 10,000 RPM machines; Set at 150% for 15,000 RPM machines."
+96-8100-rev-e-2002_regen_spindle_drive_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive;air_lubrication,AIR PRESSURE;LUBRICATION;OVERHEAT,11,11,12,12,794,source_pdf_text,False,False,"N2000
+S10000M3;
+G04 P30.;
+S500M3;
+G04 P150.;
+M99;
+%
+ If at any time during this procedure the spindle temperature rises above 150 degrees (120 degrees
+for 50 Taper), start the procedure over from the beginning and follow the steps below.
+NOTE: Once run-in program is complete reset the air pressure back to 17psi. (20psi.
+for 15K spindles, 25psi. Mini-Mill) prior to checking spindle temperature.
+If the spindle fails this test for any reason, check the following:
+ Check for correct amount of lubrication.
+NOTE: Over lubrication is a common source of overheating. Check the oil flow
+carefully.
+ Check the drive belt tension. Belts that are too tight will cause heating of the top bearing in the
+spindle housing.
+ Ensure that the correct oil is being used (refer to ""Maintenance Schedule"")."
+96-8100-rev-e-2002_spindle_orientation_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,SPINDLE DRIVE,12,12,13,13,325,source_pdf_text,False,False,"STALLING / LOW TORQUE
+Generally, complaints of stalling or low torque relate to incorrect tooling or machining practices. A spindle that
+is tending to seize will yield a poor finish machining, run very hot and very loud. Investigate machining prob-
+lems before concluding the problem exists with the spindle or spindle drive."
+96-8100-rev-e-2002_spindle_orientation_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,OVERHEAT;REGEN;REGENERATIVE;SPINDLE DRIVE,12,12,13,13,920,source_pdf_text,False,False,"SPINDLE DRIVE
+Low line voltage may prevent the spindle from accelerating properly. If the spindle takes a long time to acceler-
+ate, slows down or stays at a speed below the commanded speed with the load meter at full load, the spindle
+drive and motor are overloaded. High load, low voltage, or too fast accel/decel can cause this problem.
+If the spindle is accelerated and decelerated frequently, the regenerative load resistor on top of the control may
+heat up. If this resistor heats beyond 1000C, a thermostat will generate an overheat alarm.
+If the regen load resistors are not connected or open, this could then result in an overvoltage alarm. The
+overvoltage occurs because the regenerative energy being absorbed from the motor while decelerating is turned
+into voltage by the spindle drive. If this problem occurs, the possible fixes are to slow the decel rate or reduce
+the frequency of spindle speed changes."
+96-8100-rev-e-2002_servo_following_errors_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;tool_changer;spindle_orientation;regen_spindle_drive,ATC;DC BUS;REGEN;VECTOR DRIVE,12,12,13,13,1089,source_pdf_text,False,False,"VECTOR DRIVE
+To properly troubleshoot the Vector Drive, use the following questions as a guide:
+ What alarms are generated?
+ When does the alarm occur?
+ Is the Vector Drive top fault light on?
+ Is there a fault light on any of the servo amplifiers?
+ Does the alarm reset?
+ Does the spindle motor turn at all?
+ Does the spindle turn freely by hand?
+ Have the C-axis parameters been confirmed?
+ What is the input voltage to the vector drive unit?
+ What does the DC Bus voltage measure? (320 VDC to 345 VDC)
+ Does the DC Bus voltage displayed on the diagnostic page match the measured DC Bus voltage?
+All of the questions above must be answered. The DC Bus voltage should be between 320 VDC to 345 VDC
+with the machine powered up but not running. If the voltage is not in this range, adjust the taps on the main
+line transformer until this voltage range is achieved. There is a possibility the drive is faulty, but low Bus
+voltage can also be caused by a shorted REGEN load or a shorted amplifier.
+If the DC Bus voltage is below 50 VDC and never goes any higher, perform Steps 1-6."
+96-8100-rev-e-2002_spindle_orientation_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,REGEN;VECTOR DRIVE,12,12,13,13,411,source_pdf_text,False,False,"2. Power down the machine. Disconnect the REGEN load (terminals 1 and 2 on the Vector Drive
+unit) and measure the resistance from each wire-to-chassis ground (open) and between the wire
+leads. The resistance should be 8.6 ohms for machines with 20/15 Vector drives and HT10K mills
+equipped with 40/30 drives. All other machines with 40/30 drives should measure 6 ohms. If not,
+replace the REGEN load or cabling."
+96-8100-rev-e-2002_spindle_orientation_06,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation,VECTOR DRIVE,12,12,13,13,269,source_pdf_text,False,False,"3. Disconnect cable 490 at terminals 2 and 3 of the Vector Drive and from the servo amplifiers. With
+a multimeter in the diode mode, place the red meter lead to the +HV terminal and the black meter
+lead to the -HV terminal of each amplifier. The meter should read open."
+96-8100-rev-e-2002_spindle_orientation_07,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation,VECTOR DRIVE,13,13,14,14,154,source_pdf_text,False,False,"5. Measure the resistance between terminals 1 and 3 of the Vector Drive. The meter should read
+greater than 100K ohms. If not, the Vector Drive is faulty."
+96-8100-rev-e-2002_servo_following_errors_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;spindle_orientation;regen_spindle_drive,DC BUS;REGEN;VECTOR DRIVE,13,13,14,14,564,source_pdf_text,False,False,"6. If the green POWER-ON L.E.D. was lit (from Step 2), leave both 490 cables (2 and 3) discon-
+nected from the drive and power up the machine.
+a. Does the DC Bus voltage come up? If not, the Vector Drive is faulty.
+b. Measure the voltage between terminals 1 and 3. The voltage should be 300
+VDC or more. If not, the Vector Drive is faulty.
+If both a and b check out okay, there is a problem with either the amplifiers or the REGEN load.
+If the fault occurs upon acceleration -or- the spindle accelerates slowly -or- the spindle
+makes noise, do the following:"
+96-8100-rev-e-2002_spindle_orientation_08,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_orientation,spindle,spindle_orientation;regen_spindle_drive,REGEN;VECTOR DRIVE,13,13,14,14,463,source_pdf_text,False,False,"9. Disconnect the REGEN load resistors (terminals 1 and 2) and measure the resistance from each
+wire lead-to-chassis ground and between the wire leads. The meter should read open lead-to-
+ground, and 6 ohms between the leads for machines with 40/30 Vector drives and 8.6 ohms
+between the leads on machines with 20/15 Vector drives and HT10K mills.
+10. Measure the resistance from terminal 1 to terminal 3. If the resistance is less than 100K, the drive
+is faulty."
+96-8100-rev-e-2002_spindle_gearbox_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,HIGH GEAR,13,13,14,14,182,source_pdf_text,False,False,"700 RPM (300 RPM for lathes in high gear). Press <RESET> while monitoring the DC voltage
+between terminal 1 and terminal 3. The voltage should read 330 VDC and then drop to less than"
+96-8100-rev-e-2002_regen_spindle_drive_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive,REGEN,13,13,14,14,189,source_pdf_text,False,False,"50 VDC momentarily. If not, that drive is faulty. If the voltage at RESET was okay and the alarm
+was resettable, the REGEN load should be replaced even if the resistance appears to be okay."
+96-8100-rev-e-2002_servo_following_errors_06,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;spindle_orientation;spindle_gearbox,BINDING;ENCODER;GEARBOX;ORIENT;VECTOR DRIVE,14,14,15,15,766,source_pdf_text,False,False,"ORIENTATION
+Spindle loses correct orientation.
+Non Vector Drive
+ Check the orientation ring for tightness. Ensure the shaft on which the ring mounts is clean and is
+free of grease and oil.
+ Check the orientation ring for cracks near the bolt holes or near the balancing holes.
+If there are cracks, replace the ring.
+ Check the shot pin on the gearbox for binding, damage, and proper operation. Replace it if it is
+damaged.
+Vector Drive
+ Check alarm history. Look for Spindle Z Fault, or Spindle Reference Missing alarms. If these
+alarms exist, there may be a defective spindle encoder, or a broken ground or shield connection.
+ Check parameters.
+ Check for a mechanical slip at the contact points of all components between the spindle and the
+spindle encoder."
+96-8100-rev-e-2002_tool_changer_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer;air_lubrication,AIR PRESSURE;ATC;CAROUSEL;TOOL CHANGE,14,15,15,16,2822,source_pdf_text,False,False,"TOOLS STICKING IN TAPER
+Tool sticking in the taper causes ATC to be pulled up; accompanied by a popping noise as
+the tool holder pops out of the spindle taper.
+NOTE: This problem may occur after loading a cold tool into a hot spindle (a
+result of thermal expansion of the tool holder inside the spindle taper). It
+may also occur due to heavy milling, milling with long tooling, or cuts with
+heavy vibration. This also is the result of thermal expansion.
+If sticking only occurs during these situations, check your application to
+ensure proper machining techniques are being used; check the feeds and
+speeds for the tools and material being used. If a tool is pulled out of the
+extractors due to a tool stuck in the taper then the unclamp switch is not
+adjusted correctly or the switch could be bad.
+NOTE: In a proper working system the spindle will pop slightly during a tool change.
+This popping does not create flex in the carousel or the need to remove the tool
+with a mallet.
+ Check the condition of the tooling, verifying the taper on the tooling is ground and not turned. Look
+for damage to the taper caused by chips in the taper or rough handling. If the tooling is suspected,
+try to duplicate the symptoms with known-to-be-good tooling.
+ Check the condition of the spindle taper. Look for damage caused by chips or damaged tooling.
+Also, look for damage such as deep gouges in the spindle taper caused by tool crashing.
+ Duplicate the cutting conditions under which the deflection occurs, but do not execute an
+automatic tool change. Try instead to release the tool using the tool release button on the front of
+the spindle head. If sticking is observed, the deflection is not caused by improper ATC
+adjustment, but is a problem in the spindle head on the machine.
+ Ensure the spindle is not running too hot (140° or above).
+ Check air supply. Max air pressure drop of 10psi. during a tool change is allowed.
+ Check drawbar height adjustment.
+ Does the tool tip to the spindle gauge line exceed 3.5?
+ Are the correct pull studs being used?
+Tool Holder / Spindle Fretting
+Is fretting present on the tool holder or spindle?
+Fretting is the result of sideways movement of a tool holder in the spindle. Fretting can leave a wave pattern on
+the mating surfaces and will affect the fit and finish of both the tool holder and the spindle.
+ If light fretting is present, check the application to ensure proper machining techniques are being
+used; check the feeds and speeds for the tools and material being used.
+ Light fretting and rust may be cleaned from the tool holder with a fine scotchbrite hand pad and
+solvent. If scotchbrite is used, clean the tool holder and spindle taper thoroughly after use with an
+alcohol pad. Apply a thin coat of light oil to the taper of the tool holder. Grease the pull stud."
+96-8100-rev-e-2002_servo_following_errors_07,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;regen_spindle_drive,ENCODER;OVERHEAT;SERVO MOTOR,16,16,17,17,917,source_pdf_text,False,False,"NOT OPERATING
+All problems that are caused by servo motor failures should also register an alarm. Check the alarm history to
+determine the problems cause before any action is taken.
+Servo motor is not functioning.
+ Check the power cable from rear electrical cabinet to ensure connection is tight.
+ Encoder is faulty or contaminated (Alarms 139-142, 153-156, 165-168, 182-185). Replace motor
+assembly on brushless machines, replace the encoder on brush machines.
+ Open circuit in motor (Alarms 139-142, 153-156, 182-185). Replace motor assembly (""Axis Motor
+Removal / Installation"").
+ Motor has overheated, resulting in damage to the interior components (Alarms 135-138, 176).
+Replace motor assembly (""Axis Motor Removal/Installation"").
+ Wiring is broken, shorted, or missing shield (Alarms 153-156, 175, 182-185).
+ Dust in the motor from brushes has shorted out the motor (VF-E only) (Alarms 153-156, 175, 182-"
+96-8100-rev-e-2002_servo_following_errors_08,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive,LEAD SCREW;OVERHEAT;SERVO MOTOR,16,16,17,17,902,source_pdf_text,False,False,"185). Replace motor assembly (""Axis Motor Removal/Installation"").
+ Motor has overheated; no damage to the interior components. OVERHEAT alarm has been
+triggered. After thorough check of motor (DO NOT DISASSEMBLE!), take necessary steps to
+eliminate the problem and alarm to resume operation. If motor is still inoperable, replace motor
+assembly (""Axis Motor Removal/Installation"").
+ Check for broken or loose coupling between the servo motor and the lead screw. Replace or repair
+the coupling (""Axis Motor Removal/Installation"")
+ Check for a damaged lead screw, and replace if necessary (""Lead Screw Removal and Installation""
+section).
+NOTE: If a lead screw fails, it is most often due to a failed bearing sleeve. When
+replacing the lead screw in an older machine, always replace the bearing
+sleeve with the current angular contact bearing sleeve (""Bearing Sleeve
+Removal and Installation"" section)."
+96-8100-rev-e-2002_servo_following_errors_09,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive;air_lubrication,FOLLOWING ERROR;LEAD SCREW;LUBRICATION;OVERCURRENT;SERVO MOTOR,16,17,17,18,2573,source_pdf_text,False,False,"NOISE
+Lead screw noise is usually caused by a lack of lubrication and is usually accompanied by heating. Other
+causes are misalignment, bearing sleeve damage, or ball nut damage. Check the alarm history of the machine
+and look for axis overcurrent and following error alarms.
+NOTE: Do not replace lead screws or bearing sleeves without due consideration; they
+are extremely durable and reliable. Verify that customer complaints are not due
+to tooling, programming, or fixturing problems.
+Servo motor noise.
+ Disconnect the servo motor from the lead screw and rotate by hand. If the noise persists, replace
+the motor assembly (""Axis Motor Removal/Installation"" section).
+ Noise is caused by motor brushes (VF-E only). Remove and inspect brushes. Blow out brush dust
+and inspect the armature.
+Lead screw noise.
+ Ensure oil is getting to the lead screw through the lubrication system (See Air and Oil Diagrams).
+Look for a plugged metering valve.
+ Check for damage to the bearing sleeve.
+NOTE: The current angular contact design sleeve has a fixed pre-load; it cannot be
+adjusted.
+ Run the axis back and forth. The motor will get very hot if the bearing sleeve is damaged. If so, turn
+the axis by hand and feel for roughness in the lead screw. Loosen the clamp nuts at both ends of
+the lead screw. If the symptom disappears, replace the bearing sleeve. Be certain to check for
+damage to the lead screw shaft where the bearing sleeve is mounted.
+If the noise persists, the lead screw is damaged and must be replaced. When replacing
+the lead screw in an older machine, always replace the bearing sleeve with the current
+angular contact design bearing sleeve.
+ Misalignment in the lead screw itself will tend to cause the lead screw to tighten up and make
+excessive noise at both ends of the travel. The ballnut may get hot. Misalignment radially at the
+yoke where the lead screw ball nut mounts is indicated by heating up of the ball nut on the lead
+screw, and noise and tightness through out the travel of the lead screw. Misalignment at the yoke
+where the ball nut mounts is indicated by noise and tightness at both ends of the travel of the lead
+screw. The ball nut may get hot.
+NOTE: Customer complaints of Lead Screw noise may not indicate a bad screw.
+Screws from different manufacturers produce varying levels of noise. Often
+machines are built with two or more different brands of screws in the same
+machine. If complaints are generated about one axis screw in comparison to
+another, it is possible that the screws are simply sourced from different
+manufacturers."
+96-8100-rev-e-2002_servo_following_errors_10,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash,BACKLASH;ENCODER;LEAD SCREW;SERVO MOTOR,17,17,18,18,458,source_pdf_text,False,False,"ACCURACY / BACKLASH
+Accuracy complaints are usually related to tooling, programming, or fixturing problems. Eliminate these
+possibilities before working on the machine.
+Poor mill table-positioning accuracy.
+ Check for backlash in the lead screw as outlined below:
+ Check parameters for that axis
+ Check for a loose encoder on the servo motor. Also, ensure the key in the motor or the lead screw
+is in place and the coupling is tight (Brush machines only)."
+96-8100-rev-e-2002_lead_screw_backlash_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,BACKLASH,18,18,19,19,297,source_pdf_text,False,False,"NOT EXCEED .0002.
+An alternate method for checking backlash is to place the dial indicator as shown in Fig. 1-1 and manually
+push on the mill table in both directions. The dial indicator should return to zero after releasing the table.
+NOTE: The servos must be on to check backlash by this method."
+96-8100-rev-e-2002_lead_screw_backlash_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,BACKLASH,19,19,20,20,297,source_pdf_text,False,False,"NOT EXCEED .0002.
+An alternate method for checking backlash is to place the dial indicator as shown in Fig. 1-2 and manually
+push on the mill table in both directions. The dial indicator should return to zero after releasing the table.
+NOTE: The servos must be on to check backlash by this method."
+96-8100-rev-e-2002_lead_screw_backlash_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;tool_changer,ATC;BACKLASH;LEAD SCREW;MOTOR COUPLING;THRUST BEARING,19,20,20,21,1645,source_pdf_text,False,False,"2. Manually push up and down on the spindle head while listening for a clunk. Also, watch for any
+rapid change in the dial indicator. Either of these indicate possible backlash.
+NOTE: Servos must be on to check for backlash in the Z-axis.
+NOTE: Do not mistake deflection for backlash in the system.
+Figure 1-3 Dial indicator in position to check Z-axis.
+If backlash is found in the system, check for the following possible causes:
+ Loose SHCS attaching the ball nut to the nut housing. Tighten the SHCS as described in
+Mechanical Service.
+ Loose SHCS attaching the nut housing to the mill table, spindle head, or saddle, depending on the
+axis. Tighten the SHCS as described in Mechanical Service.
+ Loose clamp nut on the bearing sleeve. Tighten the SHCS on the clamp nut.
+ Loose motor coupling. Tighten as described in Mechanical Service.
+ Broken or loose flex plates on the motor coupling.
+NOTE: The coupling cannot be serviced in the field and must be replaced as a unit
+if it is found to be defective.
+ Loose SHCS attaching the bearing sleeve to the motor housing. Tighten as described in ""Lead
+Screw Removal and Installation"".
+ Defective thrust bearings in the bearing sleeve. Replace the bearing sleeve as outlined in ""Bearing
+Sleeve Removal and Installation"".
+ Loose SHCS attaching the axis motor to the motor housing. If the SHCS are found to be loose,
+inspect the motor for damage and if none is found, tighten as described in ""Axis Motor Removal/
+Installation"". If damage is found, replace the motor.
+ Incorrect backlash compensation number in the parameter in the machine. Check Parameters 13,
+27, and 41.
+ Worn lead screw."
+96-8100-rev-e-2002_servo_following_errors_11,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;regen_spindle_drive;control_electronics,DRIVER PCB;ELECTRICAL SERVICE;OVERCURRENT;SERVO MOTOR;SERVO MOTOR VIBRATION,21,21,22,22,736,source_pdf_text,False,False,"VIBRATION
+Excessive servo motor vibration.
+ Swap the suspected bad servo motor with a known good driver and check to see if there is a driver
+problem. If needed, replace the DRIVER PCB (""Electrical Service"" section).
+ Check all Parameters of the suspected axis against the Parameters as shipped with the machine. If
+there are any differences, correct those and determine how the Parameters were changed.
+ A bad motor can cause vibration if there is an open or short in the motor. A short would normally
+cause a GROUND FAULT or OVERCURRENT alarm; check the ALARMS. An ohmmeter applied to the
+motor leads should show between 1 and 3 ohms between leads, and over 1 megohm from leads to
+chassis. If the motor is open or shorted, replace."
+96-8100-rev-e-2002_servo_following_errors_12,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive,BACKLASH;BINDING;LEAD SCREW;OVERHEAT;SERVO MOTOR;SERVO MOTOR OVERHEATING,21,21,22,22,543,source_pdf_text,False,False,"OVERHEATING
+Servo motor overheating.
+ If a motor OVERHEAT alarm occurs (ALARMS 135-138), check the Parameters for an incorrect
+setting. Axis flags in Parameters 1, 15, or 29 can invert the overheat switch (OVER TEMP NC).
+ If the motor is actually getting hot to the touch, there is excessive load on the motor. Check the users
+application for excessive load or high duty cycle. Check the lead screw for binding (""Accuracy/
+Backlash"" section). If the motor is binding by itself, replace in accordance with ""Axis Motor Removal/
+Installation""."
+96-8100-rev-e-2002_servo_following_errors_13,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;control_electronics,DC BUS;DRIVER CARD;ELECTRICAL SERVICE;ENCODER;FOLLOWING ERROR;MOTOR WIRING;SERVO ERROR TOO LARGE;SERVO MOTOR,21,21,22,22,597,source_pdf_text,False,False,"FOLLOWING ERRORS
+FOLLOWING ERROR (Brush Machines only) or SERVO ERROR TOO LARGE alarms 103-
+106, 187 occur on one or more axes sporadically.
+ Check DC bus voltage on diagnostics page #2 (brush machines only). Verify this voltage on the drive
+cards in the control panel. If it is at the low side of the recommended voltages, change the transformer
+tap to the next lower voltage group as explained in the Installation Manual.
+ Check motor wiring for a short.
+ Check driver card (""Electrical Service"").
+ Check servo motor (""Axis Motor Removal/Installation"").
+ Check encoder (brush machines only)"
+96-8100-rev-e-2002_servo_following_errors_14,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;regen_spindle_drive;air_lubrication,BINDING;COUNTERBALANCE;DRIVE FAULT;LEAD SCREW;OVERCURRENT,21,22,22,23,386,source_pdf_text,False,False,"DRIVE FAULT / OVERCURRENT
+Z-axis motor overcurrent.
+ Alarm not cleared
+ Low counterbalance pressure
+ Check Z axis parameters
+ Check the lead screw for binding
+ Check motor and cable for shorts
+ Check amplifier (drive card on a VF-E)
+VF-6 with Z axis brake only
+ Brake power fuse blown
+ Brake power transformer blown
+ Brake power rectifier blown
+ Cabling pinched
+ Brake failed"
+96-8100-rev-e-2002_lead_screw_backlash_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;air_lubrication,LEAD SCREW;LUBE;LUBRICATION,22,22,23,23,1629,source_pdf_text,False,False,"LEAD SCREWS - VISUAL INSPECTION
+The three main causes of Lead Screw failure are:
+Loss of Lubrication
+Contamination
+Machine Crash
+Wear of the Nut balls and the screw threads is generally a non-issue under proper operating conditions.
+Each type of suspect cause will leave telltale signs on the Lead Screw itself.
+Loss of Lubrication:
+The lubrication system of the machine provides a layer of oil for the Lead Screw components to operate on,
+eliminating metal-to-metal contact. Should a problem with the lubrication system develop, that failure will
+accelerate all wear issues.
+1. Dry metal-to-metal contact following lube breakdown will create intense heat at the contact points.
+The Nut balls will weld to the Nut races due to the heat and pressure of the preload. When move-
+ment of the Lead Screw continues, the welds will be broken, ripping off particles of both the balls
+and the races. This loss of diameter will reduce the preload, reducing machine accuracy.
+Lead Screws with this type of wear, but no screw surface marring, can be repaired by the factory.
+2. A second cause of wear of the Lead Screws is material fatigue. Material fatigue typically occurs at
+the end of the Lead Screw service life. Signs of material fatigue include black, contaminated
+coolant, pitting of the screw surface, loss of preload, and metal flakes on the Lead Screw.
+Lead Screws suffering from material fatigue are not repairable and are considered scrap.
+Contamination:
+Contamination of the lubrication and/or coolant systems of the machine will produce problems with the Lead
+Screws.
+Check the condition of the lube on the Lead Screw threads."
+96-8100-rev-e-2002_air_lubrication_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,LUBE,22,22,23,23,243,source_pdf_text,False,False,"1. If the lube is wet and clean, this indicates a properly functioning lube system.
+2. If the lube is thick and dark, but free of metal chips, the lube itself is old and must be changed out.
+The entire system should be cleaned of the old lube."
+96-8100-rev-e-2002_lead_screw_backlash_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;air_lubrication,LEAD SCREW;LUBE,22,23,23,24,607,source_pdf_text,False,False,"3. If the lube is wet and black, the lube system has been contaminated by metal particles. Inspect
+the Lead Screws for wear.
+Contamination of the lube and/or coolant systems can be caused by a wearing Lead Screw, or by metal chips
+entering the systems through open or loose way covers. Check all way covers and seals for excessive clear-
+ances.
+Machine Crash:
+A hard machine crash can cause a Lead Screw to lock up. The static overload created during a machine crash
+can break apart the Nut balls, denting the thread surfaces. Turning the Nut by hand will result in an obvious
+grinding feeling and/or sound."
+96-8100-rev-e-2002_lead_screw_backlash_06,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,LEAD SCREW,23,23,24,24,130,source_pdf_text,False,False,"CLEANING
+In most cases, a thorough cleaning of the suspect Lead Screw will resolve bad screw issues, including noise
+complaints."
+96-8100-rev-e-2002_air_lubrication_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,LUBE,23,23,24,24,151,source_pdf_text,False,False,"2. Visually inspect the screw threads. Look for metal flakes, dark or thick lube, or contaminated
+coolant: See Visual Inspection - Contamination above."
+96-8100-rev-e-2002_lead_screw_backlash_07,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,LEAD SCREW,23,23,24,24,341,source_pdf_text,False,False,"3. Use alcohol, or other approved cleaning agents, to wash the screw.
+CAUTION! Do not use detergents, degreasers, or solvents to clean Lead Screws or
+their components. Do not use water-based cleaners to avoid rust.
+4. Jog the Nut to the other end of its travel. If metal flakes are now present on the screw threads, you
+may have wear issues."
+96-8100-rev-e-2002_tool_changer_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer;air_lubrication,AIR PRESSURE;ATC;SHUTTLE;TOOL CHANGE;TOOL CHANGER,24,25,25,26,5285,source_pdf_text,False,False,"DEFLECTION
+Deflection is usually caused by ATC misalignment, and sometimes caused by damaged or poor quality tooling,
+a damaged spindle taper, or a damaged drawbar or poor air supply. Before beginning any troubleshooting,
+observe the direction of the ATC deflection.
+During a tool change, ATC appears to be pushed down.
+ Check to see if pull studs on the tool holder are correct and tight.
+ Check the adjustment of the Z offset (""Setting Parameter 64"").
+NOTE: If the offset is incorrect a tool changer crash can occur and a thorough
+inspection of the ATC will be necessary.
+ Check the adjustment of the Z offset. Check parameters 71, 72, and 143 against the values that
+are in the documentation sent with the machine.
+ Ensure the tool holders are held firmly in place by the extractor forks.
+ Ensure the balls on the drawbar move freely in the holes in the drawbar when the tool release
+button is pressed. If they do not move freely, the ATC will be pushed down about 1/4"" before the
+tool holder is seated in the taper, resulting in damage to the roller bolts on the ATC shuttle.
+Replace the drawbar.
+ Check Drawbar height adjustment.
+ If TSC, check for excessive coolant tip wear.
+Tool holder sticking in the spindle taper causes the ATC to be pulled up as the spindle
+head is travelling the distance specified in parameter 71; accompanied by a popping noise
+as the tool holder pops out of the spindle taper.
+NOTE: This problem may occur after loading a cold tool into a hot spindle (a result
+of thermal expansion of the tool holder inside the spindle taper. It may also
+occur in cuts with heavy vibration. This also is the result of thermal expansion.
+If sticking only occurs during these situations, check your application to ensure
+proper machining techniques are being used. If tool is pulled out of extractors
+due to a tool being stuck in the taper then the unclamp switch is not adjusted
+correctly or the switch could be bad.
+ Check the condition of the customers tooling, verifying the taper on the tool holder is ground and
+not turned. Look for damage to the taper caused by chips in the taper or rough handling. If the
+tooling is suspected, try to duplicate the symptoms with different tooling.
+ Check the condition of the spindle taper. Look for damage caused by chips or damaged tooling.
+Also, look for damage such as deep gouges in the spindle taper caused by tool crashing. See
+""Spindle Assembly"" section for spindle cartridge replacement.
+ Duplicate the cutting conditions under which the deflection occurs, but do not execute an auto-
+matic tool change. Try instead to release the tool using the tool release button on the front of the
+spindle head. If sticking is observed, the deflection is not caused by improper ATC adjustment, but
+is a problem in the spindle or tool release piston. See the ""Spindle Assembly"" section in Mechani-
+cal Service for spindle cartridge replacement.
+ Check air supply pressure it should be 85 psi (min). An air pressure drop of no more than 10 psi
+during tool release is acceptable. An air pressure drop greater than 10 psi is caused by a supply
+line restriction or an undersize supply line. Use of quick couplers (1/4"") can cause restriction.
+Directly connecting the air hose to a barb fitting can help.
+During a tool change, ATC appears to be pulled up; no popping noises.
+ Check the adjustment of the Z offset (""Setting Parameter 64"" section).
+NOTE: If the offset is incorrect, a tool changer crash can occurred, and a thorough
+inspection of the ATC will be necessary.
+ Ensure the roller bolts on the shuttle of the ATC are tight against the V-guides on the ATC holding
+arm. If the lower right roller bolt is loose against the V-guide, the upper right bolt is probably bent.
+See the following section (""ATC Crashing"") or ""Roller Bolt Replacement"", for roller bolt replace-
+ment.
+NOTE: Bent roller bolts are a symptom of another problem with the ATC. Repair the
+bent roller bolt and then isolate the ATC problem.
+ Check Parameter 71 against the values that are in the documentation sent with the machine.
+ Ensure the balls on the drawbar move freely in the holes in the drawbar when the tool release
+button is pressed. If they do not move freely, the ATC will be pushed down about … before the tool
+holder is seated in the taper, resulting in damage to the roller bolts on the ATC shuttle. Replace
+drawbar.
+Tool holders twist against extractor fork during a tool change.
+ Check the alignment of the ATC in the X and Y axes (""Automatic Tool Changer Alignment"" section).
+Tool holders spin at all pockets of the ATC when the ATC shuttle retracts.
+ ATC is misaligned in the Y axis. Realign ATC (""Automatic Tool Changer Alignment"" section).
+NOTE: Observe the direction the tool holder rotates, as this will be the direction in
+which the Y axis of the ATC needs to be moved.
+Tool holders spin only at certain pockets of the ATC when the ATC shuttle retracts.
+ Check all the extractor forks to ensure they are centered in the pocket of the ATC. Also, see
+above. See ""Extractor Fork Replacement"" section, if necessary.
+NOTE: If the ATC shows the problem as described here, each extractor fork must be
+checked and centered to eliminate the possibility of the ATC being aligned
+against an incorrectly-centered fork."
+96-8100-rev-e-2002_tool_changer_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer,ATC;CAROUSEL;SHUTTLE;TOOL CHANGE;TURRET,26,26,27,27,2734,source_pdf_text,False,False,"CRASHING
+The most common ATC crashes are outlined as follows:
+Shuttle crashes into spindle when a tool change is commanded (tool holder is in the pocket
+facing the spindle head).
+ Rotate the carousel to an empty pocket. Refer to the Programming and Operation manual for
+correct operation.
+NOTE: This crash is fairly common and is a result of operator error. If the ATC is
+stopped in the middle of tool change cycle, the operator must command the
+ATC to an empty pocket before the machine will operate correctly. Repeated
+crashes of this type can damage the I/O board, the slip clutch, and the shuttle
+motor in the ATC.
+During a tool change spindle crashes into top of the tool holder after a turret rotation.
+When the spindle head moves down over the top of the tool holder during a tool change, the pull stud will bind
+inside the drawbar bore of the spindle, forcing the ATC down, breaking the carousel. Bending the upper right
+roller bolt on the ATC shuttle or completely breaking it off is also possible. Tool holder is not held correctly in
+the extractor fork, possibly held only in one side of the extractor and at an odd angle.
+ Check all of the extractor forks on the ATC.
+During a tool change spindle crashes into top of the tool holder after a turret rotation.
+The balls in the drawbar do not move freely, causing the ATC to be forced down far enough to break the carou-
+sel. Bending the upper right roller bolt on the ATC shuttle or completely breaking it off is also possible.
+ Ensure the balls on the drawbar move freely in the holes in the drawbar when the tool release
+button is pressed. If this failure occurs, check all of the extractor forks on the ATC for damage and
+repair the spindle drawbar.
+ Check drawbar height and set according to the appropriate section, if necessary.
+ATC properly deposits a tool holder in the spindle, but the tools are dropped onto the
+machine table when the shuttle retracts.
+ Inspect the balls and the Belleville springs in the drawbar. See appropriate section and replace
+drawbar.
+The part or fixture on the mill table crashes into long tooling or into the ATC itself when
+machining.
+ Either reposition the tools to remove the interference, or program the carousel to rotate long tooling
+out of the way of the part (USE THIS ONLY AS A LAST RESORT). CAUTION! If the carousel has to
+be programmed to rotate long tools clear of the part, the correct carousel position must be
+programmed back in before a tool change can be executed.
+NOTE: If these crashes occur, thoroughly inspect the ATC for damage. Pay close
+attention to the extractor forks, the sliding covers on the ATC carousel, and the
+roller bolts on the ATC shuttle. See appropriate section for extractor fork
+replacement."
+96-8100-rev-e-2002_tool_changer_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer,ATC;CAROUSEL;SHUTTLE;TOOL CHANGE;TOOL CHANGER,28,28,29,29,634,source_pdf_text,False,False,"BREAKAGE
+Breakage of the ATC is caused by either very hard and repeated crashes or excessive TSC coolant tip wear.
+ATC shuttle is broken off of the holding plate.
+ Carefully inspect the bosses on the shuttle casting (where the roller bolts mount) for damage to the
+threads or cracks. If any of the bosses are cracked, replace the casting. Realign the tool changer
+after repairing the machine.
+ATC extractor forks are damaged after breakage.
+ Check the condition of the mounting holes in the carousel. If the threads are damaged, they must
+be repaired or the carousel replaced. See appropriate section for extractor fork replacement."
+96-8100-rev-e-2002_tool_changer_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer,ATC;CAROUSEL;SHUTTLE;TURRET,28,29,29,30,2855,source_pdf_text,False,False,"NOISY OPERATION
+To isolate noise(s) in the ATC, carefully observe the ATC in operation and look for the following:
+ATC makes noise as the shuttle moves.
+ Check the adjustment of the roller bolts on the ATC (""Roller Bolt Replacement"" section). Loose
+roller bolts can cause the ATC to make a clunking noise when the shuttle is commanded to move.
+Tight roller bolts can cause the shuttle motor to labor excessively, possibly damaging the motor or
+the I/O board. In this case, the shuttle may also move too slowly.
+ Check for damage to the trap door on the ATC cover. See appropriate section for trap door
+replacement.
+ Check for missing plastic riders on the ATC shutter. See ""ATC Trap Door Replacement"" for shutter
+replacement.
+ Ensure the guide pin mounted to the holding plate is not bent and does not scrape the ATC cover
+during movement. See ""ATC Trap Door Replacement"" for guide pin replacement.
+ Listen for damage to the gear train in the shuttle motor. If the motor is found to be the source of
+the noise, replace the motor (""Shuttle Motor Removal"" section). DO NOT try to repair the motor or
+to further isolate the noise in the motor.
+ Check to ensure the Geneva driver on the turret motor is tight and properly adjusted (""Shuttle
+Motor Removal"" section). If the Geneva driver is found to be loose, check for damage to the
+Geneva star. Any roughness in the slots will require that it be replaced (""Geneva Star Replace
+ment"" section).
+ Check the adjustment of the Geneva driver in relation to the Geneva star (""Geneva Star Replace
+ment"" section). If the adjustment is too loose, the carousel will vibrate heavily and make a loud
+clanking noise during carousel rotation. If the adjustment is too tight, the turret motor will labor
+excessively and the carousel may appear to move erratically.
+NOTE: If the turret motor adjustment is tight for extended periods, the turret motor,
+Geneva star, and the I/O board may be damaged. If the adjustment of the
+Geneva star appears tight at some pockets and loose at others, the problem
+lies with the Geneva star. Check the concentricity of the star relative to the
+bearing housing on the carousel assembly. If the concentricity of the star is
+proven to within specification and the problem still persists, the Geneva star
+must be replaced (""Geneva Star Replacement"" section).
+ Ensure the screws holding the turret motor to the mounting plate are tight (""Turret Motor Removal""
+section).
+ Ensure the screws attaching the motor mounting plate to the shuttle casting are tight.
+ Check for excessive noise in the gear train of the turret motor. See appropriate section for turret
+motor replacement.
+NOTE: If the motor is found to be the source of noise, replace the motor assembly
+(motor, mounting plate, and Geneva driver). DO NOT attempt to repair the
+motor or to further isolate the problem in the motor."
+96-8100-rev-e-2002_tool_changer_06,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,tool_changer,tool_changer,tool_changer;spindle_orientation;regen_spindle_drive,ATC;CAROUSEL;ORIENT;SPINDLE DRIVE;SPINDLE ORIENTATION;TOOL CHANGE,29,29,30,30,572,source_pdf_text,False,False,"SPINDLE ORIENTATION
+A switch is used to sense when the pin drops in to lock the spindle. When the pin drops the switch opens,
+indicating orientation is complete. The normally-closed side of this switch is wired to the spindle drive and
+commands it into the COAST STOP condition. This is done to make sure that the spindle motor is not pow-
+ered when the pin is locking the spindle. If, during a tool change, the dogs on the spindle shaft do not align with
+the keys on the ATC carousel, the spindle orientation may be at fault.
+The orientation of the spindle is as follows:"
+96-8100-rev-e-2002_lead_screw_backlash_08,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;tool_changer;spindle_orientation;control_electronics,ATC;BINDING;ELECTRICAL SERVICE;I/O PCB;ORIENT;SHUTTLE;SPINDLE ORIENTATION;TOOL CHANGE;TOOL CHANGER;TURRET,29,30,30,31,2979,source_pdf_text,False,False,"7. If not locked after time-out time, alarm and stop.
+ATC out of orientation with the spindle. Incorrect spindle orientation will cause the ATC
+to crash as the shuttle moves. Alarm 113 will be generated.
+ Check the orientation of the spindle.
+ATC will not run.
+ In all cases where the tool changer will not run, an alarm is generated to indicate either a shuttle
+in/out problem or a turret rotation problem. These alarms will occur either on an attempt to change
+tools (ATC FWD) or ZERO RETURN the machine (AUTO ALL AXES). Use the appropriate alarm to
+select one of the following problems:
+ATC shuttle will not move; shuttle is getting power (Command a tool change and check for
+power being applied to the shuttle motor).
+ Disconnect the slip clutch arm from the ATC shuttle and ensure the shuttle can move freely. If not,
+appropriate section for shuttle adjustment.
+ Command a tool change with the shuttle disconnected.
+ If the shuttle cycles, check the slip clutch on the ATC. See ""Shuttle Installation"" section for slip
+clutch replacement.
+NOTE: The slip clutch should move the shuttle with a fair amount of force, but not so
+much that the shuttle cannot be made to slip when holding it back by hand. If
+the slip clutch is frozen, replace it. It cannot be rebuilt in the field.
+ If the ATC shuttle does not cycle, the motor has failed and must be replaced. Turn the motor by
+hand and feel for binding in the gear train in the motor.
+NOTE: The motor uses a large amount of gear reduction and should be hard to turn
+by hand.
+ATC shuttle will not move; shuttle is not getting power.
+ Command a tool change check for power being applied to the shuttle motor.
+ Check that the TC IN/TC OUT LED on the I/O PCB is illuminated when a tool change takes place.
+ If the LED lights, check the fuse FU5 on the POWER PCB or FU1 on the I/O PCB. Otherwise,
+check the I/O PCB (""Electrical Service"").
+ If the LED does not light, check cables I/O-P65-510 and I/O-P64-520.
+ Check ATC shuttle relay
+ATC turret will not rotate; turret motor is getting power.
+ Command a tool change check for power being applied to the turret motor.
+ If power is applied but the output shaft on the motor does not turn, check for binding between the
+turret motor assembly and the Geneva star (""Automatic Tool Changer"" section). Check for damage
+to the Geneva star or the Geneva driver. Check for a broken turret motor (""Turret Motor Removal""
+section).
+NOTE: Do not attempt to repair the motor or to further isolate the problem in the motor.
+ATC turret will not rotate; turret motor is not getting power.
+ Command a tool change check for power being applied to the turret motor.
+ Check that the TC CW/ TC CCW LED on the I/O PCB is illuminated when a tool change takes
+place.
+If the LED lights, check the fuse FU5 on the POWER PCB or FU1 on the I/O PCB. Otherwise,
+replace the I/O PCB (Electrical Service).
+If the LED does not light, check cables I/O-P65-510 and I/O-P64-520.
+ Check ATC turret relay."
+96-8100-rev-e-2002_spindle_gearbox_03,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,GEARBOX,31,31,32,32,223,source_pdf_text,False,False,"1.5 GEARBOX AND SPINDLE MOTOR
+The gearbox cannot be serviced in the field and must be replaced as a unit. NEVER remove a motor from a
+VF-Series mill that has a gearbox, as this will damage the gearbox and void the warranty."
+96-8100-rev-e-2002_spindle_gearbox_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,GEARBOX;HIGH GEAR;LOW GEAR;TRANSMISSION,31,31,32,32,1258,source_pdf_text,False,False,"NOISE
+When investigating complaints of gearbox noise, also refer to ""Spindle"" troubleshooting section. Gearboxes
+can be damaged by, gearshift cylinders, or bearings, resulting in noisy operation. While gearbox vibration can
+cause a poor finish on a workpiece, noisy gearbox operation may not.
+Excessive or unusual noise coming from the gearbox and/or spindle motor.
+Operate the machine in both high and low gears. Monitor the gearbox for noise in both gear positions and
+if the pitch of the noise varies with the motor or the output shaft speed.
+ If the noise only occurs in one gear throughout the entire RPM range of that gear position, the
+problem lies with the gearbox, and it must be replaced (""Spindle Motor & Transmission""
+section).
+ If the noise occurs in both gear positions, disconnect the drive belt and repeat the previous step.
+If the noise persists, the gearbox is damaged and must be replaced, (""Spindle Motor &
+Transmission"" section).
+ With the drive belt disconnected, run the machine at 1000 RPM in high gear. Command a change
+of direction and listen for a banging noise in the gearbox as the machine slows to zero RPM and
+speeds back up to 1000 RPM in reverse. If the noise occurs, the motor has failed and the
+gearbox must be replaced."
+96-8100-rev-e-2002_spindle_gearbox_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,GEARBOX;LOW GEAR;TRANSMISSION,31,31,32,32,418,source_pdf_text,False,False,"9. Turn off high and low gear solenoids.
+ Check air supply pressure. If pressure is too low, the gears will not change.
+ Check the air solenoid assembly on the solenoid bracket (rear of gearbox). If the solenoid
+operates properly and the limit switches on the gearbox operate properly, the problem lies with the
+gear change piston. Replace the gearbox (""Spindle Motor & Transmission"" section).
+ Check contactor CB4."
+96-8100-rev-e-2002_spindle_gearbox_06,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,spindle_gearbox,spindle_gearbox,spindle_gearbox,TRANSMISSION,32,32,33,33,325,source_pdf_text,False,False,"LOW PRESSURE ALARM
+Alarm 179 (Low Pressure Transmission Oil) has been triggered.
+ Check for low oil supply in reservoir.
+ Check to see that pump motor is running.
+ Check for an air leak in the suction side of the pump.
+ Check for a bad pressure sensor.
+ Check for a broken or damaged cable.
+ Check for a worn pump head."
+96-8100-rev-e-2002_regen_spindle_drive_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,regen_spindle_drive,spindle_drive,regen_spindle_drive,OVERHEAT,34,34,35,35,1293,source_pdf_text,False,False,"LOW COOLANT
+Alarm 151, ""Low Thru Spindle Coolant""
+ Check coolant tank level.
+ Check for slow coolant drainage from machine enclosure.
+ Read the filter gauges and check the intake strainer to ensure there is no clogging. Read gauges
+with TSC running with no tool in spindle. Check coolant lines for any clogging or kinking. Clean or
+replace as needed.
+ If received at start-up, check that the breaker hasn’t tripped and that the pump is turning. Check
+the electrical continuity of cables.
+ Check for overheating TSC motor. Single phase motors have a built in thermal cut out. Three phase
+TSC motors have a thermal circuit that interrupts power to the relay coil.
+ For old TSC system, if the drawbar was replaced, check that the hole through the drawbar is 0.156
+dia. not 0.190 dia. Replace if it is 0.190.
+ Check for pressure switch failure (refer to ""Testing the Coolant Pressure Switch"" section), and
+replace if necessary. Check ""LO CLNT"" bit in the diagnostics display (0 = pressure on, 1= pres
+sure off). Leaking pressure switches can also give intermittent alarms.
+ Check the pump pressure with TSC running and no tool in the spindle. Normal pressure is 75-95
+PSI. Replace the pump if pressure is 60 psi or less.
+ Another alarm generated during TSC operation can cause this alarm."
+96-8100-rev-e-2002_lead_screw_backlash_09,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash,BINDING,36,36,37,37,1111,source_pdf_text,False,False,"1.7 CHIP CONVEYOR
+Chip conveyor does not turn
+ Check that Parameter 209 bit switch ENA CNVR is enabled.
+ Check that the front enclosure door is completely closed and door switches function properly.
+ Check that hub is connected to auger with bolt.
+ Check that all conveyor fuses are intact. [Single phase motor uses 2 fuses (VF-1/2 ; Three
+phase motor uses 3 fuse (VF-3,4,6,8)]
+ Check thermal reset button on conveyor motor body.
+NOTE: Thermal reset indicates further problems: Ensure conveyor is not jammed, all
+necessary fuses are intact, check motor connector and I/O Board conveyor
+relays
+Chip conveyor is moving in the wrong direction
+ Toggle Parameter 209 bit switch REV CNVR to reverse direction of conveyor.
+ Check I/O Board conveyor relays.
+Chip conveyor reverses, then shuts down
+ Check that the conveyor is free of obstruction.
+ Check that Parameters are at Default settings.
+ Check that Discrete Input CNVYR (conveyor overload) cycles from 0 - 1 or 1 - 0 (0 means overload
+condition).
+NOTE: If it does cycle check the motor for burnout or binding. If it does not cycle check
+the I/O board."
+96-8100-rev-e-2002_air_lubrication_04,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,HYDRAULIC,37,37,38,38,134,source_pdf_text,False,False,"160
+psi
+Hydraulic
+Tank
+Pressure
+Gauge
+Pressure
+Switch
+Cable
+Pressure
+ManifoldOutlet
+Pressure
+Switch
+Fill Valve
+Hydraulic Tank Assembly"
+96-8100-rev-e-2002_air_lubrication_05,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,HYDRAULIC,37,39,38,40,3291,source_pdf_text,False,False,"HS-3, 3R 1150 1000
+The table below lists observable machine conditions and their probable cause. Find the appropriate corrective
+action step to fix the observed faults.
+                                         
+     
+             
+                  
+             
+            
+
+
+             
+                 
+                 
+               
+                       
+                                  
+                                     
+
+
+
+               
+              
+                   
+             
+            
+            
+                                    
+               
+
+
+
+
+                
+                                        
+                
+            
+             
+            
+                                     
+                              
+
+
+
+Corrective Action
+Tools Required
+Hand tools.
+Charge/Discharge Kit P/N 35-4050A
+Hydraulic Hand Pump Kit P/N 93-0206
+1. Check for sufficient oil in system: Block spindle head at top of travel. Attach charge/discharge kit
+to schrader valve, slowly turn t-handle clockwise to begin releasing pressure and make one of the
+following observations:
+a) If oil is immediately present stop discharging, there is sufficient oil in the system. There
+are two courses of action at this point; add nitrogen to system to obtain top of travel
+pressure specification. This step may last indefinitely depending on the severity of the
+leak, or what caused it. The second course of action is to proceed to Corrective Action 2 if
+it is felt that the leak is substantial.
+b) If nitrogen gas is immediately present stop discharging and proceed to Corrective Action 2.
+There is not enough oil in the system.
+2. Block spindle head at bottom of travel (if the cylinder is to be replaced block the head in the lowest
+position that will permit access to the rod attachment).
+a) Carefully drain remaining gas and oil.
+b) Replace faulty component(s). (SAE straight thread o-ring fittings are to be lubricated with a
+film of hydraulic oil prior to install) Note that machines built after August, 1999 use straight
+thread fittings with o-rings, and sealed connectors on the switch wires. Earlier machines
+have pipe thread connections. Replacing older style components with newer style requires
+that all components of the counter balance system be changed as well as the cable back
+to the control.
+c) Pump new Mobil DTE-25 oil (see chart for qty.) into system using Hydraulic Hand Pump
+Kit. (see Hydraulic Hand Pump Instructions below).
+Machine Quarts of Mobile DTE-25 # of Pump Strokes
+VF-1-11, VR-11, HS-1 2 per tank 93
+VB-1, HS-3 3 per tank 0140
+d) Pressurize with nitrogen using charge/discharge kit to spec. at top of travel."
+96-8100-rev-e-2002_air_lubrication_06,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,HYDRAULIC,40,40,41,41,636,source_pdf_text,False,False,"LEAK FAILURES
+Leaks can occur at any fitting connection, at the hydraulic cylinders rod seal (where the rod enters
+the cylinder), at the cylinders piston seal, or through hose failures. Inspections for leaks are visual
+although rod seal leaks may be inconclusive because of way oil spatter. Piston seal leaks, if ad-
+vanced, exit the top end of the cylinder and oil can be seen at the vent area. Early piston leaks
+accumulate over time on top of the piston to about ¾ high before they are pushed out the cylinder
+at top of travel. Leaks are normally very slow and machines can operate until the pressure switch
+sends an E-stop alarm."
+96-8100-rev-e-2002_lead_screw_backlash_10,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,lead_screw_backlash,axis_mechanical,lead_screw_backlash;air_lubrication,BINDING;COUNTERBALANCE;HYDRAULIC,40,40,41,41,1474,source_pdf_text,False,False,"MECHANICAL DIAGNOSIS
+Important! Hydraulic counterbalance oil contains red dye for easier recognition.
+Noise in the system
+ Slight moan or creaking at slow speeds is normal for rubber seals.
+ While Z-axis is in motion a whistle sound at tank location is normal fluid flow.
+ Verify cylinder is seated correctly in counterbore. If not then reseat the cylinder.
+ Bumping or grinding noise indicates a mechanical cylinder failure. Replace cylinder assembly.
+ Look for galling and wear on cylinder shaft. If so replace the cylinder assembly.
+System is not holding pressure and/or has an E-STOP (Alarm 107) that cannot be reset.
+Check for accurate pressure readings. If low then the following items need to be checked:
+ Check for leaks at all cylinder fittings. If leaking then replace cylinder assembly.
+ Collapse the lower Z-axis waycover and look for any red oil pooled at the bottom of the base. If so,
+then fittings or seals could be damaged. Replace cylinder assembly.
+ Remove cylinder vent fitting. If there is red oil inside the vent cavity then the cylinder assembly
+needs replacement.
+ Check for leaks at all hydraulic tank fittings. If leaking then tank assembly needs replacement.
+Over Current alarms
+ Pressure is set too high.
+ Pressure is set too low.
+ Too much oil has been added. (Insufficient gas volume causes large pressure rise)
+ Hydraulic cylinder is binding or is misaligned. Replace cylinder assembly.
+ Length of replacement cylinder incorrect."
+96-8100-rev-e-2002_air_lubrication_07,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,LUBE,42,42,43,43,1102,source_pdf_text,False,False,"NOYES
+Manually move the pallet to a known location,
+either on the receiver, or on the APC
+to engage the associated switch (see Figure 1).
+Verify alignment of pin and bushing (see Figure 2).
+Run M17 to
+open the door and
+unclamp the receiver.
+If needed, rotate the chain to a known location
+that compliments the pallet locations. Use
+the sprocket rotation tool to move the
+chain (see Figure 3).
+Run M18 to
+close the door and
+clamp the receiver.
+Run M50 to complete a pallet
+cycle. The completed M50
+will clear the Pallet Change
+Incomplete variable.
+Power ON the VMC.
+Do not push Power Up Restart.
+Do not Zero Return, auto all axes.
+Do not Zero a single axis. Do not
+Jog or otherwise move the X and Y axes.
+With power and air supply ON, have an assistant
+manually actuate the solenoids on the lube panel to
+open the APC door and unclamp the receiver. Constant
+pressure must be maintained on the actuators to
+provide a continuous air flow (see Figure 4).
+Release the solenoid
+actuators.
+Zero the axes.
+NOYES * *
+* * ***
+*
+* *
+*
+****
+*
+There are 5 switches involved in the location of the pallets and chain."
+96-8100-rev-e-2002_air_lubrication_08,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,air_lubrication,pneumatic_lubrication,air_lubrication,AIR PRESSURE,42,44,43,45,1639,source_pdf_text,False,False,"2 chain switches on the APC (Pin Clear Switches).
+If the power to the VMC has been shut down either intentionally or by
+power outage, damage may occur to the APC pallet, the receiver, or
+the drive chain if the X or Y axes are moved in the VMC at power ON.
+At power ON the VMC will investigate the pallet and chain location and
+alarm if either an unknown chain location or unknown pallet location are
+detected.
+At the beginning of the APC M50, a Pallet Change Incomplete variable is set to 1 and
+reset to 0 at the end. The VMC will not operate properly if a pallet change
+(M50) has not been completed.
+**
+***
+** **
+Manually move the pallet to a known location,
+either on the receiver, or on the APC
+to engage the associated switch (see Figure 1).
+Verify alignment of pin and bushing (see Figure 2).
+If needed, rotate the chain to a known location
+that compliments the pallet locations. Use
+the sprocket rotation tool to move the
+chain (see Figure 3).
+Alignment pin
+Receiver
+Pallet
+Pallet Clamp Switch
+Alignment Pin Receiver Bushing
+Figure 1
+Pallet known locations. Pallet 1 is on the receiver and engaging
+the Pallet Clamped switch. Pallet 2 is on the APC and engaging
+the Pallet Home Switch under the control panel.
+Figure 2
+Alignment Pin and Bushing alignment must be verified
+when manually positioning a pallet on the receiver.
+Figure 3
+With pallet 2 clamped on the receiver, the trip
+block must be engaging the switch as shown.
+Figure 4
+Press and hold the solenoid actuation buttons to
+keep air pressure flowing to unclamp the receiver
+and hold the door open. If the buttons are released
+the door will close and the receiver will clamp."
+96-8100-rev-e-2002_servo_following_errors_15,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,servo_following_errors,axis_servo,servo_following_errors;lead_screw_backlash;tool_changer;spindle_gearbox;regen_spindle_drive;control_electronics,ATC;AUX AXIS;BINDING;CAROUSEL;COMMUNICATION;DRIVE FAULT;ENCODER;FOLLOWING ERROR;GEARBOX;MOCON;OVERHEAT;POWER SUPPLY;PROCESSOR;REGEN;SERVO ERROR TOO LARGE;TOOL CHANGE;TOOL CHANGER,45,47,46,48,6327,source_pdf_text,False,False,"ELECTRICAL ALARMS
+Axis Drive Fault Alarm
+ Blown amplifier - indicated by a light at bottom of amplifier when power is on. Replace amplifier.
+ Amplifier or MOCON is noise sensitive. If this is the case, the alarm can be cleared and the axis
+will run normally for a while.
+To check an amplifier, switch the motor leads and control cables between the amplifier and the one
+next to it. If the same problem occurs with the other axis, the amplifier must be replaced. If the
+problem stays on the same axis, either the MOCON or control cable. The problem could also be
+the axis motor itself, with leads either shorted to each other or to ground, which is very rare.
+ Amplifier faulting out for valid reason, such as overtemp, overvoltage, or +/-12 volt undervoltage
+condition. This usually results from running a servo intensive program, or unadjusted 12 volt power
+supply. Replace amplifier.
+Overvoltage could occur if regen load is not coming on, but this does not usually happen. The
+problem could also be the axis motor itself, with leads either shorted to each other or to ground,
+which is very rare.
+Axis Overload
+ The fuse function built into the MOCON has been overloaded, due to a lot of motor accel/decels, or
+hitting a hard stop with the axis. This safety function protects the amplifier and motor, so find the
+cause and correct it. If the current program is the cause, change the program. If the axis hits a
+hard stop, the travel limits may be set wrong.
+Phasing Error
+ The MOCON did not receive the proper phasing information from the motors. DO NOT RESET the
+machine if this alarm occurs. Power the machine down and back up. If the problem persists, it is
+probably a broken wire or faulty MOCON connectors. This problem could also be related to the
+Low Voltage Power Supply. Check to see if the LVPS is functioning properly.
+Servo Error Too Large
+ This alarms occurs when the difference between the commanded axis position and the actual
+position becomes larger than the maximum that is set in the parameter.
+This condition occurs when the amplifier is blown, is not receiving the commands, or the 320 volt
+power source is dead. If the MOCON is not sending the correct commands to the amplifier, it is
+probably due to a broken wire, or a PHASING ERROR that was generated.
+Axis Z Fault or Z Channel Missing
+ During a self-test, the number of encoder counts was found to be incorrect. This is usually caused
+by a noisy environment, and not a bad encoder. Check all shields and grounds on the encoder
+cables and the motor leads that come into the amplifiers. An alarm for one axis can be caused by
+a bad grounding on the motor leads of another axis.
+Axis Cable Fault
+ During a self-test, the encoder cable signals were found to be invalid. This alarm is usually caused
+by a bad cable, or a bad connection on the motor encoder connectors. Check the cable for any
+breaks, and the encoder connectors at the motor controller board. Machine noise can also cause
+this alarm, although it is less common.
+Alarm 101, ""MOCON Comm. Failure""
+ During a self-test of communications between the MOCON and main processor, the main
+processor does not respond, and is suspected to be dead. This alarm is generated and the servos
+are stopped. Check all ribbon cable connections, and all grounding. Machine noise can also
+cause this alarm, although it is less common.
+Alarm 157, ""MOCON Watchdog Fault""
+ The self-test of the MOCON has failed. Replace the MOCON.
+Alarm 222, C Phasing Error
+ If this alarm occurs on a VB-1, it is probably because parameter 176 bit 3 (SP AXIS DISABLED) is
+set to 0. It should be set to 1.
+Rotary CRC Error Alarm 261
+ This alarm is normally the result of an incomplete software installation. To correct this error,
+Change Setting 30 to any selection but OFF (note the original selection). Then go to parameter 43
+and change one of the bits from 1 to 0 or vice versa and press WRITE (The bit must be changed
+from its original value to its alternate value). Simply changing the Setting and Parameter bit from
+one value to another and then back again corrects the fault, and will clear any further occurrences
+of the alarm. Change the bit and Setting 30 back to their original values. Press Reset to clear the
+alarms or cycle power to the machine.
+Alarm 354 - Aux Axis Disconnected
+When this alarm is generated, do not press RESET. Turn Setting 7 OFF. Enter DEBUG mode, then view the
+Alarms/Messages page. On the Messages page, a code will appear similar to WO1. The list of codes and
+their descriptions appears below:
+WO1 Power was just turned on or failed. Check the ribbon cables from the Aux Axis PCB to the proces-
+sor for correct routing. Check for communication problems between the processor and the Aux
+Axis PCB.
+WO2 Servo following error too large. Check the encoder for contamination or dirt. Check for an intermit-
+tent connection at both ends of the motor cable.
+WO3 Emergency Stop. The E-STOP button was pressed, or an E-STOP condition occurred.
+WO4 High load. Check for binding in the tool changer gearbox and motor. Rotate the carousel by hand
+and feel for any binding. Make sure the tool holders are the correct weight.
+WO5 Remote RS-232 commanded off. Check the ribbon cable and the voltage to the Aux Axis PCB.
+Check for 115VAC (minimum) to the Aux Axis PCB from the main transformer. Check the fuse
+holder and the fuse that is protecting this circuit.
+WO6 Air or limit switch or motor overheat. Check that the motor is not hot. Check for any binding in the
+motor. Check for overweight tooling.
+WO7 Z channel fault. Either the encoder or the cable is bad. Change the encoder first, as it is easier to
+change than the cable. If the problem persists, change the cable.
+WO8 Over-current limit, stalled or PCB fault. Check for binding in the tool changer gearbox. Make sure
+the belt is not too tight. Ohm out the motor cable, checking pins G to F (should be open), G to H
+(should be open), and F to H (should read between 2.5 and 5 ohms). Check all the connections on
+the Aux Axis PCB and motor cable.
+WO9 Encode ES. Z channel is missing. Bad encoder or cable. See WO7.
+WOA High voltage. Check the incoming voltage to the Aux Axis PCB. Incoming voltage must be 115
+VAC. See WO5.
+WOB Cable fault. Check the cable from the motor to the Aux Axis PCB. Check for loose connections at
+each end."
+96-8100-rev-e-2002_control_electronics_01,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,control_electronics,control_electronics,control_electronics,PROCESSOR,47,47,48,48,630,source_pdf_text,False,False,"PROCESSOR STACK DIAGNOSTIC
+(DISCONNECT CABLES FROM A NORMAL OPERATING SYSTEM)
+Remove low voltage cable from the Video & Keyboard PCB
+ Processors LED’s are normal
+ Runs fine and the CRT is Normal
+ No keypad beep
+Remove low voltage cable from the MOTIF PCB
+ Processors LED’s are normal then RUN goes out
+ No screen
+Remove the Data & or Address buss from the Video & Keyboard PCB
+ Processors LED’s Normal - then Run goes out
+Remove the Data & or Address buss from the MOTIF PCB
+ Processors LED’s Normal - then Run goes out
+Remove the Data & or Address buss from the Micro Processor PCB
+ Processors LED’s - CRT and Run are out"
+96-8100-rev-e-2002_control_electronics_02,96-8100-rev-e-2002,96-8100,VF Series Service Manual,Rev E,June 2002,primary,Haas VF Series,1,TROUBLESHOOTING,troubleshooting,control_electronics,control_electronics,control_electronics,COMMUNICATION,49,49,50,50,713,source_pdf_text,False,False,"4. Your network is running IPX/SPX protocol.
+If all of the above is correct and communications between the Haas CNC and the network are not established,
+there may be compatibility issues between an older Novell network and an NT 4.0 server. If the NWLink IPX/
+SPX Compatible Transport on the NT server is set to auto detect the protocols frame, the NT server may be
+detecting the Novell server first and setting the NWLink IPX/SPX Compatible Transport frame protocol to 802.3
+The NWLink IPX/SPX Compatible Transport required for the mills to connect to an NT server is 802.2. Since
+these two frame protocols are different the mill would never connect to the desired NT server. To remedy this
+check the following:"
