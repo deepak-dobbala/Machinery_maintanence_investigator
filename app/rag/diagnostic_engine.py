@@ -17,9 +17,9 @@ from typing import Any, Dict, List
 
 
 def _contains_any(text: str, terms: List[str]) -> bool:
-    text = text.lower()
+    text = " ".join(text.lower().split())
     return any(
-        term.lower() in text
+        " ".join(term.lower().split()) in text
         for term in terms
     )
 
@@ -46,6 +46,10 @@ def _add_candidate(
         {
             "cause": cause,
             "status": "possible",
+            "confidence_band": "unlikely",
+            "sourced": bool(
+                evidence.get("citation") and evidence.get("text", "").strip()
+            ),
             "next_check": check,
             "evidence": [
                 _make_evidence_ref(evidence)
@@ -136,7 +140,7 @@ def build_candidate_causes(
                 [
                     "jammed",
                     "jam",
-                    "shuttle",
+                    "obstruction",
                 ],
             ):
 
@@ -169,13 +173,11 @@ def build_candidate_causes(
                     "loss of power",
                     "loss of tool changer power",
                     "loss of tool-changer power",
-                    "tool changer power",
-                    "tool-changer power",
-                    "k9",
-                    "k10",
-                    "k11",
-                    "k12",
-                    "f1",
+                    "tool changer power problem",
+                    "tool-changer power problem",
+                    "electrical fault",
+                    "electrical problem",
+                    "output/input problem",
                 ],
             ):
 
@@ -206,6 +208,8 @@ def _merge_candidates(
             merged[key] = {
                 "cause": key,
                 "status": candidate["status"],
+                "confidence_band": candidate.get("confidence_band", "unlikely"),
+                "sourced": candidate.get("sourced", False),
                 "next_check": candidate["next_check"],
                 "evidence": [],
             }

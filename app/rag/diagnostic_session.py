@@ -22,8 +22,12 @@ Status values:
 
 from typing import Any, Dict, List
 
-from diagnostic_engine import diagnose
-from safety_gate import evaluate_safety
+try:
+    from .diagnostic_engine import diagnose
+    from .safety_gate import evaluate_safety
+except ImportError:
+    from diagnostic_engine import diagnose
+    from safety_gate import evaluate_safety
 
 
 VALID_STATUSES = {
@@ -247,6 +251,31 @@ class DiagnosticSession:
 
                 self._set_status(
                     "Tool-changer shuttle jam or mechanical obstruction",
+                    "supported",
+                )
+
+            if (
+                any(
+                    phrase in text
+                    for phrase in [
+                        "tool changer power problem",
+                        "tool-changer power problem",
+                        "electrical problem",
+                        "output/input problem",
+                    ]
+                )
+                and any(
+                    word in text
+                    for word in [
+                        "found",
+                        "present",
+                        "observed",
+                        "identified",
+                    ]
+                )
+            ):
+                self._set_status(
+                    "Tool-changer electrical/power or output/input problem",
                     "supported",
                 )
 

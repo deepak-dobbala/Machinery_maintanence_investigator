@@ -144,33 +144,49 @@ def exact_alarm_lookup(
 
 def semantic_lookup(
     query_text: str,
+    machine_family: Optional[str] = None,
+    machine_model: Optional[str] = None,
 ):
     """
-    Retrieve troubleshooting and related
-    diagnostic evidence.
+    Retrieve troubleshooting and related diagnostic evidence.
+
+    Optional machine_family and machine_model filters are applied
+    before the vector search.
     """
 
-    query_vector = embed_query(
-        query_text
-    )
+    query_vector = embed_query(query_text)
 
-    vector_query = (
-        db.collection(
-            COLLECTION
+    query = db.collection(COLLECTION)
+
+    if machine_family:
+        query = query.where(
+            filter=firestore.FieldFilter(
+                field_path="machine_family",
+                op_string="==",
+                value=machine_family,
+            )
         )
-        .find_nearest(
-            vector_field="embedding",
-            query_vector=query_vector,
-            distance_measure=DistanceMeasure.COSINE,
-            limit=VECTOR_LIMIT,
-            distance_result_field="vector_distance",
+
+    if machine_model:
+        query = query.where(
+            filter=firestore.FieldFilter(
+                field_path="machine_model",
+                op_string="==",
+                value=machine_model,
+            )
         )
+
+    vector_query = query.find_nearest(
+        vector_field="embedding",
+        query_vector=query_vector,
+        distance_measure=DistanceMeasure.COSINE,
+        limit=VECTOR_LIMIT,
+        distance_result_field="vector_distance",
     )
 
     results = []
 
     for doc in vector_query.stream():
-
         data = doc.to_dict()
 
         results.append(
@@ -187,7 +203,7 @@ def semantic_lookup(
             )
         )
 
-    return results
+    return results  
 
 
 def normalize_result(
@@ -450,9 +466,17 @@ def rank_results(
 def search_manual(
     query: str,
     alarm_number: Optional[str] = None,
+    machine_family: Optional[str] = None,
+    machine_model: Optional[str] = None,
 ):
     """
     Main retrieval function for the maintenance investigator.
+
+    Retrieval combines:
+      1. exact alarm lookup
+      2. filtered vector search
+
+    Exact alarm evidence is ranked ahead of semantic evidence.
     """
 
     exact_results = []
@@ -463,7 +487,9 @@ def search_manual(
         )
 
     semantic_results = semantic_lookup(
-        query
+        query,
+        machine_family=machine_family,
+        machine_model=machine_model,
     )
 
     ranked = rank_results(
@@ -474,23 +500,14 @@ def search_manual(
 
     return {
         "query": query,
-
-        "alarm_number":
-            alarm_number,
-
-        "result_count":
-            len(ranked),
-
-        "exact_alarm_count":
-            len(exact_results),
-
-        "semantic_result_count":
-            len(semantic_results),
-
-        "results":
-            ranked,
+        "alarm_number": alarm_number,
+        "machine_family": machine_family,
+        "machine_model": machine_model,
+        "result_count": len(ranked),
+        "exact_alarm_count": len(exact_results),
+        "semantic_result_count": len(semantic_results),
+        "results": ranked,
     }
-
 
 def format_citation(
     result,
@@ -531,6 +548,33 @@ def format_citation(
         f"{revision}, {page_text}"
     )
 
+def is_usable_evidence(result):
+    """
+    Reject known corrupted table chunks and text with strong
+    signs of reversed or incorrectly encoded characters.
+    """
+    chunk_id = str(result.get("chunk_id", ""))
+    text = str(result.get("text", ""))
+
+    # These two stored chunks contain confirmed corrupted table text.
+    known_corrupted_chunks = {
+        "96-8100-rev-e-2002_air_lubrication_05",
+        "96-8100-rev-c-2001_air_lubrication_05",
+    }
+
+    if chunk_id in known_corrupted_chunks:
+        return False
+
+    # Reject text with a high proportion of non-printable characters.
+    if text:
+        unusual = sum(
+            not char.isprintable() and char not in "\n\t"
+            for char in text
+        )
+        if unusual / len(text) > 0.02:
+            return False
+
+    return True
 
 def format_evidence(
     search_result,
@@ -540,9 +584,11 @@ def format_evidence(
     Produce compact evidence for an ADK agent.
     """
 
-    results = search_result[
-        "results"
-    ][:max_results]
+    results = [
+    result
+    for result in search_result["results"]
+    if is_usable_evidence(result)
+][:max_results]
 
     evidence = []
 
