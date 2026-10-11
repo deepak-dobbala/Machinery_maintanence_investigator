@@ -116,9 +116,13 @@ def build_candidate_causes(
                 text,
                 [
                     "regen load",
-                    "regen",
-                    "spindle drive",
-                    "spindle-drive",
+                    "regenerative load",
+                    "spindle drive fault",
+                    "spindle-drive fault",
+                    "spindle drive problem",
+                    "spindle-drive problem",
+                    "spindle drive overheating",
+                    "spindle-drive overheating",
                 ],
             ):
 

@@ -498,6 +498,23 @@ class DiagnosticSession:
             },
         }
 
+    @classmethod
+    def restore(
+        cls,
+        saved_state: Dict[str, Any],
+        evidence: List[Dict[str, Any]],
+    ) -> "DiagnosticSession":
+        """Restore a session snapshot without rerunning diagnosis."""
+        session = cls.__new__(cls)
+        session.alarm_number = str(saved_state.get("alarm_number", ""))
+        session.query = str(saved_state.get("query", ""))
+        session.evidence = evidence
+        session.candidate_causes = saved_state.get("candidate_causes", [])
+        session.next_check = saved_state.get("next_check", {})
+        session.observations = list(saved_state.get("observations", []))
+        session.confirmed_cause = saved_state.get("confirmed_cause")
+        return session
+
     def state(self) -> Dict[str, Any]:
 
         return {

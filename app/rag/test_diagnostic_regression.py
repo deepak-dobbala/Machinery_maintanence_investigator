@@ -112,3 +112,47 @@ class DiagnosticRegressionTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.m
+
+
+    def test_missing_measurements_do_not_propose_spindle_drive_cause(self):
+        evidence = [{
+            "evidence_id": "E-MISSING",
+            "citation": "Synthetic evaluation case",
+            "chunk_type": "observation",
+            "text": "Cosmetic damage reported; no electrical or operating measurements.",
+        }]
+        result = diagnose("122", evidence)
+        self.assertFalse(any(
+            c["cause"] == "Spindle-drive or regenerative-load condition"
+            for c in result["candidate_causes"]
+        ))
+
+
+class NextCheckAdvancementTests(unittest.TestCase):
+    def test_ruling_out_mechanical_cause_advances_to_electrical_check(self):
+        from rag.diagnostic_session import DiagnosticSession
+
+        evidence = [{
+            "evidence_id": "E113",
+            "citation": "Test manual, p. 1",
+            "chunk_type": "alarm",
+            "text": (
+                "Alarm 113 can be caused by a jammed shuttle. "
+                "A loss of power to the tool changer can also cause this."
+            ),
+        }]
+
+        session = DiagnosticSession(
+            "113",
+            "Alarm 113 Shuttle In Fault",
+            evidence,
+        )
+
+        state = session.record_observation(
+            "No jam or obstruction was found."
+        )
+
+        self.assertEqual(
+            state["next_check"]["check"],
+            "Check the tool-changer power and the manual-identified K9-K12/F1 circuits.",
+        )
