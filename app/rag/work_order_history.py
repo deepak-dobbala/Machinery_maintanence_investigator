@@ -46,6 +46,8 @@ def get_work_order_history(
             "diagnosis": row.get("diagnosis"),
             "action_taken": row.get("action_taken"),
             "resolution_status": row.get("resolution_status"),
+            "confirmation_status": row.get("confirmation_status"),
+            "synthetic": row.get("synthetic"),
             "created_at": row.get("created_at"),
             "source": row.get("source", "unknown"),
         })

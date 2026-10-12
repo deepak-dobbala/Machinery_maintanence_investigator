@@ -45,6 +45,7 @@ class DiagnosticSession:
         alarm_number: str,
         query: str,
         evidence: List[Dict[str, Any]],
+        history_records: List[Dict[str, Any]] | None = None,
     ):
 
         self.alarm_number = str(
@@ -58,6 +59,7 @@ class DiagnosticSession:
         diagnostic_result = diagnose(
             self.alarm_number,
             self.evidence,
+            history_records=history_records,
         )
 
         self.candidate_causes = (
@@ -96,11 +98,13 @@ class DiagnosticSession:
             self.next_check[
                 "safety"
             ] = {
-                "required": False,
-                "status": "complete",
+                "required": True,
+                "status": "unresolved",
                 "hazards": [],
                 "message": (
-                    "No diagnostic action is currently required."
+                    "No supported next check was derived. "
+                    "Safety and diagnostic status remain unresolved; "
+                    "do not treat this as clearance to perform work."
                 ),
             }
 
@@ -171,18 +175,28 @@ class DiagnosticSession:
             # Explicit negative finding.
             # -----------------------------------------------------
 
-            if self._is_negative_observation(
-                text
+            if self._is_negative_observation(text):
+                if self._matches_candidate(text, cause_lower):
+                    candidate["status"] = "ruled_out"
+                    continue
+
+            # Alarm 113: explicitly reporting no shuttle obstruction
+            # rules out the mechanical candidate for this observation.
+            if (
+                self.alarm_number == "113"
+                and candidate["cause"]
+                    == "Tool-changer shuttle jam or mechanical obstruction"
+                and any(
+                    phrase in text
+                    for phrase in (
+                        "no shuttle obstruction",
+                        "no obstruction",
+                        "no jam",
+                        "not jammed",
+                    )
+                )
             ):
-
-                if self._matches_candidate(
-                    text,
-                    cause_lower,
-                ):
-
-                    candidate[
-                        "status"
-                    ] = "ruled_out"
+                candidate["status"] = "ruled_out"
 
         # ---------------------------------------------------------
         # Simple manual-check interpretation.
@@ -231,7 +245,8 @@ class DiagnosticSession:
         if self.alarm_number == "113":
 
             if (
-                any(
+                not self._is_negative_observation(text)
+                and any(
                     word in text
                     for word in [
                         "jam",

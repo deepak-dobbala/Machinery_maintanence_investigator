@@ -128,7 +128,41 @@ if __name__ == "__main__":
         ))
 
 
+
+
 class NextCheckAdvancementTests(unittest.TestCase):
+    def test_ui_negative_shuttle_observation_advances_check(self):
+        evidence = [{
+            "evidence_id": "E113",
+            "citation": "Test manual, p. 1",
+            "chunk_type": "alarm",
+            "text": (
+                "Alarm 113 can be caused by a jammed shuttle. "
+                "A loss of power to the tool changer can also cause this."
+            ),
+        }]
+        session = DiagnosticSession(
+            "113",
+            "Alarm 113 Shuttle In Fault",
+            evidence,
+        )
+
+        state = session.record_observation(
+            "TEST ONLY — simulated observation: no shuttle obstruction found; "
+            "not verified on machine."
+        )
+
+        mechanical = next(
+            c for c in state["candidate_causes"]
+            if "mechanical obstruction" in c["cause"]
+        )
+        self.assertEqual(mechanical["status"], "ruled_out")
+        self.assertEqual(
+            state["next_check"]["check"],
+            "Check the tool-changer power and the manual-identified K9-K12/F1 circuits.",
+        )
+
+
     def test_ruling_out_mechanical_cause_advances_to_electrical_check(self):
         from rag.diagnostic_session import DiagnosticSession
 
@@ -155,4 +189,30 @@ class NextCheckAdvancementTests(unittest.TestCase):
         self.assertEqual(
             state["next_check"]["check"],
             "Check the tool-changer power and the manual-identified K9-K12/F1 circuits.",
+        )
+
+
+class Alarm123RegressionTests(unittest.TestCase):
+    def test_alarm_123_recognizes_documented_spindle_drive_fault(self):
+        evidence = [{
+            "evidence_id": "E123",
+            "citation": "VF Series Service Manual Rev E, manual p. 53",
+            "chunk_type": "alarm",
+            "text": (
+                "123 Spindle Drive Fault. Failure of spindle drive, motor "
+                "or regenerative load. This can be caused by a shorted "
+                "motor, overvoltage, overcurrent, undervoltage, failure "
+                "of drive, or shorted or open regen load."
+            ),
+        }]
+
+        result = diagnose("123", evidence)
+
+        self.assertFalse(result["abstained"])
+        self.assertTrue(result["candidate_causes"])
+        self.assertTrue(result["next_check"]["check"])
+        self.assertTrue(result["next_check"]["evidence"])
+        self.assertTrue(
+            all(candidate["status"] != "confirmed"
+                for candidate in result["candidate_causes"])
         )

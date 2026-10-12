@@ -1,0 +1,24 @@
+{
+  "fixture_type": "synthetic_demo",
+  "title": "Illustrative Safety Checklist",
+  "source_status": "not_verified",
+  "operational_use": false,
+  "notice": "This is fabricated prototype content, not an approved lockout/tagout procedure. It must never authorize maintenance or replace the applicable site-approved, machine-specific procedure.",
+  "items": [
+    {
+      "id": "demo-1",
+      "label": "Identify applicable energy sources",
+      "status": "requires_authorized_review"
+    },
+    {
+      "id": "demo-2",
+      "label": "Verify the approved isolation procedure",
+      "status": "requires_authorized_review"
+    },
+    {
+      "id": "demo-3",
+      "label": "Confirm required safety checks are documented",
+      "status": "requires_authorized_review"
+    }
+  ]
+}

@@ -93,10 +93,36 @@ def new_case(ctx, node_input: dict[str, Any]):
             route="case_error",
         )
 
+    # Normalize an optional leading E for alarm-specific diagnostic rules.
+    diagnostic_alarm = alarm_number.upper()
+    if diagnostic_alarm.startswith("E") and diagnostic_alarm[1:].isdigit():
+        diagnostic_alarm = diagnostic_alarm[1:]
+
+    # Historical work orders are a ranking hint only; manual evidence
+    # remains the diagnostic source of truth. Fall back safely if history
+    # is unavailable.
+    machine_model = str(node_input.get("machine_model", "")).strip()
+    history_records = []
+    history_status = "unavailable"
+    if diagnostic_alarm:
+        try:
+            from rag.work_order_history import get_work_order_history
+
+            history_result = get_work_order_history(
+                alarm_code=diagnostic_alarm,
+                machine_model=machine_model or None,
+            )
+            history_records = history_result.get("records", [])
+            history_status = "available"
+        except Exception:
+            history_records = []
+            history_status = "unavailable"
+
     session = DiagnosticSession(
-        alarm_number=alarm_number,
+        alarm_number=diagnostic_alarm,
         query=query or f"Alarm {alarm_number}",
         evidence=evidence,
+        history_records=history_records,
     )
     snapshot = session.state()
 
@@ -105,6 +131,9 @@ def new_case(ctx, node_input: dict[str, Any]):
         "alarm_number": alarm_number,
         "query": query or f"Alarm {alarm_number}",
         "evidence": evidence,
+        "machine_model": machine_model,
+        "history_status": history_status,
+        "history_records_used": len(history_records),
         "observations": [],
         "session_state": snapshot,
     }
@@ -115,7 +144,7 @@ def new_case(ctx, node_input: dict[str, Any]):
             "retrieval": retrieved,
             "diagnosis": snapshot,
         },
-        route="ask_check" if snapshot.get("next_check", {}).get("check") else "close_out",
+        route="ask_check" if snapshot.get("next_check", {}).get("check") else "more_evidence",
     )
 
 
@@ -173,6 +202,11 @@ def ask_check(ctx, node_input):
             "status": safety.get("status", "unknown"),
             "hazards": safety.get("hazards", []),
             "message": safety.get("message"),
+            "blocked": safety.get("blocked", False),
+            "checklist_required": safety.get("checklist_required", False),
+            "checklist_status": safety.get("checklist_status", "unknown"),
+            "checklist": safety.get("checklist", []),
+            "demo_checklist": safety.get("demo_checklist"),
         },
         "effort": None,
         "effort_note": "No effort estimate is supplied by the diagnostic engine.",
@@ -192,11 +226,48 @@ def close_out(ctx, node_input):
     confirmed_cause = diagnosis.get("confirmed_cause")
 
     if confirmed_cause:
+        # Persist only when the caller supplied all required close-out details.
+        # Never invent machine, symptom, or repair-action data.
+        closeout = normalize_input(node_input)
+        required_fields = (
+            "machine_model",
+            "symptom",
+            "action_taken",
+        )
+        missing_fields = [
+            field for field in required_fields
+            if not str(closeout.get(field, "")).strip()
+        ]
+
+        if missing_fields:
+            return {
+                "status": "confirmed_not_persisted",
+                "confirmed_cause": confirmed_cause,
+                "stop_tier": "confirmed",
+                "stop_reason": (
+                    "Cause confirmed, but work-order history was not written. "
+                    "Missing close-out fields: " + ", ".join(missing_fields)
+                ),
+                "diagnosis": diagnosis,
+            }
+
+        from rag.work_order_writer import record_confirmed_work_order
+
+        work_order = record_confirmed_work_order(
+            alarm_code=str(case.get("alarm_number", diagnosis.get("alarm_number", ""))),
+            machine_model=str(closeout["machine_model"]),
+            symptom=str(closeout["symptom"]),
+            diagnosis=str(confirmed_cause),
+            action_taken=str(closeout["action_taken"]),
+            confirmation_status="confirmed",
+        )
+
         return {
             "status": "confirmed",
             "confirmed_cause": confirmed_cause,
             "stop_tier": "confirmed",
-            "stop_reason": "A cause was explicitly confirmed by the diagnostic session.",
+            "stop_reason": "Cause confirmed and work order recorded.",
+            "work_order_id": work_order["work_order_id"],
             "diagnosis": diagnosis,
         }
 

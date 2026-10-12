@@ -89,3 +89,36 @@ if __name__ == "__main__":
         "113",
         "Alarm 113 Shuttle In Fault",
     )
+
+def test_unsourced_candidate_confidence_is_capped_at_probable():
+    from rag.diagnostic_engine import _merge_candidates
+
+    merged = _merge_candidates([
+        {
+            "cause": "Spindle drive failure",
+            "status": "candidate",
+            "next_check": "Inspect diagnostic evidence",
+            "confidence_band": "high",
+            "sourced": False,
+            "evidence": [],
+        }
+    ])
+
+    assert len(merged) == 1
+    assert merged[0]["confidence_band"] in {"unlikely", "probable"}
+    assert merged[0]["sourced"] is False
+
+
+def test_irrelevant_passage_does_not_verify_cause_terms():
+    from rag.diagnostic_engine import _verify_evidence_terms
+
+    result = _verify_evidence_terms(
+        "Spindle drive failure",
+        {
+            "citation": "VF Series Service Manual, page 53",
+            "text": "The coolant tank should be inspected for leaks.",
+        },
+    )
+
+    assert result["verified"] is False
+    assert result["matched_terms"] == []

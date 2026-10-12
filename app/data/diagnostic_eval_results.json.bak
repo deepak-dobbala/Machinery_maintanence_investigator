@@ -1,0 +1,844 @@
+{
+  "evaluation_mode": "fixed_evidence_live_baseline_and_deterministic_investigator",
+  "dataset": "app/data/diagnostic_eval_cases.jsonl",
+  "investigator_results": [
+    {
+      "case_id": "SYN-113-01",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "mechanical obstruction"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Tool-changer shuttle jam or mechanical obstruction",
+          "status": "supported"
+        },
+        {
+          "cause": "Tool-changer electrical/power or output/input problem",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": true,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Inspect the tool-changer shuttle for a jam or obstruction.",
+      "actual_next_check": "Check the tool-changer shuttle for a jam or mechanical obstruction.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-113-02-HERO",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "tool-changer power loss"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Tool-changer shuttle jam or mechanical obstruction",
+          "status": "ruled_out"
+        },
+        {
+          "cause": "Tool-changer electrical/power or output/input problem",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Have a qualified technician check tool-changer relays K9-K12 and fuse F1 on the IOPCB.",
+      "actual_next_check": "Check the tool-changer power and the manual-identified K9-K12/F1 circuits.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-113-03",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "tool obstructing shuttle motion"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Tool-changer shuttle jam or mechanical obstruction",
+          "status": "possible"
+        },
+        {
+          "cause": "Tool-changer electrical/power or output/input problem",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Safely clear the pocket condition according to the machine procedure, then re-evaluate.",
+      "actual_next_check": "Check the tool-changer shuttle for a jam or mechanical obstruction.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-113-04",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": true,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": false,
+      "expected_causes": [],
+      "actual_causes": [
+        {
+          "cause": "Tool-changer shuttle jam or mechanical obstruction",
+          "status": "possible"
+        },
+        {
+          "cause": "Tool-changer electrical/power or output/input problem",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Inspect the shuttle and pocket condition before ranking causes.",
+      "actual_next_check": "Check the tool-changer shuttle for a jam or mechanical obstruction.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-113-05",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "tool-changer power loss"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Tool-changer shuttle jam or mechanical obstruction",
+          "status": "ruled_out"
+        },
+        {
+          "cause": "Tool-changer electrical/power or output/input problem",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Have a qualified technician check relays K9-K12 and fuse F1 on the IOPCB.",
+      "actual_next_check": "Check the tool-changer power and the manual-identified K9-K12/F1 circuits.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-122-01",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "input line voltage too high"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Input line voltage too high",
+          "status": "supported"
+        },
+        {
+          "cause": "High spindle start/stop duty",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": true,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Have a qualified technician verify incoming line voltage against the machine specification.",
+      "actual_next_check": "Check the input line voltage.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-122-02",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "high spindle start/stop duty cycle",
+        "input line voltage too high"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Input line voltage too high",
+          "status": "possible"
+        },
+        {
+          "cause": "High spindle start/stop duty",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Verify incoming line voltage and review the spindle start/stop duty cycle.",
+      "actual_next_check": "Check the input line voltage.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-122-03",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": true,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": false,
+      "expected_causes": [],
+      "actual_causes": [
+        {
+          "cause": "Input line voltage too high",
+          "status": "possible"
+        },
+        {
+          "cause": "High spindle start/stop duty",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Have a qualified technician check incoming line voltage and review spindle operating duty.",
+      "actual_next_check": "Check the input line voltage.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-122-04",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "high spindle start/stop duty cycle"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Input line voltage too high",
+          "status": "possible"
+        },
+        {
+          "cause": "High spindle start/stop duty",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Review spindle start/stop duty and operating conditions.",
+      "actual_next_check": "Check the input line voltage.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-122-05",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": true,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": false,
+      "expected_causes": [],
+      "actual_causes": [
+        {
+          "cause": "Input line voltage too high",
+          "status": "possible"
+        },
+        {
+          "cause": "High spindle start/stop duty",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Gather relevant voltage and spindle-duty evidence before ranking causes.",
+      "actual_next_check": "Check the input line voltage.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-UNK-01",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": true,
+      "actual_no_candidates": true,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": false,
+      "expected_abstention_match": true,
+      "expected_causes": [],
+      "actual_causes": [],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": null,
+      "actual_next_check": null,
+      "next_check_exact_match": true,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-UNK-02",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": true,
+      "actual_no_candidates": true,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": false,
+      "expected_abstention_match": true,
+      "expected_causes": [],
+      "actual_causes": [],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": null,
+      "actual_next_check": null,
+      "next_check_exact_match": true,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-UNK-03",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": true,
+      "actual_no_candidates": true,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": false,
+      "expected_abstention_match": true,
+      "expected_causes": [],
+      "actual_causes": [],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": null,
+      "actual_next_check": null,
+      "next_check_exact_match": true,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-113-06",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "mechanical obstruction",
+        "tool-changer power loss"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Tool-changer shuttle jam or mechanical obstruction",
+          "status": "possible"
+        },
+        {
+          "cause": "Tool-changer electrical/power or output/input problem",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Inspect for a jam or tool obstruction before proceeding to electrical checks.",
+      "actual_next_check": "Check the tool-changer shuttle for a jam or mechanical obstruction.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    },
+    {
+      "case_id": "SYN-122-06",
+      "case_type": "synthetic",
+      "evaluation_system": "investigator",
+      "evaluation_mode": "deterministic_no_model",
+      "expected_abstain": false,
+      "actual_no_candidates": false,
+      "actual_all_candidates_ruled_out": false,
+      "actual_has_unresolved_candidate": true,
+      "expected_abstention_match": true,
+      "expected_causes": [
+        "input line voltage too high",
+        "high spindle start/stop duty cycle"
+      ],
+      "actual_causes": [
+        {
+          "cause": "Input line voltage too high",
+          "status": "possible"
+        },
+        {
+          "cause": "High spindle start/stop duty",
+          "status": "possible"
+        }
+      ],
+      "expected_causes_present": false,
+      "expected_cause_sets_exact": false,
+      "expected_next_check": "Have a qualified technician verify incoming line voltage and review spindle start/stop duty.",
+      "actual_next_check": "Check the input line voltage.",
+      "next_check_exact_match": false,
+      "confidence_band": null,
+      "confidence_band_status": "not_provided"
+    }
+  ],
+  "investigator_summary": {
+    "total_cases": 15,
+    "case_type_counts": {
+      "real": 0,
+      "synthetic": 15,
+      "other": 0
+    },
+    "by_case_type": {
+      "synthetic": {
+        "cases": 15,
+        "abstention_matches": 12,
+        "expected_causes_present": 2,
+        "exact_cause_sets": 0,
+        "exact_next_check_text_matches": 3,
+        "confidence_band_cases": 0
+      }
+    },
+    "real_evaluation_status": "not_evaluated_no_real_cases",
+    "confidence_band_status": "not_available_dataset_has_no_confidence_bands",
+    "model_calls_made": 0,
+    "limitations": [
+      "Manual evidence is a fixed test fixture.",
+      "All scores describe the supplied evaluation cases only.",
+      "Synthetic results are not real-world accuracy.",
+      "Exact next-check matching compares strings, not semantic equivalence.",
+      "This deterministic run does not evaluate the LLM baseline.",
+      "Fixed manual evidence is a test fixture, not live retrieval.",
+      "Baseline cause scores use literal label matching, not semantic grading."
+    ],
+    "baseline_status": "completed",
+    "baseline_model_calls_made": 12
+  },
+  "baseline_results": [
+    {
+      "case_id": "SYN-113-01",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "**Confirmed Cause:**\nA visible mechanical obstruction.\n\n**Possible Causes (not directly confirmed by observation, or specific forms of the confirmed obstruction):**\nThe mechanical obstruction may be a jammed slide or a tool in a pocket facing the spindle. An additional possible cause for the shuttle failure is a loss of power to the tool changer.",
+      "expected_causes": [
+        "mechanical obstruction"
+      ],
+      "expected_causes_present": true,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 1,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-113"
+      ]
+    },
+    {
+      "case_id": "SYN-113-02-HERO",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "Based on the observations, a jammed slide and a tool in the pocket facing the spindle have been ruled out as causes for the shuttle failing to reach IN. A loss of power to the tool changer is a possible cause, which is currently suspected but not yet verified.",
+      "expected_causes": [
+        "tool-changer power loss"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 2,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-113"
+      ]
+    },
+    {
+      "case_id": "SYN-113-03",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "The tool found in the pocket facing the spindle is a **possible** cause for the shuttle failing to reach IN. The manual states that a tool in a pocket facing the spindle *may* prevent shuttle movement. Other possible causes, not confirmed or ruled out by observations, include a jammed slide or a loss of power to the tool changer. The exact cause is not definitively established.",
+      "expected_causes": [
+        "tool obstructing shuttle motion"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 3,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-113"
+      ]
+    },
+    {
+      "case_id": "SYN-113-04",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": true,
+      "answer": "Alarm 113, \"Shuttle In Fault,\" may be caused by a jammed slide, a tool in a pocket facing the spindle, or a loss of power to the tool changer. No causes are confirmed.",
+      "expected_causes": [],
+      "expected_causes_present": false,
+      "abstention_match": false,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 4,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-113"
+      ]
+    },
+    {
+      "case_id": "SYN-113-05",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "No confirmed causes have been established.\n\nA possible cause for the shuttle failing to reach IN is a loss of power to the tool changer. The manual indicates that a jammed slide or a tool in a pocket facing the spindle may prevent shuttle movement, but these have been ruled out by the observation that no jam was found.",
+      "expected_causes": [
+        "tool-changer power loss"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 5,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-113"
+      ]
+    },
+    {
+      "case_id": "SYN-122-01",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "The confirmed cause is high incoming line voltage, as observed and stated in [MANUAL-122]. A high spindle start/stop duty cycle is a possible contributing factor, as stated in [MANUAL-122], but its occurrence is not established by the observations.",
+      "expected_causes": [
+        "input line voltage too high"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 6,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-122"
+      ]
+    },
+    {
+      "case_id": "SYN-122-02",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "**Confirmed Contributing Factor:**\n*   A high spindle start/stop duty cycle is observed and the manual states it can contribute to Alarm 122.\n\n**Possible Cause (Uncertain):**\n*   Incoming line voltage too high is a possible cause for Alarm 122. However, the incoming voltage has not been measured, so its status as a cause is uncertain.",
+      "expected_causes": [
+        "high spindle start/stop duty cycle",
+        "input line voltage too high"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 7,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-122"
+      ]
+    },
+    {
+      "case_id": "SYN-122-03",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": true,
+      "answer": "Based on the provided manual passage, the following are **possible causes** for Alarm 122 Regen Overheat:\n\n*   Incoming line voltage too high.\n*   High spindle start/stop duty cycle.",
+      "expected_causes": [],
+      "expected_causes_present": false,
+      "abstention_match": false,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 8,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-122"
+      ]
+    },
+    {
+      "case_id": "SYN-122-04",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "The high spindle start/stop duty cycle is a confirmed contributing factor to Alarm 122 Regen Overheat. Incoming line voltage too high is listed as a possible cause for Alarm 122, but has been ruled out by observation in this case. The specific primary cause of the Alarm 122 Regen Overheat, beyond the contributing factor, is not established by the provided manual passage.",
+      "expected_causes": [
+        "high spindle start/stop duty cycle"
+      ],
+      "expected_causes_present": true,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 9,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-122"
+      ]
+    },
+    {
+      "case_id": "SYN-122-05",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": true,
+      "answer": "Alarm 122, \"Regen Overheat,\" is confirmed.\n\nPossible causes for Alarm 122, according to the manual, are:\n*   Incoming line voltage too high.\n*   High spindle start/stop duty cycle.\n\nNo causes are confirmed by the provided observations. The cosmetic damage is noted but is not established as a cause for Alarm 122 by the provided manual passages.",
+      "expected_causes": [],
+      "expected_causes_present": false,
+      "abstention_match": false,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 10,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-122"
+      ]
+    },
+    {
+      "case_id": "SYN-UNK-01",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "status": "abstained_no_evidence",
+      "answer": "",
+      "expected_causes_present": false,
+      "model_call_made": false
+    },
+    {
+      "case_id": "SYN-UNK-02",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "status": "abstained_no_evidence",
+      "answer": "",
+      "expected_causes_present": false,
+      "model_call_made": false
+    },
+    {
+      "case_id": "SYN-UNK-03",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "status": "abstained_no_evidence",
+      "answer": "",
+      "expected_causes_present": false,
+      "model_call_made": false
+    },
+    {
+      "case_id": "SYN-113-06",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "Based on MANUAL-113, possible causes for the shuttle failing to reach IN are:\n\n*   A jammed slide.\n*   A tool in a pocket facing the spindle.\n*   A loss of power to the tool changer.\n\nNo causes are confirmed, as mechanical inspection, relays, and fuses have not been checked.",
+      "expected_causes": [
+        "mechanical obstruction",
+        "tool-changer power loss"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 11,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-113"
+      ]
+    },
+    {
+      "case_id": "SYN-122-06",
+      "case_type": "synthetic",
+      "evaluation_system": "baseline",
+      "evaluation_mode": "fixed_evidence_live_model",
+      "expected_abstain": false,
+      "answer": "Alarm 122 Regen Overheat is present.\n\nPossible causes for this alarm are:\n*   Incoming line voltage too high.\n*   High spindle start/stop duty cycle.\n\nIt is uncertain if the incoming line voltage is too high because no voltage measurement is available.\nIt is uncertain if a high spindle start/stop duty cycle is contributing to the condition because spindle duty is unknown.",
+      "expected_causes": [
+        "input line voltage too high",
+        "high spindle start/stop duty cycle"
+      ],
+      "expected_causes_present": false,
+      "abstention_match": null,
+      "scoring_note": "Literal cause-label matching only; this is not semantic grading.",
+      "status": "ok",
+      "model": "gemini-2.5-flash",
+      "model_call_made": true,
+      "quota": {
+        "allowed": true,
+        "used": 12,
+        "limit": 100
+      },
+      "evidence_ids": [
+        "MANUAL-122"
+      ]
+    }
+  ],
+  "baseline_summary": {
+    "cases_attempted": 15,
+    "completed_model_calls": 12,
+    "cause_label_matches": 2,
+    "cases_scored": 9,
+    "by_case_type": {
+      "synthetic": {
+        "cases": 15,
+        "completed_model_calls": 12,
+        "cause_label_matches": 2,
+        "cases_scored": 9
+      }
+    },
+    "scoring_limitation": "Literal cause-label matching only; not semantic accuracy."
+  },
+  "baseline_status": "completed",
+  "summary": {
+    "total_cases": 15,
+    "case_type_counts": {
+      "real": 0,
+      "synthetic": 15,
+      "other": 0
+    },
+    "by_case_type": {
+      "synthetic": {
+        "cases": 15,
+        "abstention_matches": 12,
+        "expected_causes_present": 2,
+        "exact_cause_sets": 0,
+        "exact_next_check_text_matches": 3,
+        "confidence_band_cases": 0
+      }
+    },
+    "real_evaluation_status": "not_evaluated_no_real_cases",
+    "confidence_band_status": "not_available_dataset_has_no_confidence_bands",
+    "model_calls_made": 0,
+    "limitations": [
+      "Manual evidence is a fixed test fixture.",
+      "All scores describe the supplied evaluation cases only.",
+      "Synthetic results are not real-world accuracy.",
+      "Exact next-check matching compares strings, not semantic equivalence.",
+      "This deterministic run does not evaluate the LLM baseline.",
+      "Fixed manual evidence is a test fixture, not live retrieval.",
+      "Baseline cause scores use literal label matching, not semantic grading."
+    ],
+    "baseline_status": "completed",
+    "baseline_model_calls_made": 12
+  }
+}\n

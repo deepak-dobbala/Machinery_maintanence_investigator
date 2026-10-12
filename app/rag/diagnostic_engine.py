@@ -15,6 +15,8 @@ It does not invent maintenance procedures.
 
 from typing import Any, Dict, List
 
+from rag.history_ranking import apply_history_ranking
+
 
 def _contains_any(text: str, terms: List[str]) -> bool:
     text = " ".join(text.lower().split())
@@ -24,15 +26,43 @@ def _contains_any(text: str, terms: List[str]) -> bool:
     )
 
 
-def _make_evidence_ref(
+def _verify_evidence_terms(
+    cause: str,
     evidence: Dict[str, Any],
 ) -> Dict[str, Any]:
+    """Conservatively verify that cited passage text mentions the proposed cause."""
+    citation = str(evidence.get("citation", "")).strip()
+    passage = str(evidence.get("text", "")).strip()
+    cause_terms = [
+        term for term in " ".join(cause.lower().split()).split()
+        if len(term) >= 4
+    ]
+    passage_lower = " ".join(passage.lower().split())
+    matched_terms = [term for term in cause_terms if term in passage_lower]
+    verified = bool(citation and passage and matched_terms)
 
     return {
-        "evidence_id": evidence["evidence_id"],
-        "citation": evidence["citation"],
-        "chunk_type": evidence["chunk_type"],
-        "text": evidence["text"],
+        "verified": verified,
+        "matched_terms": matched_terms,
+        "reason": (
+            "passage_contains_cause_terms"
+            if verified
+            else "missing_citation_passage_or_relevant_terms"
+        ),
+    }
+
+
+def _make_evidence_ref(
+    evidence: Dict[str, Any],
+    cause: str,
+) -> Dict[str, Any]:
+    verification = _verify_evidence_terms(cause, evidence)
+    return {
+        "evidence_id": evidence.get("evidence_id"),
+        "citation": evidence.get("citation"),
+        "chunk_type": evidence.get("chunk_type"),
+        "text": evidence.get("text"),
+        "verification": verification,
     }
 
 
@@ -47,12 +77,10 @@ def _add_candidate(
             "cause": cause,
             "status": "possible",
             "confidence_band": "unlikely",
-            "sourced": bool(
-                evidence.get("citation") and evidence.get("text", "").strip()
-            ),
+            "sourced": _verify_evidence_terms(cause, evidence)["verified"],
             "next_check": check,
             "evidence": [
-                _make_evidence_ref(evidence)
+                _make_evidence_ref(evidence, cause)
             ],
         }
     )
@@ -134,6 +162,37 @@ def build_candidate_causes(
                 )
 
         # ---------------------------------------------------------
+        # Alarm 123 - Spindle Drive Fault
+        # ---------------------------------------------------------
+
+        elif alarm == "123":
+
+            if _contains_any(
+                text,
+                [
+                    "spindle drive fault",
+                    "failure of spindle drive",
+                ],
+            ) and _contains_any(
+                text,
+                [
+                    "overvoltage",
+                    "overcurrent",
+                    "undervoltage",
+                    "shorted motor",
+                    "failure of drive",
+                    "regen load",
+                    "regenerative load",
+                ],
+            ):
+                _add_candidate(
+                    candidates,
+                    "Spindle-drive fault; underlying cause not yet established",
+                    "Review the documented possible causes for Alarm 123 with qualified maintenance personnel.",
+                    e,
+                )
+
+        # ---------------------------------------------------------
         # Alarm 113 - Shuttle In Fault
         # ---------------------------------------------------------
 
@@ -145,6 +204,10 @@ def build_candidate_causes(
                     "jammed",
                     "jam",
                     "obstruction",
+                    "shuttle will not move",
+                    "shuttle does not move",
+                    "shuttle does not cycle",
+                    "shuttle will not cycle",
                 ],
             ):
 
@@ -182,6 +245,10 @@ def build_candidate_causes(
                     "electrical fault",
                     "electrical problem",
                     "output/input problem",
+                    "shuttle is not getting power",
+                    "shuttle not getting power",
+                    "shuttle does not get power",
+                    "shuttle will not move; shuttle is not getting power",
                 ],
             ):
 
@@ -217,6 +284,20 @@ def _merge_candidates(
                 "next_check": candidate["next_check"],
                 "evidence": [],
             }
+
+        # Unsourced candidates must never receive a confidence band
+        # stronger than "probable", including after candidate merging.
+        if not merged[key].get("sourced", False):
+            confidence_order = {
+                "unlikely": 0,
+                "probable": 1,
+                "likely": 2,
+                "high": 3,
+                "confirmed": 4,
+            }
+            band = merged[key].get("confidence_band", "unlikely")
+            if confidence_order.get(band, 0) > confidence_order["probable"]:
+                merged[key]["confidence_band"] = "probable"
 
         existing_ids = {
             item["evidence_id"]
@@ -310,12 +391,15 @@ def select_next_check(
 def diagnose(
     alarm_number: str,
     evidence: List[Dict[str, Any]],
+    history_records: List[Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
 
     candidates = build_candidate_causes(
         alarm_number,
         evidence,
     )
+    if history_records:
+        candidates = apply_history_ranking(candidates, history_records)
 
     next_check = select_next_check(
         alarm_number,
