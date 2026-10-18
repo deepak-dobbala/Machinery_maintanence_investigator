@@ -71,13 +71,22 @@ def _add_candidate(
     cause: str,
     check: str,
     evidence: Dict[str, Any],
+    confidence_band: str = "probable",
 ):
+    verification = _verify_evidence_terms(cause, evidence)
+
+    # Manual-supported candidates begin at "probable": the manual establishes
+    # that the cause is relevant, but the alarm alone does not establish it.
+    # Later observations can move the cause up or down.
+    if confidence_band not in {"likely", "probable", "unlikely"}:
+        confidence_band = "probable"
+
     candidates.append(
         {
             "cause": cause,
             "status": "possible",
-            "confidence_band": "unlikely",
-            "sourced": _verify_evidence_terms(cause, evidence)["verified"],
+            "confidence_band": confidence_band,
+            "sourced": verification["verified"],
             "next_check": check,
             "evidence": [
                 _make_evidence_ref(evidence, cause)
@@ -158,6 +167,70 @@ def build_candidate_causes(
                     candidates,
                     "Spindle-drive or regenerative-load condition",
                     "Check the spindle-drive/regenerative-load condition described by the manual.",
+                    e,
+                )
+
+        # ---------------------------------------------------------
+        # Alarm 103 - X Servo Error Too Large
+        # ---------------------------------------------------------
+
+        elif alarm == "103":
+
+            if _contains_any(
+                text,
+                [
+                    "mechanical stops",
+                    "mechanical stop",
+                    "slide being run into mechanical stops",
+                ],
+            ):
+                _add_candidate(
+                    candidates,
+                    "X-axis slide run into a mechanical stop",
+                    "Check whether the X-axis slide has been run into a mechanical stop.",
+                    e,
+                )
+
+            if _contains_any(
+                text,
+                [
+                    "motor may also be stalled",
+                    "motor stalled",
+                    "stalled",
+                ],
+            ):
+                _add_candidate(
+                    candidates,
+                    "X-axis motor stalled",
+                    "Check whether the X-axis motor/slide is stalled.",
+                    e,
+                )
+
+            if _contains_any(
+                text,
+                [
+                    "disconnected",
+                    "motor disconnected",
+                ],
+            ):
+                _add_candidate(
+                    candidates,
+                    "X-axis motor disconnected",
+                    "Check the X-axis motor connection.",
+                    e,
+                )
+
+            if _contains_any(
+                text,
+                [
+                    "driver failed",
+                    "failure of driver",
+                ],
+            ):
+                _add_candidate(
+                    candidates,
+                    "X-axis driver failure",
+                    "Check the X-axis driver for the documented failure condition.",
                     e,
                 )
 

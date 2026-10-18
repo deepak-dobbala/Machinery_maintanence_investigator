@@ -216,3 +216,23 @@ class Alarm123RegressionTests(unittest.TestCase):
             all(candidate["status"] != "confirmed"
                 for candidate in result["candidate_causes"])
         )
+    def test_alarm_103_proposes_documented_x_axis_fault_candidates(self):
+        evidence = [{
+            "evidence_id": "E103",
+            "citation": "VF Series Service Manual Rev E, manual p. 51",
+            "chunk_type": "alarm",
+            "text": (
+                "103 X SERVO ERROR TOO LARGE. Too much load or speed "
+                "on X-axis motor. The difference between the motor "
+                "position and commanded position has exceeded a "
+                "parameter. This alarm can be caused by problems with "
+                "the driver, motor, or slide being run into mechanical "
+                "stops. Motor may also be stalled, disconnected, or "
+                "driver failed."
+            ),
+        }]
+        result = diagnose("103", evidence)
+        self.assertFalse(result["abstained"])
+        self.assertTrue(result["candidate_causes"])
+        self.assertTrue(result["next_check"]["check"])
+        self.assertTrue(result["next_check"]["evidence"])

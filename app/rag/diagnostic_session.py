@@ -72,6 +72,7 @@ class DiagnosticSession:
             diagnostic_result[
                 "next_check"
             ]
+
         )
 
         # Apply the safety gate to the initial check too.
@@ -167,8 +168,7 @@ class DiagnosticSession:
                     "status"
                 ] = "confirmed"
 
-                self.confirmed_cause = cause
-
+                self.confirmed_cause = causet_
                 continue
 
             # -----------------------------------------------------
@@ -239,6 +239,140 @@ class DiagnosticSession:
 
                 self._set_status(
                     "Input line voltage too high",
+                    "ruled_out",
+                )
+
+        if self.alarm_number == "103":
+
+            # Mechanical-stop finding.
+            if any(
+                phrase in text
+                for phrase in [
+                    "against a mechanical stop",
+                    "against mechanical stop",
+                    "run into a mechanical stop",
+                    "ran into a mechanical stop",
+                    "at the mechanical stop",
+                    "mechanical stop",
+            ]
+            ) and not self._is_negative_observation(text):
+                self._set_status(
+                    "X-axis slide run into a mechanical stop",
+                    "supported",
+                )
+
+            if any(
+                phrase in text
+                for phrase in [
+                    "not against a mechanical stop",
+                    "not against the mechanical stop",
+                    "not at the mechanical stop",
+                    "clear of the mechanical stop",
+                    "clear of mechanical stop",
+                    "not run into a mechanical stop",
+                    "not run into the mechanical stop",
+                ]
+            ):
+                self._set_status(
+                    "X-axis slide run into a mechanical stop",
+                    "ruled_out",
+                )
+
+            # Motor-stall finding.
+            if any(
+                phrase in text
+                for phrase in [
+                    "motor is stalled",
+                    "motor stalled",
+                    "x-axis motor is stalled",
+                    "x-axis motor stalled",
+                    "motor is mechanically bound",
+                    "motor is bound",
+                ]
+            ) and not self._is_negative_observation(text):
+                self._set_status(
+                    "X-axis motor stalled",
+                    "supported",
+                )
+
+            if any(
+                phrase in text
+                for phrase in [
+                    "motor is not stalled",
+                    "motor not stalled",
+                    "x-axis motor is not stalled",
+                    "x-axis motor not stalled",
+                    "motor moves freely",
+                    "axis moves freely",
+                    "no mechanical bind",
+                    "not mechanically bound",
+                ]
+            ):
+                self._set_status(
+                    "X-axis motor stalled",
+                    "ruled_out",
+                )
+
+            # Motor connection finding.
+            if any(
+                phrase in text
+                for phrase in [
+                    "motor is disconnected",
+                    "motor disconnected",
+                    "motor connection is disconnected",
+                    "motor wiring is disconnected",
+                    "motor connection is loose",
+                    "motor wiring is loose",
+                ]
+            ) and not self._is_negative_observation(text):
+                self._set_status(
+                    "X-axis motor disconnected",
+                    "supported",
+                )
+
+            if any(
+                phrase in text
+                for phrase in [
+                    "motor is connected",
+                    "motor connection is secure",
+                    "motor wiring is secure",
+                    "motor connection is tight",
+                    "motor wiring is tight",
+                    "no loose motor wiring",
+                    "no loose connection",
+                ]
+            ):
+                self._set_status(
+                    "X-axis motor disconnected",
+                    "ruled_out",
+                )
+
+            # Driver diagnostic finding.
+            if any(
+                phrase in text
+                for phrase in [
+                    "driver failed",
+                    "driver diagnostic failed",
+                    "servo driver failed",
+                    "x-axis driver failed",
+                ]
+            ) and not self._is_negative_observation(text):
+                self._set_status(
+                    "X-axis driver failure",
+                    "confirmed",
+                )
+
+            if any(
+                phrase in text
+                for phrase in [
+                    "driver passed",
+                    "driver diagnostic passed",
+                    "servo driver passed",
+                    "x-axis driver passed",
+                ]
+            ):
+                self._set_status(
+                    "X-axis driver failure",
                     "ruled_out",
                 )
 
@@ -426,6 +560,18 @@ class DiagnosticSession:
                 candidate[
                     "status"
                 ] = status
+
+                # Keep the technician-facing confidence band synchronized
+                # with the explicit diagnostic status. These are qualitative
+                # evidence bands, not probability estimates.
+                band_by_status = {
+                    "confirmed": "likely",
+                    "supported": "likely",
+                    "possible": "probable",
+                    "ruled_out": "unlikely",
+                }
+
+                candidate["confidence_band"] = band_by_status[status]
 
                 if status == "confirmed":
                     self.confirmed_cause = cause
